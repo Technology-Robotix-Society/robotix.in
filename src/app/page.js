@@ -12,6 +12,8 @@ import useScrambleText from "@/hooks/useScrambleText";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const heroTexts = ["Technology Robotix Society", "Where machines dare !!"];
+
 export default function Home() {
     const mainRef = useRef(null);
     const logoRef = useRef(null);
@@ -25,10 +27,8 @@ export default function Home() {
     const galleryItemsRef = useRef([]);
 
     const [gridCells, setGridCells] = useState([]);
-    const [displayText1, displayText2] = useScrambleText(
-        ["Technology Robotix Society", "Where machines dare !!"],
-        { speed: 10 }
-    );
+    const [gridCellSize, setGridCellSize] = useState(0);
+    const [displayText1, displayText2] = useScrambleText(heroTexts, { speed: 10 });
 
     const hardwareAccel = {
         transform: "translateZ(0)",
@@ -71,12 +71,14 @@ export default function Home() {
                     const shuffledCells = [...cells].sort(
                         () => Math.random() - 0.5,
                     );
-                    gsap.to(shuffledCells, {
-                        backgroundColor: "transparent",
-                        duration: 0.3,
-                        stagger: { each: 0.008, from: "random" },
-                        ease: "power2.out",
-                    });
+                    if (shuffledCells.length > 0) {
+                        gsap.to(shuffledCells, {
+                            backgroundColor: "transparent",
+                            duration: 0.3,
+                            stagger: { each: 0.008, from: "random" },
+                            ease: "power2.out",
+                        });
+                    }
                 }
             }, mainRef);
             return () => ctx.revert();
@@ -96,6 +98,7 @@ export default function Home() {
             const cellSize = w / columns;
             const rows = Math.ceil(h / cellSize);
             setGridCells(Array.from({ length: rows * columns }, (_, i) => i));
+            setGridCellSize(cellSize);
             gridRef.current.classList.add("bg-transparent");
         };
 
@@ -330,11 +333,7 @@ export default function Home() {
                         ref={gridRef}
                         className="z-10 h-screen absolute top-0 left-0 w-full overflow-hidden grid grid-cols-10 bg-[#0b0b0e]"
                         style={{
-                            gridAutoRows: `${
-                                gridRef.current
-                                    ? gridRef.current.offsetWidth / 10
-                                    : 0
-                            }px`,
+                            gridAutoRows: `${gridCellSize}px`,
                         }}
                     >
                         {gridCells.map((cell) => (
