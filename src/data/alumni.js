@@ -1,5 +1,266 @@
 export const alumniData = [
     {
+        title: "2026",
+        team: [
+            {
+                name: "Aditya",
+                surname: "Nandy",
+                thumbnailUrl: "2022_aditya.jpg",
+                id: 1,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100076763501015",
+                    },
+                    {
+                        name: "email",
+                        link: "adityanandy2802@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Amrit",
+                surname: "Lal Singh",
+                thumbnailUrl: "2022_amrit.png",
+                id: 2,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100076869431636",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/amrit-lal-singh",
+                    },
+                    {
+                        name: "email",
+                        link: "amritlalsingh9920@kgpian.iitkgp.ac.in",
+                    },
+                ],
+            },
+            {
+                name: "Parth",
+                surname: "Gupta",
+                thumbnailUrl: "2022_parth.jpg",
+                id: 3,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/parth.gupta.1422409/",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/ParthGupta2510",
+                    },
+                    {
+                        name: "email",
+                        link: "parthgupta2510@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Prasanna",
+                surname: "Paithankar",
+                thumbnailUrl: "2022_prasanna.jpg",
+                id: 4,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/prasanna.paithankar.71",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/PrasannaPaithankar",
+                    },
+                    {
+                        name: "email",
+                        link: "paithankarprasanna@kgpian.iitkgp.ac.in ",
+                    },
+                ],
+            },
+            {
+                name: "Siddharth",
+                surname: "Asthana",
+                thumbnailUrl: "2022_siddharth.jpg",
+                id: 5,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100075154525958",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/SID10007",
+                    },
+                    {
+                        name: "email",
+                        link: "asthanasiddharth2002@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Swaminathan",
+                surname: "S K",
+                thumbnailUrl: "2023_swaminathan.jpg",
+                id: 6,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100086273480681",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/SwaminathanSK",
+                    },
+                    {
+                        name: "email",
+                        link: "swamisathya2004@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Parag",
+                surname: "Agarwal",
+                thumbnailUrl: "2023_parag.jpeg",
+                id: 7,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/parag.agarwal.1291",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/paragarwal",
+                    },
+                    {
+                        name: "email",
+                        link: "paragagarwal2003@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Prakhar",
+                surname: "Tripathi",
+                thumbnailUrl: "2023_prakhar.jpg",
+                id: 8,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100087954670770&mibextid=ZbWKwL",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/Prakhar1230",
+                    },
+                    {
+                        name: "email",
+                        link: "prakhartripathi0803@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Divyansh",
+                surname: "Sharma",
+                thumbnailUrl: "2023_divyansh.jpg",
+                id: 9,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100087898983141",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/lord-TACO-81",
+                    },
+                    {
+                        name: "email",
+                        link: "div.sh81@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "U Skanda",
+                surname: "Aithal",
+                thumbnailUrl: "2023_skanda.jpg",
+                id: 10,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100086977592396&mibextid=ZbWKwL",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/SkandaAithal-1",
+                    },
+                    {
+                        name: "email",
+                        link: "aithalskanda66@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Muskan",
+                surname: "Khemka",
+                thumbnailUrl: "2023_muskan.jpg",
+                id: 11,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100087650885581&mibextid=LQQJ4d",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/Muskan-Khemka",
+                    },
+                    {
+                        name: "email",
+                        link: "21muskankhemka@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Meera",
+                surname: "Nair",
+                thumbnailUrl: "2023_meera.jpg",
+                id: 12,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100087117837999&mibextid=LQQJ4d",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/meeranair186",
+                    },
+                    {
+                        name: "email",
+                        link: "meeranair108@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Pranav Mangal",
+                surname: "Pandey",
+                thumbnailUrl: "2023_pranav.jpg",
+                id: 13,
+                social: [
+                    {
+                        name: "facebook",
+                        link: "",
+                    },
+                    {
+                        name: "github",
+                        link: "",
+                    },
+                    {
+                        name: "email",
+                        link: "pranav.m.pandey43@gmail.com",
+                    },
+                ],
+            },
+        ],
+    },
+    {
         title: "2025",
         team: [
             {
