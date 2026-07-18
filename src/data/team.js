@@ -3,106 +3,9 @@ export const teamData = [
         title: "Coordinator",
         team: [
             {
-                name: "Aditya",
-                surname: "Nandy",
-                thumbnailUrl: "2022_aditya.jpg",
-                id: 1,
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=100076763501015",
-                    },
-                    {
-                        name: "email",
-                        link: "adityanandy2802@gmail.com",
-                    },
-                ],
-            },
-            {
-                name: "Amrit",
-                surname: "Lal Singh",
-                thumbnailUrl: "2022_amrit.png",
-                id: 2,
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=100076869431636",
-                    },
-                    {
-                        name: "github",
-                        link: "https://github.com/amrit-lal-singh",
-                    },
-                    {
-                        name: "email",
-                        link: "amritlalsingh9920@kgpian.iitkgp.ac.in",
-                    },
-                ],
-            },
-            {
-                name: "Parth",
-                surname: "Gupta",
-                thumbnailUrl: "2022_parth.jpg",
-                id: 3,
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/parth.gupta.1422409/",
-                    },
-                    {
-                        name: "github",
-                        link: "https://github.com/ParthGupta2510",
-                    },
-                    {
-                        name: "email",
-                        link: "parthgupta2510@gmail.com",
-                    },
-                ],
-            },
-            {
-                name: "Prasanna",
-                surname: "Paithankar",
-                thumbnailUrl: "2022_prasanna.jpg",
-                id: 4,
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/prasanna.paithankar.71",
-                    },
-                    {
-                        name: "github",
-                        link: "https://github.com/PrasannaPaithankar",
-                    },
-                    {
-                        name: "email",
-                        link: "paithankarprasanna@kgpian.iitkgp.ac.in ",
-                    },
-                ],
-            },
-            {
-                name: "Siddharth",
-                surname: "Asthana",
-                thumbnailUrl: "2022_siddharth.jpg",
-                id: 5,
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=100075154525958",
-                    },
-                    {
-                        name: "github",
-                        link: "https://github.com/SID10007",
-                    },
-                    {
-                        name: "email",
-                        link: "asthanasiddharth2002@gmail.com",
-                    },
-                ],
-            },
-            {
                 name: "Swaminathan",
                 surname: "S K",
                 thumbnailUrl: "2023_swaminathan.jpg",
-                id: 6,
                 social: [
                     {
                         name: "facebook",
@@ -122,7 +25,6 @@ export const teamData = [
                 name: "Parag",
                 surname: "Agarwal",
                 thumbnailUrl: "2023_parag.jpeg",
-                id: 7,
                 social: [
                     {
                         name: "facebook",
@@ -142,7 +44,6 @@ export const teamData = [
                 name: "Prakhar",
                 surname: "Tripathi",
                 thumbnailUrl: "2023_prakhar.jpg",
-                id: 8,
                 social: [
                     {
                         name: "facebook",
@@ -159,70 +60,9 @@ export const teamData = [
                 ],
             },
             {
-                name: "Divyansh",
-                surname: "Sharma",
-                thumbnailUrl: "2023_divyansh.jpg",
-                id: 9,
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=100087898983141",
-                    },
-                    {
-                        name: "github",
-                        link: "https://github.com/lord-TACO-81",
-                    },
-                    {
-                        name: "email",
-                        link: "div.sh81@gmail.com",
-                    },
-                ],
-            },
-            {
-                name: "U Skanda",
-                surname: "Aithal",
-                thumbnailUrl: "2023_skanda.jpg",
-                id: 10,
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=100086977592396&mibextid=ZbWKwL",
-                    },
-                    {
-                        name: "github",
-                        link: "https://github.com/SkandaAithal-1",
-                    },
-                    {
-                        name: "email",
-                        link: "aithalskanda66@gmail.com",
-                    },
-                ],
-            },
-            {
-                name: "Muskan",
-                surname: "Khemka",
-                thumbnailUrl: "2023_muskan.jpg",
-                id: 11,
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=100087650885581&mibextid=LQQJ4d",
-                    },
-                    {
-                        name: "github",
-                        link: "https://github.com/Muskan-Khemka",
-                    },
-                    {
-                        name: "email",
-                        link: "21muskankhemka@gmail.com",
-                    },
-                ],
-            },
-            {
                 name: "Meera",
                 surname: "Nair",
                 thumbnailUrl: "2023_meera.jpg",
-                id: 12,
                 social: [
                     {
                         name: "facebook",
@@ -239,35 +79,9 @@ export const teamData = [
                 ],
             },
             {
-                name: "Pranav Mangal",
-                surname: "Pandey",
-                thumbnailUrl: "2023_pranav.jpg",
-                id: 13,
-                social: [
-                    {
-                        name: "facebook",
-                        link: "",
-                    },
-                    {
-                        name: "github",
-                        link: "",
-                    },
-                    {
-                        name: "email",
-                        link: "pranav.m.pandey43@gmail.com",
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        title: "Head",
-        team: [
-            {
                 name: "Aditya",
                 surname: "Gupta",
                 thumbnailUrl: "2024_aditya.jpg",
-                id: 14,
                 social: [
                     {
                         name: "facebook",
@@ -287,7 +101,6 @@ export const teamData = [
                 name: "Anjali",
                 surname: "Deepu",
                 thumbnailUrl: "2024_anjali.jpeg",
-                id: 15,
                 social: [
                     {
                         name: "facebook",
@@ -307,8 +120,6 @@ export const teamData = [
                 name: "Dhruv",
                 surname: "Mathur",
                 thumbnailUrl: "2024_dhruv.jpg",
-                id: 16,
-                tag: "Governor",
                 social: [
                     {
                         name: "facebook",
@@ -328,7 +139,6 @@ export const teamData = [
                 name: "Divyanshi",
                 surname: "Narware",
                 thumbnailUrl: "2024_divyanshi.jpg",
-                id: 17,
                 social: [
                     {
                         name: "facebook",
@@ -348,7 +158,6 @@ export const teamData = [
                 name: "Ishan",
                 surname: "Phanse",
                 thumbnailUrl: "2024_ishan.jpg",
-                id: 18,
                 social: [
                     {
                         name: "facebook",
@@ -368,8 +177,6 @@ export const teamData = [
                 name: "Jash",
                 surname: "Mehta",
                 thumbnailUrl: "2024_jash.jpg",
-                id: 19,
-                tag: "Governor",
                 social: [
                     {
                         name: "facebook",
@@ -388,7 +195,6 @@ export const teamData = [
             {
                 name: "Rishith",
                 surname: "Susarla",
-                id: 20,
                 thumbnailUrl: "2024_rishith.jpg",
                 social: [
                     {
@@ -408,7 +214,6 @@ export const teamData = [
             {
                 name: "Samarth",
                 surname: "G",
-                id: 21,
                 thumbnailUrl: "2024_samarth.jpg",
                 social: [
                     {
@@ -428,12 +233,12 @@ export const teamData = [
         ],
     },
     {
-        title: "Sub Head",
+        title: "Head",
         team: [
             {
                 name: "Shreyas",
                 surname: "Anand",
-                id: 22,
+                tag: "Governor",
                 thumbnailUrl: "2025_shreyas.jpg",
                 social: [
                     {
@@ -453,7 +258,7 @@ export const teamData = [
             {
                 name: "Rupesh",
                 surname: "Devata",
-                id: 23,
+                tag: "Governor",
                 thumbnailUrl: "2025_rupesh.jpg",
                 social: [
                     {
@@ -471,33 +276,8 @@ export const teamData = [
                 ],
             },
             {
-                name: "Siddhant",
-                surname: "Barpanda",
-                id: 24,
-                thumbnailUrl: "2025_siddhant.jpg",
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=61561488944935",
-                    },
-                    {
-                        name: "github",
-                        link: "https://github.com/Parziwal-19",
-                    },
-                    {
-                        name: "linkedin",
-                        link: "https://www.linkedin.com/in/siddhant-barpanda-568b3031a/",
-                    },
-                    {
-                        name: "email",
-                        link: "siddhantb1905@gamil.com",
-                    },
-                ],
-            },
-            {
                 name: "Ayush",
                 surname: "Bhushan",
-                id: 25,
                 thumbnailUrl: "2025_ayush.jpg",
                 social: [
                     {
@@ -517,7 +297,6 @@ export const teamData = [
             {
                 name: "Vinay",
                 surname: "A",
-                id: 26,
                 thumbnailUrl: "2025_vinay.png",
                 social: [
                     {
@@ -537,7 +316,6 @@ export const teamData = [
             {
                 name: "Siddharth",
                 surname: "Jain",
-                id: 27,
                 thumbnailUrl: "2025_siddharthj.jpg",
                 social: [
                     {
@@ -557,7 +335,6 @@ export const teamData = [
             {
                 name: "Uddipto",
                 surname: "Mandal",
-                id: 28,
                 thumbnailUrl: "2025_uddipto.jpg",
                 social: [
                     {
@@ -575,33 +352,8 @@ export const teamData = [
                 ],
             },
             {
-                name: "Prateek",
-                surname: "Kesavarapu",
-                id: 29,
-                thumbnailUrl: "2025_prateek.jpeg",
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=61564796717985&mibextid=ZbWKwL",
-                    },
-                    {
-                        name: "github",
-                        link: "http://github.com/NeoDrags",
-                    },
-                    {
-                        name: "linkedin",
-                        link: "https://www.linkedin.com/in/prateek-kesavarapu",
-                    },
-                    {
-                        name: "email",
-                        link: "kesavarapu.prateek@gmail.com",
-                    },
-                ],
-            },
-            {
                 name: "Adya",
                 surname: "Singh",
-                id: 30,
                 thumbnailUrl: "2025_adya.jpg",
                 social: [
                     {
@@ -621,7 +373,6 @@ export const teamData = [
             {
                 name: "Sujal",
                 surname: "Singh",
-                id: 31,
                 thumbnailUrl: "2025_sujal.jpg",
                 social: [
                     {
@@ -641,7 +392,6 @@ export const teamData = [
             {
                 name: "Sohan",
                 surname: "Choudhury",
-                id: 32,
                 thumbnailUrl: "2025_sohan.jpg",
                 social: [
                     {
@@ -663,30 +413,9 @@ export const teamData = [
                 ],
             },
             {
-                name: "Siddharth",
-                surname: "Sreejith",
-                id: 33,
-                thumbnailUrl: "2025_siddharths.jpg",
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=61563959177863",
-                    },
-                    {
-                        name: "linkedin",
-                        link: "https://www.linkedin.com/in/siddharth-sreejith-b19128324/",
-                    },
-                    {
-                        name: "email",
-                        link: "sidd.sreejith@gmail.com",
-                    },
-                ],
-            },
-            {
                 name: "Praneet",
                 surname: "Dixit",
-                id: 34,
-                thumbnailUrl: "2025_praneet.png",
+                thumbnailUrl: "2025_praneet.jpeg",
                 social: [
                     {
                         name: "facebook",
@@ -709,7 +438,6 @@ export const teamData = [
             {
                 name: "Durva",
                 surname: "Daga",
-                id: 35,
                 thumbnailUrl: "2025_durva.jpg",
                 social: [
                     {
@@ -728,4 +456,448 @@ export const teamData = [
             },
         ],
     },
+    {
+        title: "Sub Head",
+        team: [
+            {
+                name: "Aarya",
+                surname: "Gupta",
+                thumbnailUrl: "2026_aarya.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=61579923687339",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://in.linkedin.com/in/aarya-gupta-47a1b8377",
+                    },
+                    {
+                        name: "email",
+                        link: "aaryagupta020@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Adhvaith",
+                surname: "N",
+                thumbnailUrl: "2026_adhvaith.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=61577053757331",
+                    },
+                    {
+                        name: "github",
+                        link: "https://www.github.com/dtc573"
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/adhvaithn",
+                    },
+                    {
+                        name: "email",
+                        link: "nadhvaith@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Arunima",
+                surname: "Singal",
+                thumbnailUrl: "2026_arunima.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/18dTeHcLqs/ ",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/arunima-singhal-315040383",
+                    },
+                    {
+                        name: "email",
+                        link: "singhalarunima9@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Bhargavi",
+                surname: "Deo",
+                thumbnailUrl: "2026_bhargavi.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=61579600300084",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/bhargavideo-beep",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/bhargavi-deo-b235b4380",
+                    },
+                    {
+                        name: "email",
+                        link: "bhargavi.deo9@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Devansh",
+                surname: "Verma",
+                thumbnailUrl: "2026_devansh.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100090044296614",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/devansh-verma-8302a0312",
+                    },
+                    {
+                        name: "email",
+                        link: "devanshvermamtr@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Devbrata",
+                surname: "Jha",
+                thumbnailUrl: "2026_devbrata.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/16qCkavY1D/",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/devbrata-jha-510390343",
+                    },
+                    {
+                        name: "email",
+                        link: "devbratajha2006@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Indraneel",
+                surname: "Menon",
+                thumbnailUrl: "2026_indraneel.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/narayini.kutty",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/indraneel-menon-370759377",
+                    },
+                    {
+                        name: "email",
+                        link: "indraneelmenon@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Kanak",
+                surname: "Chhajer",
+                thumbnailUrl: "2026_kanak.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/177rWRK9rb/",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/konk-ws",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/kanak-chhajer-928577377",
+                    },
+                    {
+                        name: "email",
+                        link: "knkchjr@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Kashyap",
+                surname: "Tandel",
+                thumbnailUrl: "2026_kashyap.png",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/19zCkvvKxc/",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/kashyaptandel1",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/kashyap-tandel-a45118295",
+                    },
+                    {
+                        name: "email",
+                        link: "tandelkashyapt6@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Lahan",
+                surname: "Nazar",
+                thumbnailUrl: "2026_lahan.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/1B9CKSA91E/",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/LahanNaz",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/lahan-nazar-a71ab8380",
+                    },
+                    {
+                        name: "email",
+                        link: "lahannazar@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Mugdha",
+                surname: "Joshi",
+                thumbnailUrl: "2026_mugdha.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=61579921225619",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/mugdha-joshi-30a510205",
+                    },
+                    {
+                        name: "email",
+                        link: "mugdha.y.j@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Parv",
+                surname: "Chopra",
+                thumbnailUrl: "2026_parv.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/19n7K6kgrB/",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/parv-chopra-77349236a",
+                    },
+                    {
+                        name: "email",
+                        link: "parvchopra07@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Nihar",
+                surname: "K",
+                thumbnailUrl: "2026_nihar.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/16t4GXCnQ1/",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/nihar-k-a9600037a",
+                    },
+                    {
+                        name: "email",
+                        link: "nihark1812@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Ritisha",
+                surname: "Bajaj",
+                thumbnailUrl: "2026_ritisha.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/19NajHChLm/",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/ritisha2503",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/ritisha-bajaj-085212299",
+                    },
+                    {
+                        name: "email",
+                        link: "ritisha2503@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Ruhi",
+                surname: "Shanbag",
+                thumbnailUrl: "2026_ruhi.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/19PVFPigrv/?mibextid=wwXIfr",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/ruhi-shanbhag-3a4949370",
+                    },
+                    {
+                        name: "email",
+                        link: "ruhishan15@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Sahla",
+                surname: "Muneer",
+                thumbnailUrl: "2026_sahla.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=61579878563150",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/sahla-muneer-1918a737a",
+                    },
+                    {
+                        name: "email",
+                        link: "sahlamuneer77@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Smaran",
+                surname: "Rajgopal",
+                thumbnailUrl: "2026_smaran.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=61579435002823",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/smaran-rajagopal-3006b5377",
+                    },
+                    {
+                        name: "email",
+                        link: "reachsmaranrajagopal@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Sumit",
+                surname: "Kundu",
+                thumbnailUrl: "2026_sumit.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/16EPDBmbwp/",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/SumitKundu07",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/sumit-kundu-7958a2374",
+                    },
+                    {
+                        name: "email",
+                        link: "goutam.gorifa@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Taran",
+                surname: "Saxena",
+                thumbnailUrl: "2026_taran.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/177nb3Vg1o/",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/thestynx",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/taran-saxena-bb4847299",
+                    },
+                    {
+                        name: "email",
+                        link: "taransaxena2811@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Varchas",
+                surname: "Jasti",
+                thumbnailUrl: "2026_varchas.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=61579380832312",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/heyvarchas",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/heyvarchas",
+                    },
+                    {
+                        name: "email",
+                        link: "jastivarchas@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Vidit",
+                surname: "Gupta",
+                thumbnailUrl: "2026_vidit.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=61579717506287",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/vedcoder",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/vidit-gupta-b01620315",
+                    },
+                    {
+                        name: "email",
+                        link: "guptavidit34@gmail.com",
+                    },
+                ],
+            },
+        ],
+    }
 ];

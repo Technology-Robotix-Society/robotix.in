@@ -1,9 +1,180 @@
 export const alumniData = [
     {
+        title: "2026",
+        team: [
+            {
+                name: "Aditya",
+                surname: "Nandy",
+                thumbnailUrl: "2022_aditya.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100076763501015",
+                    },
+                    {
+                        name: "email",
+                        link: "adityanandy2802@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Amrit",
+                surname: "Lal Singh",
+                thumbnailUrl: "2022_amrit.png",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100076869431636",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/amrit-lal-singh",
+                    },
+                    {
+                        name: "email",
+                        link: "amritlalsingh9920@kgpian.iitkgp.ac.in",
+                    },
+                ],
+            },
+            {
+                name: "Parth",
+                surname: "Gupta",
+                thumbnailUrl: "2022_parth.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/parth.gupta.1422409/",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/ParthGupta2510",
+                    },
+                    {
+                        name: "email",
+                        link: "parthgupta2510@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Prasanna",
+                surname: "Paithankar",
+                thumbnailUrl: "2022_prasanna.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/prasanna.paithankar.71",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/PrasannaPaithankar",
+                    },
+                    {
+                        name: "email",
+                        link: "paithankarprasanna@kgpian.iitkgp.ac.in ",
+                    },
+                ],
+            },
+            {
+                name: "Siddharth",
+                surname: "Asthana",
+                thumbnailUrl: "2022_siddharth.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100075154525958",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/SID10007",
+                    },
+                    {
+                        name: "email",
+                        link: "asthanasiddharth2002@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Divyansh",
+                surname: "Sharma",
+                thumbnailUrl: "2023_divyansh.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100087898983141",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/lord-TACO-81",
+                    },
+                    {
+                        name: "email",
+                        link: "div.sh81@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "U Skanda",
+                surname: "Aithal",
+                thumbnailUrl: "2023_skanda.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100086977592396&mibextid=ZbWKwL",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/SkandaAithal-1",
+                    },
+                    {
+                        name: "email",
+                        link: "aithalskanda66@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Muskan",
+                surname: "Khemka",
+                thumbnailUrl: "2023_muskan.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100087650885581&mibextid=LQQJ4d",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/Muskan-Khemka",
+                    },
+                    {
+                        name: "email",
+                        link: "21muskankhemka@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Pranav Mangal",
+                surname: "Pandey",
+                thumbnailUrl: "2023_pranav.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "",
+                    },
+                    {
+                        name: "github",
+                        link: "",
+                    },
+                    {
+                        name: "email",
+                        link: "pranav.m.pandey43@gmail.com",
+                    },
+                ],
+            },
+        ],
+    },
+    {
         title: "2025",
         team: [
             {
-                id: 158,
                 name: "Abhinav",
                 surname: "V Pillai",
                 thumbnailUrl: "2022_abhinav.jpg",
@@ -24,7 +195,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 157,
                 name: "Akshay",
                 surname: "S Menon",
                 thumbnailUrl: "2022_akshay.jpg",
@@ -45,7 +215,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 156,
                 name: "Harmeet",
                 surname: "Singh Rathore",
                 thumbnailUrl: "Harmeet.jpg",
@@ -66,7 +235,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 155,
                 name: "Parthivi",
                 surname: "Gupta",
                 thumbnailUrl: "2022_parthivi.jpg",
@@ -87,7 +255,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 154,
                 name: "Tanushree",
                 surname: "Prasad",
                 thumbnailUrl: "2022_tanushree.jpg",
@@ -108,7 +275,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 153,
                 name: "Vivek",
                 surname: "Mirani",
                 thumbnailUrl: "2022_vivek.jpg",
@@ -129,7 +295,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 152,
                 name: "Yashi",
                 surname: "Gaur",
                 thumbnailUrl: "Yashi.jpg",
@@ -151,7 +316,6 @@ export const alumniData = [
         title: "2024",
         team: [
             {
-                id: 151,
                 name: "Akshay",
                 surname: "Manoj",
                 thumbnailUrl: "akshay.jpg",
@@ -167,7 +331,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 150,
                 name: "Ananta",
                 surname: "Raj",
                 thumbnailUrl: "2022_ananta.jpg",
@@ -188,7 +351,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 149,
                 name: "Madhav",
                 surname: "Raju Nair",
                 thumbnailUrl: "madhav.jpg",
@@ -205,7 +367,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 148,
                 name: "Manav",
                 surname: "Nitin Kapadnis",
                 thumbnailUrl: "manav.jpg",
@@ -226,7 +387,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 147,
                 name: "Niranjana",
                 surname: "Madathil",
                 thumbnailUrl: "niranjana.jpeg",
@@ -243,7 +403,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 146,
                 name: "Sayan",
                 surname: "Maity",
                 thumbnailUrl: "sayan.jpg",
@@ -260,7 +419,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 145,
                 name: "Vatsalya",
                 surname: "Rajaram",
                 thumbnailUrl: "vatsalya.jpg",
@@ -277,7 +435,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 144,
                 name: "Ayush",
                 surname: "Deep",
                 thumbnailUrl: "2022_ayush.jpg",
@@ -298,7 +455,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 143,
                 name: "Diya",
                 surname: "Chodnekar",
                 thumbnailUrl: "2022_diya.jpg",
@@ -315,7 +471,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 142,
                 name: "Nikhil",
                 surname: "Giri",
                 thumbnailUrl: "2022_nikhil.jpg",
@@ -336,7 +491,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 141,
                 name: "Tanmay",
                 surname: "Mohanty",
                 thumbnailUrl: "Tanmay.jpg",
@@ -357,7 +511,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 140,
                 name: "Tanushri",
                 surname: "Rajesh Tawari",
                 thumbnailUrl: "2022_tanushri.jpg",
@@ -378,7 +531,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 139,
                 name: "Vinayak",
                 surname: "Aggrawal",
                 thumbnailUrl: "Vinayak.jpg",
@@ -400,7 +552,6 @@ export const alumniData = [
         title: "2023",
         team: [
             {
-                id: 138,
                 name: "Arun",
                 surname: "Nair",
                 thumbnailUrl: "2022_arun.jpg",
@@ -417,7 +568,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 137,
                 name: "Azad",
                 surname: "Jagtap",
                 thumbnailUrl: "azadjagtap.jpg",
@@ -438,7 +588,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 136,
                 name: "Divyanshu",
                 surname: "Sheth",
                 thumbnailUrl: "divyanshusheth.jpg",
@@ -455,7 +604,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 135,
                 name: "Kartik",
                 surname: "Punjabi",
                 thumbnailUrl: "kartikpunjabi.jpg",
@@ -476,7 +624,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 134,
                 name: "Kshitiz",
                 surname: "Khandelwal",
                 thumbnailUrl: "kshitizkhandelwal.jpg",
@@ -497,7 +644,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 133,
                 name: "Ruthu",
                 surname: "Sanketh",
                 thumbnailUrl: "ruthusanketh.jpg",
@@ -514,7 +660,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 132,
                 name: "Nanda",
                 surname: "Vinod",
                 thumbnailUrl: "nandavinod.jpg",
@@ -535,7 +680,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 131,
                 name: "Rashmi",
                 surname: "Kashyap",
                 thumbnailUrl: "rashmikashyap.jpg",
@@ -557,7 +701,6 @@ export const alumniData = [
         title: "2022",
         team: [
             {
-                id: 130,
                 name: "Shivangi",
                 surname: "Srivastava",
                 thumbnailUrl: "shivangisrivastava.jpg",
@@ -578,7 +721,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 129,
                 name: "Anirudh",
                 surname: "Roy",
                 thumbnailUrl: "anirudhroy.jpg",
@@ -599,7 +741,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 128,
                 name: "Abhay",
                 surname: "Shukla",
                 thumbnailUrl: "abhayshukla.jpg",
@@ -620,7 +761,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 127,
                 name: "Kushal",
                 surname: "Kedia",
                 thumbnailUrl: "kushalkedia.jpg",
@@ -646,7 +786,6 @@ export const alumniData = [
         title: "2021",
         team: [
             {
-                id: 126,
                 name: "Anvee",
                 surname: "Naik",
                 thumbnailUrl: "anveenaik.jpg",
@@ -667,7 +806,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 125,
                 name: "Rohit",
                 surname: "Ner",
                 thumbnailUrl: "rohitner.png",
@@ -688,7 +826,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 124,
                 name: "Shivansh",
                 surname: "Mundra",
                 thumbnailUrl: "shivanshmundra.jpg",
@@ -709,7 +846,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 123,
                 name: "Shubhika",
                 surname: "Garg",
                 thumbnailUrl: "shubhikagarg.jpg",
@@ -730,7 +866,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 122,
                 name: "Siddhartha",
                 surname: "Kapuria",
                 thumbnailUrl: "siddharthakapuria.jpg",
@@ -751,7 +886,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 121,
                 name: "Vidit",
                 surname: "Goel",
                 thumbnailUrl: "viditgoel.jpg",
@@ -772,7 +906,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 120,
                 name: "Jaydeep",
                 surname: "Godbole",
                 thumbnailUrl: "jaydeepgodbole.jpg",
@@ -793,7 +926,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 119,
                 name: "Manthan",
                 surname: "Patel",
                 thumbnailUrl: "manthanpatel.jpg",
@@ -810,7 +942,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 118,
                 name: "Shreyansh",
                 surname: "Vats",
                 thumbnailUrl: "shreyanshvats.jpg",
@@ -831,7 +962,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 117,
                 name: "Tanya",
                 surname: "Sneh",
                 thumbnailUrl: "tanyasneh.jpg",
@@ -857,7 +987,6 @@ export const alumniData = [
         title: "2020",
         team: [
             {
-                id: 116,
                 name: "Aman",
                 surname: "Chandra",
                 thumbnailUrl: "amanchandra.jpg",
@@ -878,7 +1007,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 115,
                 name: "Aditi",
                 surname: "Kambli",
                 thumbnailUrl: "aditikambli.jpg",
@@ -895,7 +1023,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 114,
                 name: "Ayush",
                 surname: "Patnaik",
                 thumbnailUrl: "ayushpatnaik.jpg",
@@ -912,7 +1039,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 113,
                 name: "Rohan",
                 surname: "Sitaniya",
                 thumbnailUrl: "rohansitaniya.jpg",
@@ -929,7 +1055,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 112,
                 name: "Swadha",
                 surname: "Gupta",
                 thumbnailUrl: "swadhagupta.jpg",
@@ -946,7 +1071,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 111,
                 name: "Aditi",
                 surname: "Singh",
                 thumbnailUrl: "aditisingh.jpg",
@@ -972,7 +1096,6 @@ export const alumniData = [
         title: "2019",
         team: [
             {
-                id: 110,
                 name: "Aditya Sanjay",
                 surname: "Boob",
                 thumbnailUrl: "aditya_boob.jpg",
@@ -989,7 +1112,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 109,
                 name: "Manash Pratim",
                 surname: "Das",
                 thumbnailUrl: "manash.jpg",
@@ -1006,7 +1128,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 108,
                 name: "Shweta",
                 surname: "Gupta",
                 thumbnailUrl: "shweta.jpg",
@@ -1023,7 +1144,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 107,
                 name: "Sourish",
                 surname: "Ghosh",
                 thumbnailUrl: "sourish.jpg",
@@ -1044,7 +1164,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 106,
                 name: "Vraj",
                 surname: "Parikh",
                 thumbnailUrl: "vraj.jpg",
@@ -1065,7 +1184,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 105,
                 name: "Amit",
                 surname: "Pathak",
                 thumbnailUrl: "amitpathak.jpg",
@@ -1082,7 +1200,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 104,
                 name: "Shivang",
                 surname: "Agrawal",
                 thumbnailUrl: "shivangagrawal.jpg",
@@ -1103,7 +1220,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 103,
                 name: "Stuti",
                 surname: "Modi",
                 thumbnailUrl: "stutimodi.jpg",
@@ -1120,7 +1236,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 102,
                 name: "Vivek",
                 surname: "Mudgal",
                 thumbnailUrl: "vivekmudgal.jpg",
@@ -1142,7 +1257,6 @@ export const alumniData = [
         title: "2018",
         team: [
             {
-                id: 101,
                 name: "Abhinav",
                 surname: "Jain",
                 thumbnailUrl: "abhinav.jpg",
@@ -1163,7 +1277,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 100,
                 name: "Aditya",
                 surname: "Narayan",
                 thumbnailUrl: "aditya_narayan.jpg",
@@ -1184,7 +1297,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 99,
                 name: "Apoorva",
                 surname: "Sharma",
                 thumbnailUrl: "apoorva_sharma.jpg",
@@ -1201,7 +1313,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 98,
                 name: "Rohan",
                 surname: "Lohia",
                 thumbnailUrl: "rohan.jpg",
@@ -1218,7 +1329,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 97,
                 name: "Rajat",
                 surname: "Chaurasia",
                 thumbnailUrl: "rajat.jpg",
@@ -1231,7 +1341,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 96,
                 name: "Shashwat",
                 surname: "Gupta",
                 thumbnailUrl: "shashwat.jpg",
@@ -1248,7 +1357,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 95,
                 name: "Shubhangi",
                 surname: "Bhushan",
                 thumbnailUrl: "shubhangi.jpg",
@@ -1270,7 +1378,6 @@ export const alumniData = [
         title: "2017",
         team: [
             {
-                id: 94,
                 name: "Anchit",
                 surname: "Navelkar",
                 thumbnailUrl: "anchit_navelkar.jpg",
@@ -1287,7 +1394,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 93,
                 name: "Harsheel",
                 surname: "Soin",
                 thumbnailUrl: "harsheel_soin.jpg",
@@ -1304,7 +1410,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 92,
                 name: "Ruchita",
                 surname: "Kachhap",
                 thumbnailUrl: "ruchita_kachhap.jpg",
@@ -1321,7 +1426,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 91,
                 name: "Sudeshna",
                 surname: "Trilok",
                 thumbnailUrl: "sudeshna_trilok.jpg",
@@ -1338,7 +1442,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 90,
                 name: "Vipasha",
                 surname: "Jain",
                 thumbnailUrl: "vipasha_jain.jpg",
@@ -1355,7 +1458,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 89,
                 name: "Mratunjay",
                 surname: "Gupta",
                 thumbnailUrl: "mratunjay.jpg",
@@ -1372,7 +1474,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 88,
                 name: "Riya",
                 surname: "Bubna",
                 thumbnailUrl: "riya.jpg",
@@ -1394,7 +1495,6 @@ export const alumniData = [
         title: "2016",
         team: [
             {
-                id: 87,
                 name: "Yogesh",
                 surname: "Poddar",
                 thumbnailUrl: "yogesh_poddar.jpg",
@@ -1411,7 +1511,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 86,
                 name: "Soumyadeep",
                 surname: "Mukherjee",
                 thumbnailUrl: "soumyadeep_mukherjee.jpg",
@@ -1428,7 +1527,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 85,
                 name: "Rahul",
                 surname: "Jhawar",
                 thumbnailUrl: "rahul_jhawar.jpg",
@@ -1445,7 +1543,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 84,
                 name: "Payal",
                 surname: "Priyadarshini",
                 thumbnailUrl: "payal_priyadarshini.jpg",
@@ -1462,7 +1559,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 83,
                 name: "Deepak",
                 surname: "Agarwal",
                 thumbnailUrl: "deepak_agarwal.jpg",
@@ -1479,7 +1575,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 82,
                 name: "Anushka",
                 surname: "Gupta",
                 thumbnailUrl: "anushka_gupta.jpg",
@@ -1496,7 +1591,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 81,
                 name: "Ashutosh",
                 surname: "Baheti",
                 thumbnailUrl: "ashutosh_baheti.jpg",
@@ -1513,7 +1607,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 80,
                 name: "Ayush",
                 surname: "Garg",
                 thumbnailUrl: "ayush_garg.jpg",
@@ -1535,7 +1628,6 @@ export const alumniData = [
         title: "2015",
         team: [
             {
-                id: 79,
                 name: "Aditya",
                 surname: "Agarwal",
                 thumbnailUrl: "aditya_agarwal.jpg",
@@ -1548,7 +1640,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 78,
                 name: "Ayush",
                 surname: "Goel",
                 thumbnailUrl: "ayush_goel.jpg",
@@ -1561,7 +1652,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 77,
                 name: "Githin",
                 surname: "John",
                 thumbnailUrl: "githin_john.jpg",
@@ -1574,7 +1664,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 76,
                 name: "Ishan",
                 surname: "Garg",
                 thumbnailUrl: "ishan_garg.jpg",
@@ -1587,7 +1676,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 75,
                 name: "Kalyani",
                 surname: "Nimbalkar",
                 thumbnailUrl: "kalyani_nimbalkar.jpg",
@@ -1600,7 +1688,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 74,
                 name: "Monika",
                 surname: "Pani",
                 thumbnailUrl: "monika_pani.jpg",
@@ -1613,7 +1700,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 73,
                 name: "Mrinal",
                 surname: "Mohit",
                 thumbnailUrl: "mrinal_mohit.jpg",
@@ -1626,7 +1712,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 72,
                 name: "Prateek",
                 surname: "Rastogi",
                 thumbnailUrl: "prateek_rastogi.jpg",
@@ -1639,7 +1724,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 71,
                 name: "Rahul",
                 surname: "Koshal",
                 thumbnailUrl: "rahul_koshal.jpg",
@@ -1652,7 +1736,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 70,
                 name: "Shushman",
                 surname: "Choudhury",
                 thumbnailUrl: "shushman_choudhury.jpg",
@@ -1670,7 +1753,6 @@ export const alumniData = [
         title: "2014",
         team: [
             {
-                id: 69,
                 name: "Avinash",
                 surname: "Ruchandani",
                 thumbnailUrl: "avinash.jpg",
@@ -1683,7 +1765,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 68,
                 name: "Apurva",
                 surname: "Jha",
                 thumbnailUrl: "apurva.jpg",
@@ -1696,7 +1777,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 67,
                 name: "Mallikarjun",
                 surname: "Karra",
                 thumbnailUrl: "mallikarjun.jpg",
@@ -1709,7 +1789,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 66,
                 name: "Muddit",
                 surname: "Poonia",
                 thumbnailUrl: "muddit.jpg",
@@ -1722,7 +1801,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 65,
                 name: "Nilanjana",
                 surname: "Bhattacharya",
                 thumbnailUrl: "nilanjana.jpg",
@@ -1735,7 +1813,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 64,
                 name: "Puja",
                 surname: "Gorai",
                 thumbnailUrl: "puja.jpg",
@@ -1748,7 +1825,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 63,
                 name: "Samarth",
                 surname: "Mahajan",
                 thumbnailUrl: "samarth.jpg",
@@ -1761,7 +1837,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 62,
                 name: "Ayush",
                 surname: "Upadhyay",
                 thumbnailUrl: "uppi.jpg",
@@ -1779,7 +1854,6 @@ export const alumniData = [
         title: "2013",
         team: [
             {
-                id: 61,
                 name: "Aiyush",
                 surname: "Suhasaria",
                 thumbnailUrl: "aiyush.jpg",
@@ -1792,7 +1866,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 60,
                 name: "Akshat",
                 surname: "Verma",
                 thumbnailUrl: "akshat.jpg",
@@ -1805,7 +1878,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 59,
                 name: "Pratyush",
                 surname: "Pande",
                 thumbnailUrl: "pratyush.jpg",
@@ -1818,7 +1890,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 58,
                 name: "Rahul",
                 surname: "Das",
                 thumbnailUrl: "rahul.jpg",
@@ -1831,7 +1902,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 57,
                 name: "Sanjoy",
                 surname: "Das",
                 thumbnailUrl: "sanjoy.jpg",
@@ -1844,7 +1914,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 56,
                 name: "Shruti",
                 surname: "Poddar",
                 thumbnailUrl: "spoddar.jpg",
@@ -1857,7 +1926,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 55,
                 name: "Shruti",
                 surname: "Khatri",
                 thumbnailUrl: "shruti.jpg",
@@ -1870,7 +1938,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 54,
                 name: "Suhrud",
                 surname: "Karandikar",
                 thumbnailUrl: "suhrud.jpg",
@@ -1888,7 +1955,6 @@ export const alumniData = [
         title: "2012",
         team: [
             {
-                id: 53,
                 name: "Mahtab",
                 surname: "Soin",
                 thumbnailUrl: "mahtab.jpg",
@@ -1901,7 +1967,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 52,
                 name: "Palkush Rai",
                 surname: "Chawla",
                 thumbnailUrl: "palkush.jpg",
@@ -1914,7 +1979,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 51,
                 name: "Parth",
                 surname: "Govil",
                 thumbnailUrl: "parth.jpg",
@@ -1927,7 +1991,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 50,
                 name: "Samar Rehman",
                 surname: "Patel",
                 thumbnailUrl: "samar.jpg",
@@ -1940,7 +2003,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 49,
                 name: "Saurya",
                 surname: "Mishra",
                 thumbnailUrl: "saurya.jpg",
@@ -1958,7 +2020,6 @@ export const alumniData = [
         title: "2011",
         team: [
             {
-                id: 48,
                 name: "Amal",
                 surname: "Sinha",
                 thumbnailUrl: "amal.jpg",
@@ -1971,7 +2032,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 47,
                 name: "Girish",
                 surname: "Nivarti",
                 thumbnailUrl: "girish.jpg",
@@ -1979,7 +2039,6 @@ export const alumniData = [
                 social: [],
             },
             {
-                id: 46,
                 name: "Aditi",
                 surname: "Gupta",
                 thumbnailUrl: "aditi_g.jpg",
@@ -1992,7 +2051,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 45,
                 name: "Gaurav",
                 surname: "Srivastava",
                 thumbnailUrl: "gaurav_s.jpg",
@@ -2005,7 +2063,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 44,
                 name: "Kumar",
                 surname: "Utsav",
                 thumbnailUrl: "kumar_u.jpg",
@@ -2018,7 +2075,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 43,
                 name: "Rasna",
                 surname: "Goenka",
                 thumbnailUrl: "rasna_g.jpg",
@@ -2031,7 +2087,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 42,
                 name: "Rohit",
                 surname: "Kawathekar",
                 thumbnailUrl: "rohit_k.jpg",
@@ -2039,7 +2094,6 @@ export const alumniData = [
                 social: [],
             },
             {
-                id: 41,
                 name: "Sanjiban",
                 surname: "Choudhury",
                 thumbnailUrl: "sanjiban_c.jpg",
@@ -2052,7 +2106,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 40,
                 name: "Swapnil",
                 surname: "Bagmar",
                 thumbnailUrl: "swapnil_b.jpg",
@@ -2070,7 +2123,6 @@ export const alumniData = [
         title: "2010",
         team: [
             {
-                id: 39,
                 name: "Aditya",
                 surname: "Garg",
                 thumbnailUrl: "aditya_garg.jpg",
@@ -2083,7 +2135,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 38,
                 name: "Ankur",
                 surname: "Edkie",
                 thumbnailUrl: "ankur_edkie.jpg",
@@ -2096,7 +2147,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 37,
                 name: "Anshuman",
                 surname: "Tiwari",
                 thumbnailUrl: "anshuman_tiwari.jpg",
@@ -2109,7 +2159,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 36,
                 name: "Gaurav Singh",
                 surname: "Bhadoria",
                 thumbnailUrl: "gaurav_singh_bhadoria.jpg",
@@ -2122,7 +2171,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 35,
                 name: "Kaustubh",
                 surname: "Gururaj",
                 thumbnailUrl: "kaustubh_gururaj.jpg",
@@ -2135,7 +2183,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 34,
                 name: "Kaustubh",
                 surname: "Tripathi",
                 thumbnailUrl: "kaustubh_tripathi.jpg",
@@ -2148,7 +2195,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 33,
                 name: "Kumar",
                 surname: "Ritwik",
                 thumbnailUrl: "kumar_ritwik.jpg",
@@ -2161,7 +2207,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 32,
                 name: "Sneha",
                 surname: "Roy",
                 thumbnailUrl: "sneha_roy.jpg",
@@ -2179,7 +2224,6 @@ export const alumniData = [
         title: "2009",
         team: [
             {
-                id: 31,
                 name: "Prerit",
                 surname: "Shrivastav",
                 thumbnailUrl: "prerit_s.jpg",
@@ -2192,7 +2236,6 @@ export const alumniData = [
         title: "2008",
         team: [
             {
-                id: 30,
                 name: "Abhishek",
                 surname: "Sasmal",
                 thumbnailUrl: "abhishek_s.jpg",
@@ -2205,7 +2248,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 29,
                 name: "Aamir",
                 surname: "Ahmed",
                 thumbnailUrl: "Amir.jpg",
@@ -2218,7 +2260,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 28,
                 name: "Prithviraj",
                 surname: "Banerjee",
                 thumbnailUrl: "pritviraj_b.jpg",
@@ -2231,7 +2272,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 27,
                 name: "Hema",
                 surname: "Shweta",
 
@@ -2244,7 +2284,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 26,
                 name: "Tathagata",
                 surname: "Das",
 
@@ -2257,7 +2296,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 25,
                 name: "Tanmoy",
                 surname: "Banerjee",
 
@@ -2275,7 +2313,6 @@ export const alumniData = [
         title: "2007",
         team: [
             {
-                id: 24,
                 name: "Sumandeep",
                 surname: "Banerjee",
                 thumbnailUrl: "sumandeep_b.jpg",
@@ -2288,7 +2325,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 23,
                 name: "Chintan",
                 surname: "Thakkar",
                 thumbnailUrl: "chintan_t.jpg",
@@ -2301,7 +2337,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 22,
                 name: "Anant",
                 surname: "Choubey",
                 thumbnailUrl: "anant_c.jpg",
@@ -2314,7 +2349,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 21,
                 name: "Sabyasachi",
                 surname: "Das",
                 thumbnailUrl: "sabyasachi_d.jpg",
@@ -2327,7 +2361,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 20,
                 name: "Vaibhav",
                 surname: "Aggarwal",
 
@@ -2340,7 +2373,6 @@ export const alumniData = [
         title: "2006",
         team: [
             {
-                id: 19,
                 name: "Puneet",
                 surname: "Kala",
                 thumbnailUrl: "puneet_k.jpg",
@@ -2353,7 +2385,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 18,
                 name: "Aneesh",
                 surname: "Reddy",
 
@@ -2366,7 +2397,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 17,
                 name: "Subhroz",
                 surname: "Gill",
 
@@ -2374,7 +2404,6 @@ export const alumniData = [
                 social: [],
             },
             {
-                id: 16,
                 name: "Nitin",
                 surname: "Mohta",
 
@@ -2387,7 +2416,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 15,
                 name: "Rahul",
                 surname: "Garg",
 
@@ -2395,7 +2423,6 @@ export const alumniData = [
                 social: [],
             },
             {
-                id: 14,
                 name: "Pallavi",
                 surname: "Joshi",
 
@@ -2408,7 +2435,6 @@ export const alumniData = [
         title: "2005",
         team: [
             {
-                id: 13,
                 name: "Vivek",
                 surname: "Lath",
                 thumbnailUrl: "vivek_l.jpg",
@@ -2416,7 +2442,6 @@ export const alumniData = [
                 social: [],
             },
             {
-                id: 12,
                 name: "Abhimanyu",
                 surname: "Raibhadur",
 
@@ -2429,7 +2454,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 11,
                 name: "Sophia",
                 surname: "Randhawa",
 
@@ -2447,7 +2471,6 @@ export const alumniData = [
         title: "2004",
         team: [
             {
-                id: 10,
                 name: "Vivek",
                 surname: "Mishra",
                 thumbnailUrl: "vivek_m.jpg",
@@ -2460,7 +2483,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 9,
                 name: "Sandeep",
                 surname: "Prabhakara",
                 thumbnailUrl: "sandeep-prabhakara.jpg",
@@ -2473,7 +2495,6 @@ export const alumniData = [
                 ],
             },
             {
-                id: 8,
                 name: "Dushyant",
                 surname: "Giri",
                 thumbnailUrl: "dushyant.jpg",
@@ -2488,7 +2509,6 @@ export const alumniData = [
                 name: "Alex",
                 surname: "Thomas",
                 thumbnailUrl: "generic-profile.jpg",
-                id: 6,
                 social: [],
             },
         ],
@@ -2499,7 +2519,6 @@ export const alumniData = [
             {
                 name: "Bishwanath",
                 surname: "Dutta",
-                id: 5,
                 thumbnailUrl: "generic-profile.jpg",
                 social: [
                     {
@@ -2511,7 +2530,6 @@ export const alumniData = [
             {
                 name: "Aruleshan",
                 surname: "V",
-                id: 4,
                 thumbnailUrl: "generic-profile.jpg",
                 social: [],
             },
@@ -2524,7 +2542,6 @@ export const alumniData = [
                 name: "Kunal",
                 surname: "Sinha",
                 thumbnailUrl: "kunal_s.jpg",
-                id: 3,
                 social: [
                     {
                         name: "linkedin",
@@ -2536,7 +2553,6 @@ export const alumniData = [
                 name: "Pallavi",
                 surname: "Payal",
                 thumbnailUrl: "payal_p.jpg",
-                id: 2,
                 social: [
                     {
                         name: "linkedin",
@@ -2547,7 +2563,6 @@ export const alumniData = [
             {
                 name: "Saurabh",
                 surname: "Prasad",
-                id: 1,
                 thumbnailUrl: "generic-profile.jpg",
                 social: [
                     {
