@@ -481,7 +481,7 @@ export const teamData = [
             {
                 name: "Adhvaith",
                 surname: "N",
-                thumbnailUrl: "2026_adhvaith.jpg",
+                thumbnailUrl: "2026_adhvaith.JPG",
                 social: [
                     {
                         name: "facebook",
