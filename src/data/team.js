@@ -502,6 +502,25 @@ export const teamData = [
                 ],
             },
             {
+                name: "Arunima",
+                surname: "Singal",
+                thumbnailUrl: "2026_arunima.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/18dTeHcLqs/ ",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/arunima-singhal-315040383",
+                    },
+                    {
+                        name: "email",
+                        link: "singhalarunima9@gmail.com",
+                    },
+                ],
+            },
+            {
                 name: "Bhargavi",
                 surname: "Deo",
                 thumbnailUrl: "2026_bhargavi.jpg",
@@ -670,25 +689,6 @@ export const teamData = [
                 ],
             },
             {
-                name: "Nihar",
-                surname: "K",
-                thumbnailUrl: "2026_nihar.jpg",
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/share/16t4GXCnQ1/",
-                    },
-                    {
-                        name: "linkedin",
-                        link: "https://www.linkedin.com/in/nihar-k-a9600037a",
-                    },
-                    {
-                        name: "email",
-                        link: "nihark1812@gmail.com",
-                    },
-                ],
-            },
-            {
                 name: "Parv",
                 surname: "Chopra",
                 thumbnailUrl: "2026_parv.jpg",
@@ -704,6 +704,25 @@ export const teamData = [
                     {
                         name: "email",
                         link: "parvchopra07@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Nihar",
+                surname: "K",
+                thumbnailUrl: "2026_nihar.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/share/16t4GXCnQ1/",
+                    },
+                    {
+                        name: "linkedin",
+                        link: "https://www.linkedin.com/in/nihar-k-a9600037a",
+                    },
+                    {
+                        name: "email",
+                        link: "nihark1812@gmail.com",
                     },
                 ],
             },
