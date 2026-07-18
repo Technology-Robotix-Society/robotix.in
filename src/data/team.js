@@ -3,10 +3,85 @@ export const teamData = [
         title: "Coordinator",
         team: [
             {
+                name: "Swaminathan",
+                surname: "S K",
+                thumbnailUrl: "2023_swaminathan.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100086273480681",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/SwaminathanSK",
+                    },
+                    {
+                        name: "email",
+                        link: "swamisathya2004@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Parag",
+                surname: "Agarwal",
+                thumbnailUrl: "2023_parag.jpeg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/parag.agarwal.1291",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/paragarwal",
+                    },
+                    {
+                        name: "email",
+                        link: "paragagarwal2003@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Prakhar",
+                surname: "Tripathi",
+                thumbnailUrl: "2023_prakhar.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100087954670770&mibextid=ZbWKwL",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/Prakhar1230",
+                    },
+                    {
+                        name: "email",
+                        link: "prakhartripathi0803@gmail.com",
+                    },
+                ],
+            },
+            {
+                name: "Meera",
+                surname: "Nair",
+                thumbnailUrl: "2023_meera.jpg",
+                social: [
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/profile.php?id=100087117837999&mibextid=LQQJ4d",
+                    },
+                    {
+                        name: "github",
+                        link: "https://github.com/meeranair186",
+                    },
+                    {
+                        name: "email",
+                        link: "meeranair108@gmail.com",
+                    },
+                ],
+            },
+            {
                 name: "Aditya",
                 surname: "Gupta",
                 thumbnailUrl: "2024_aditya.jpg",
-                id: 14,
                 social: [
                     {
                         name: "facebook",
@@ -26,7 +101,6 @@ export const teamData = [
                 name: "Anjali",
                 surname: "Deepu",
                 thumbnailUrl: "2024_anjali.jpeg",
-                id: 15,
                 social: [
                     {
                         name: "facebook",
@@ -46,7 +120,6 @@ export const teamData = [
                 name: "Dhruv",
                 surname: "Mathur",
                 thumbnailUrl: "2024_dhruv.jpg",
-                id: 16,
                 social: [
                     {
                         name: "facebook",
@@ -66,7 +139,6 @@ export const teamData = [
                 name: "Divyanshi",
                 surname: "Narware",
                 thumbnailUrl: "2024_divyanshi.jpg",
-                id: 17,
                 social: [
                     {
                         name: "facebook",
@@ -86,7 +158,6 @@ export const teamData = [
                 name: "Ishan",
                 surname: "Phanse",
                 thumbnailUrl: "2024_ishan.jpg",
-                id: 18,
                 social: [
                     {
                         name: "facebook",
@@ -106,7 +177,6 @@ export const teamData = [
                 name: "Jash",
                 surname: "Mehta",
                 thumbnailUrl: "2024_jash.jpg",
-                id: 19,
                 social: [
                     {
                         name: "facebook",
@@ -125,7 +195,6 @@ export const teamData = [
             {
                 name: "Rishith",
                 surname: "Susarla",
-                id: 20,
                 thumbnailUrl: "2024_rishith.jpg",
                 social: [
                     {
@@ -145,7 +214,6 @@ export const teamData = [
             {
                 name: "Samarth",
                 surname: "G",
-                id: 21,
                 thumbnailUrl: "2024_samarth.jpg",
                 social: [
                     {
@@ -170,7 +238,6 @@ export const teamData = [
             {
                 name: "Shreyas",
                 surname: "Anand",
-                id: 22,
                 tag: "Governor",
                 thumbnailUrl: "2025_shreyas.jpg",
                 social: [
@@ -191,7 +258,6 @@ export const teamData = [
             {
                 name: "Rupesh",
                 surname: "Devata",
-                id: 23,
                 tag: "Governor",
                 thumbnailUrl: "2025_rupesh.jpg",
                 social: [
@@ -212,7 +278,6 @@ export const teamData = [
             {
                 name: "Ayush",
                 surname: "Bhushan",
-                id: 25,
                 thumbnailUrl: "2025_ayush.jpg",
                 social: [
                     {
@@ -232,7 +297,6 @@ export const teamData = [
             {
                 name: "Vinay",
                 surname: "A",
-                id: 26,
                 thumbnailUrl: "2025_vinay.png",
                 social: [
                     {
@@ -252,7 +316,6 @@ export const teamData = [
             {
                 name: "Siddharth",
                 surname: "Jain",
-                id: 27,
                 thumbnailUrl: "2025_siddharthj.jpg",
                 social: [
                     {
@@ -272,7 +335,6 @@ export const teamData = [
             {
                 name: "Uddipto",
                 surname: "Mandal",
-                id: 28,
                 thumbnailUrl: "2025_uddipto.jpg",
                 social: [
                     {
@@ -292,7 +354,6 @@ export const teamData = [
             {
                 name: "Adya",
                 surname: "Singh",
-                id: 30,
                 thumbnailUrl: "2025_adya.jpg",
                 social: [
                     {
@@ -312,7 +373,6 @@ export const teamData = [
             {
                 name: "Sujal",
                 surname: "Singh",
-                id: 31,
                 thumbnailUrl: "2025_sujal.jpg",
                 social: [
                     {
@@ -332,7 +392,6 @@ export const teamData = [
             {
                 name: "Sohan",
                 surname: "Choudhury",
-                id: 32,
                 thumbnailUrl: "2025_sohan.jpg",
                 social: [
                     {
@@ -356,8 +415,7 @@ export const teamData = [
             {
                 name: "Praneet",
                 surname: "Dixit",
-                id: 34,
-                thumbnailUrl: "2025_praneet.png",
+                thumbnailUrl: "2025_praneet.jpeg",
                 social: [
                     {
                         name: "facebook",
@@ -380,7 +438,6 @@ export const teamData = [
             {
                 name: "Durva",
                 surname: "Daga",
-                id: 34,
                 thumbnailUrl: "2025_durva.jpg",
                 social: [
                     {
@@ -405,7 +462,6 @@ export const teamData = [
             {
                 name: "Aarya",
                 surname: "Gupta",
-                id: 22,
                 thumbnailUrl: "2026_aarya.jpg",
                 social: [
                     {
@@ -425,7 +481,6 @@ export const teamData = [
             {
                 name: "Adhvaith",
                 surname: "N",
-                id: 23,
                 thumbnailUrl: "2026_adhvaith.jpg",
                 social: [
                     {
@@ -449,7 +504,6 @@ export const teamData = [
             {
                 name: "Bhargavi",
                 surname: "Deo",
-                id: 25,
                 thumbnailUrl: "2026_bhargavi.jpg",
                 social: [
                     {
@@ -473,7 +527,6 @@ export const teamData = [
             {
                 name: "Devansh",
                 surname: "Verma",
-                id: 25,
                 thumbnailUrl: "2026_devansh.jpg",
                 social: [
                     {
@@ -493,7 +546,6 @@ export const teamData = [
             {
                 name: "Devbrata",
                 surname: "Jha",
-                id: 25,
                 thumbnailUrl: "2026_devbrata.jpg",
                 social: [
                     {
@@ -513,7 +565,6 @@ export const teamData = [
             {
                 name: "Indraneel",
                 surname: "Menon",
-                id: 25,
                 thumbnailUrl: "2026_indraneel.jpg",
                 social: [
                     {
@@ -533,7 +584,6 @@ export const teamData = [
             {
                 name: "Kanak",
                 surname: "Chhajer",
-                id: 25,
                 thumbnailUrl: "2026_kanak.jpg",
                 social: [
                     {
@@ -557,7 +607,6 @@ export const teamData = [
             {
                 name: "Kashyap",
                 surname: "Tandel",
-                id: 25,
                 thumbnailUrl: "2026_kashyap.png",
                 social: [
                     {
@@ -581,7 +630,6 @@ export const teamData = [
             {
                 name: "Lahan",
                 surname: "Nazar",
-                id: 25,
                 thumbnailUrl: "2026_lahan.jpg",
                 social: [
                     {
@@ -605,7 +653,6 @@ export const teamData = [
             {
                 name: "Mugdha",
                 surname: "Joshi",
-                id: 25,
                 thumbnailUrl: "2026_mugdha.jpg",
                 social: [
                     {
@@ -625,7 +672,6 @@ export const teamData = [
             {
                 name: "Nihar",
                 surname: "K",
-                id: 25,
                 thumbnailUrl: "2026_nihar.jpg",
                 social: [
                     {
@@ -645,7 +691,6 @@ export const teamData = [
             {
                 name: "Parv",
                 surname: "Chopra",
-                id: 25,
                 thumbnailUrl: "2026_parv.jpg",
                 social: [
                     {
@@ -665,7 +710,6 @@ export const teamData = [
             {
                 name: "Ritisha",
                 surname: "Bajaj",
-                id: 25,
                 thumbnailUrl: "2026_ritisha.jpg",
                 social: [
                     {
@@ -689,7 +733,6 @@ export const teamData = [
             {
                 name: "Ruhi",
                 surname: "Shanbag",
-                id: 25,
                 thumbnailUrl: "2026_ruhi.jpg",
                 social: [
                     {
@@ -709,7 +752,6 @@ export const teamData = [
             {
                 name: "Sahla",
                 surname: "Muneer",
-                id: 25,
                 thumbnailUrl: "2026_sahla.jpg",
                 social: [
                     {
@@ -729,7 +771,6 @@ export const teamData = [
             {
                 name: "Smaran",
                 surname: "Rajgopal",
-                id: 25,
                 thumbnailUrl: "2026_smaran.jpg",
                 social: [
                     {
@@ -749,7 +790,6 @@ export const teamData = [
             {
                 name: "Sumit",
                 surname: "Kundu",
-                id: 25,
                 thumbnailUrl: "2026_sumit.jpg",
                 social: [
                     {
@@ -773,7 +813,6 @@ export const teamData = [
             {
                 name: "Taran",
                 surname: "Saxena",
-                id: 25,
                 thumbnailUrl: "2026_taran.jpg",
                 social: [
                     {
@@ -797,7 +836,6 @@ export const teamData = [
             {
                 name: "Varchas",
                 surname: "Jasti",
-                id: 25,
                 thumbnailUrl: "2026_varchas.jpg",
                 social: [
                     {
@@ -821,7 +859,6 @@ export const teamData = [
             {
                 name: "Vidit",
                 surname: "Gupta",
-                id: 25,
                 thumbnailUrl: "2026_vidit.jpg",
                 social: [
                     {
