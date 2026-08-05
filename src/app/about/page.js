@@ -171,7 +171,7 @@ export default function About() {
                         loop
                         muted
                         playsInline
-                        preload="auto"
+                        preload="metadata"
                     >
                         <source src="/bg_video2.mp4" type="video/mp4" />
                     </video>

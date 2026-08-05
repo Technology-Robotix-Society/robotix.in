@@ -10,6 +10,7 @@ export default function Navbar() {
         { href: "/makerspace", label: "Makerspace" },
         { href: "/faqs", label: "FAQs" },
         { href: "/workshops", label: "Workshops" },
+        { href: "/updates", label: "Updates" },
         { href: "/blog", label: "Blog" },
         { href: "/tutorials", label: "Tutorials" },
         { href: "/about", label: "About Us" },

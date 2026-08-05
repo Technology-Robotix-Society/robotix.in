@@ -5,8 +5,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 import WaveParticles from "../components/WaveParticles";
 import GalleryCard from "../components/GalleryCard";
+import LatestUpdate from "../components/LatestUpdate";
 import { botsData } from "../data/bots";
 import useScrambleText from "@/hooks/useScrambleText";
 
@@ -274,6 +276,8 @@ export default function Home() {
                         autoPlay
                         loop
                         muted
+                        playsInline
+                        preload="metadata"
                     />
                     <div className="z-20 h-screen absolute top-0 left-0 w-full p-16 flex items-end justify-between bg-black/60">
                         {/* Decorative Lines */}
@@ -325,6 +329,8 @@ export default function Home() {
                             alt="Robotix Logo"
                             width={175}
                             height={175}
+                            priority
+                            sizes="175px"
                             className="mb-6"
                             style={hardwareAccel}
                         />
@@ -344,6 +350,9 @@ export default function Home() {
                         ))}
                     </div>
                 </div>
+
+                <LatestUpdate />
+
                 <div className="min-h-screen bg-[#0b0b0e] relative">
                     <div className="pt-14 pl-14 mb-6 font-family-grotesk-mono text-[#838698] text-sm uppercase">
                         Events

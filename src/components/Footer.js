@@ -66,13 +66,13 @@ export default function Footer() {
 
     return (
         <footer className="w-full bg-[#0b0b0e] relative">
-            <div className="absolute left-9 top-0 h-full w-[1px] bg-[rgb(66,68,83)]"></div>
+            <div className="absolute left-9 top-0 h-full w-px bg-[rgb(66,68,83)]"></div>
             <div className="absolute -top-[1.5px] left-0 right-0 h-[1.5px] bg-[rgb(66,68,83)]"></div>
             <div className="absolute -top-[1.5px] left-9 h-[1.5px] w-3 bg-[#b7b9c5] -translate-x-1/2"></div>
             <div className="absolute -top-[1.5px] left-9 h-1.5 w-[1.5px] bg-[#b7b9c5] -translate-x-1/2"></div>
             <div className="absolute -top-[1.5px] right-9 h-[1.5px] w-3 bg-[#b7b9c5] translate-x-1/2"></div>
             <div className="absolute -top-[1.5px] right-9 h-1.5 w-[1.5px] bg-[#b7b9c5] translate-x-1/2"></div>
-            <div className="absolute right-9 top-0 h-full w-[1px] bg-[rgb(66,68,83)]"></div>
+            <div className="absolute right-9 top-0 h-full w-px bg-[rgb(66,68,83)]"></div>
 
             <div className="absolute -top-[1.5px] left-[calc(36px+0.4*(100%-72px))] h-[1.5px] w-3 bg-[#b7b9c5] -translate-x-1/2"></div>
             <div className="absolute -top-[1.5px] left-[calc(36px+0.4*(100%-72px))] h-1.5 w-[1.5px] bg-[#b7b9c5] -translate-x-1/2"></div>
@@ -115,6 +115,7 @@ export default function Footer() {
                         alt="Robotix Logo"
                         width={110}
                         height={110}
+                        sizes="110px"
                         className="object-contain"
                     />
                 </div>
@@ -149,6 +150,14 @@ export default function Footer() {
                             className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
                         >
                             Workshops
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            href="/updates"
+                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
+                        >
+                            Updates
                         </Link>
                     </li>
                     <li>
