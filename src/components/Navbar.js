@@ -6,14 +6,14 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
     const pathname = usePathname();
     const navLinks = [
-        { href: "/winterschool", label: "Winterschool" },
-        { href: "/makerspace", label: "Makerspace" },
-        { href: "/faqs", label: "FAQs" },
-        { href: "/workshops", label: "Workshops" },
-        { href: "/updates", label: "Updates" },
-        { href: "/blog", label: "Blog" },
-        { href: "/tutorials", label: "Tutorials" },
+        // { href: "/winterschool", label: "Winterschool" },
+        // { href: "/makerspace", label: "Makerspace" },
         { href: "/about", label: "About Us" },
+        { href: "/faqs", label: "FAQs" },
+        // { href: "/workshops", label: "Workshops" },
+        { href: "/updates", label: "Updates" },
+        // { href: "/blog", label: "Blog" },
+        // { href: "/tutorials", label: "Tutorials" },
     ];
 
     return (

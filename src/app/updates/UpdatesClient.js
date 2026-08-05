@@ -1,7 +1,6 @@
 // app/updates/UpdatesClient.js
 "use client";
-import { useRef, useEffect, useState } from "react";
-import { useGSAP } from "@gsap/react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useScrambleText from "@/hooks/useScrambleText";
@@ -11,10 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function UpdatesClient({ updates }) {
     const mainRef = useRef(null);
-    const gridRef = useRef(null);
     const cardsRef = useRef([]);
-    const [gridCells, setGridCells] = useState([]);
-    const [gridCellSize, setGridCellSize] = useState(0);
 
     const displayText = useScrambleText("What's New at TRS", { speed: 10 });
 
@@ -24,45 +20,6 @@ export default function UpdatesClient({ updates }) {
         WebkitBackfaceVisibility: "hidden",
         backfaceVisibility: "hidden",
     };
-
-    // Grid reveal animation
-    useGSAP(
-        () => {
-            const ctx = gsap.context(() => {
-                if (gridRef.current) {
-                    const cells = Array.from(gridRef.current.children);
-                    const shuffledCells = [...cells].sort(() => Math.random() - 0.5);
-                    if (shuffledCells.length > 0) {
-                        gsap.to(shuffledCells, {
-                            backgroundColor: "transparent",
-                            duration: 0.3,
-                            stagger: { each: 0.008, from: "random" },
-                            ease: "power2.out",
-                        });
-                    }
-                }
-            }, mainRef);
-            return () => ctx.revert();
-        },
-        { scope: mainRef, dependencies: [gridCells] }
-    );
-
-    // Grid cell calculation
-    useEffect(() => {
-        const calculateGrid = () => {
-            if (!gridRef.current) return;
-            const w = gridRef.current.offsetWidth;
-            const h = gridRef.current.offsetHeight;
-            const columns = 10;
-            const cellSize = w / columns;
-            const rows = Math.ceil(h / cellSize);
-            setGridCells(Array.from({ length: rows * columns }, (_, i) => i));
-            setGridCellSize(cellSize);
-        };
-        calculateGrid();
-        window.addEventListener("resize", calculateGrid);
-        return () => window.removeEventListener("resize", calculateGrid);
-    }, []);
 
     // Cards scroll-triggered entrance
     useEffect(() => {
@@ -95,7 +52,7 @@ export default function UpdatesClient({ updates }) {
                 <div className="h-screen relative">
                     <video
                         className="object-cover w-full h-full absolute top-0 left-0 -z-10"
-                        src="/bg_video5.mp4"
+                        src="/bg_video6.mp4"
                         autoPlay
                         loop
                         muted
@@ -126,16 +83,6 @@ export default function UpdatesClient({ updates }) {
                         </div>
                     </div>
 
-                    {/* Pixel-grid reveal overlay */}
-                    <div
-                        ref={gridRef}
-                        className="z-10 h-screen absolute top-0 left-0 w-full overflow-hidden grid grid-cols-10 bg-[#0b0b0e]"
-                        style={{ gridAutoRows: `${gridCellSize}px` }}
-                    >
-                        {gridCells.map((cell) => (
-                            <div key={cell} className="bg-[#0b0b0e] aspect-square" />
-                        ))}
-                    </div>
                 </div>
 
                 {/* ── Updates List Section ── */}

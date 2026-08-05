@@ -23,6 +23,18 @@ function formatDate(dateString) {
     });
 }
 
+function portableTextToPlainText(blocks = []) {
+    return blocks
+        .map((block) => {
+            if (!Array.isArray(block?.children)) return "";
+            const text = block.children.map((child) => child?.text || "").join("");
+            return text.trim();
+        })
+        .filter(Boolean)
+        .join("\n")
+        .trim();
+}
+
 /* ─── Portable Text components ──────────────────────────────────── */
 /*
  * All typography uses the site's own font tokens (font-family-apk,
@@ -116,7 +128,11 @@ function UpdateModal({ update, onClose }) {
         );
 
         document.body.style.overflow = "hidden";
-        return () => { document.body.style.overflow = ""; };
+        document.documentElement.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "";
+            document.documentElement.style.overflow = "";
+        };
     }, []);
 
     // Escape key
@@ -154,7 +170,7 @@ function UpdateModal({ update, onClose }) {
              */}
             <div
                 ref={panelRef}
-                className="relative w-full max-w-5xl flex flex-col md:flex-row border border-[#424453] bg-[#13151a] rounded-sm overflow-hidden"
+                className="relative w-full max-w-5xl flex flex-col md:flex-row border border-[#424453] bg-[#13151a] rounded-sm overflow-hidden md:h-[80vh]"
                 style={hardwareAccel}
             >
                 {/* ── Close button ── */}
@@ -168,20 +184,22 @@ function UpdateModal({ update, onClose }) {
 
                 {/* ── Left: Image column ── */}
                 {update.imageUrl && (
-                    <div className="sm:w-72 shrink-0 overflow-hidden">
+                    <div className="relative w-full aspect-4/3 md:aspect-auto md:w-1/2 md:h-full shrink-0 overflow-hidden">
                         <Image
                             src={update.imageUrl}
                             alt={update.title}
-                            width={0}
-                            height={0}
-                            sizes="288px"
-                            className="w-full h-auto block"
+                            fill
+                            sizes="(min-width: 768px) 50vw, 100vw"
+                            className="object-cover"
                         />
                     </div>
                 )}
 
                 {/* ── Right: Scrollable text column ── */}
-                <div className="flex-1 overflow-y-auto px-7 py-7 md:px-9 md:py-8 min-w-0">
+                <div
+                    className="flex-1 min-w-0 px-7 py-7 md:px-9 md:py-8 md:h-full md:overflow-y-auto md:min-h-0 md:overscroll-contain"
+                    onWheelCapture={(e) => e.stopPropagation()}
+                >
                     {/* Date */}
                     <div className="font-family-grotesk-mono text-xs text-[#838698] uppercase tracking-widest mb-4">
                         {formatDate(update.publishedAt)}
@@ -267,7 +285,7 @@ export default function UpdateCard({ update }) {
         <>
             <div
                 ref={cardRef}
-                className="group flex flex-col sm:flex-row border border-[#424453] bg-[#17192160] backdrop-blur-sm rounded-sm overflow-hidden cursor-pointer"
+                className="group relative flex flex-col sm:flex-row border border-[#424453] bg-[#17192160] backdrop-blur-sm rounded-sm overflow-hidden cursor-pointer"
                 style={{ ...hardwareAccel }}
                 onClick={() => setModalOpen(true)}
             >
@@ -294,7 +312,11 @@ export default function UpdateCard({ update }) {
                 )}
 
                 {/* ── Content ── */}
-                <div className="flex flex-col justify-between p-8 flex-1 min-w-0">
+                <div
+                    className={`flex flex-col justify-between p-8 flex-1 min-w-0 ${
+                        update.imageUrl ? "sm:absolute sm:inset-y-0 sm:right-0 sm:left-72 sm:overflow-hidden" : ""
+                    }`}
+                >
                     <div>
                         {/* Date */}
                         <div className="font-family-grotesk-mono text-xs text-[#838698] uppercase tracking-widest mb-4">
@@ -307,9 +329,9 @@ export default function UpdateCard({ update }) {
                         </h2>
 
                         {/* Preview — first block of body as plain text */}
-                        {update.body && update.body[0]?.children && (
-                            <p className="font-family-apk text-[#b7b9c5] text-sm leading-relaxed line-clamp-3">
-                                {update.body[0].children.map((c) => c.text).join("")}
+                        {update.body && (
+                            <p className="font-family-apk text-[#b7b9c5] text-sm leading-relaxed line-clamp-5 sm:line-clamp-6 whitespace-pre-line wrap-break-word">
+                                {portableTextToPlainText(update.body)}
                             </p>
                         )}
                     </div>
