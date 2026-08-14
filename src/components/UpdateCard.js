@@ -14,7 +14,7 @@ const hardwareAccel = {
     backfaceVisibility: "hidden",
 };
 
-function formatDate(dateString) {
+export function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
         year: "numeric",
@@ -23,7 +23,7 @@ function formatDate(dateString) {
     });
 }
 
-function portableTextToPlainText(blocks = []) {
+export function portableTextToPlainText(blocks = []) {
     return blocks
         .map((block) => {
             if (!Array.isArray(block?.children)) return "";
@@ -41,7 +41,7 @@ function portableTextToPlainText(blocks = []) {
  * font-family-grotesk, font-family-grotesk-mono) and the established
  * colour palette (#e9ede5 / #b7b9c5 / #838698 / #39b7f2 / #1e2028).
  */
-const portableTextComponents = {
+export const portableTextComponents = {
     block: {
         normal: ({ children }) => (
             <p className="font-family-apk text-[#b7b9c5] text-base leading-relaxed mb-4 last:mb-0">
@@ -110,7 +110,7 @@ const portableTextComponents = {
  * Layout: Instagram-style on desktop — image fills the left column,
  * scrollable text fills the right column. On mobile it stacks vertically.
  */
-function UpdateModal({ update, onClose }) {
+export function UpdateModal({ update, onClose }) {
     const backdropRef = useRef(null);
     const panelRef = useRef(null);
 

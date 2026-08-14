@@ -287,87 +287,104 @@ export default function Home() {
                     </div>
                 </div>
 
-                <LatestUpdate />
+                {/* ── Events Section + Latest Updates Side Panel ── */}
+                <div className="min-h-screen bg-[#0b0b0e] relative px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 py-16">
+                    {/* Background Wave Particles */}
+                    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+                        <WaveParticles />
+                    </div>
 
-                <div className="min-h-screen bg-[#0b0b0e] relative">
-                    <div className="pt-14 pl-14 mb-6 font-family-grotesk-mono text-[#838698] text-sm uppercase">
-                        Events
-                    </div>
-                    <div className="font-family-grotesk text-4xl pl-14 max-w-1/3 text-white">
-                        We believe in sharing our knowledge
-                    </div>
-                    <div className="flex justify-center px-10 py-20 relative z-20 pointer-events-none">
-                        <div
-                            ref={card1Ref}
-                            className="border-[#424453] border-[1.5px] bg-[#17192160] rounded-sm p-6 flex flex-col items-center w-[250px] cursor-pointer backdrop-blur-xs pointer-events-auto"
-                            style={{
-                                transformStyle: "preserve-3d",
-                                perspective: "1000px",
-                                ...hardwareAccel,
-                            }}
-                        >
-                            <Image
-                                src="/kraig.png"
-                                alt="KRAIG"
-                                width={175}
-                                height={175}
-                            />
-                            <h3 className="font-family-grotesk text-2xl text-[#e9ede5] mt-6 mb-3">
-                                K.R.A.I.G.
-                            </h3>
-                            <p className="text-sm text-[#b7b9c5] text-center leading-relaxed">
-                                Kickstart your robotics journey with hands-on
-                                fundamentals
-                            </p>
+                    <div className="relative z-20 flex flex-col lg:flex-row gap-10 xl:gap-12 items-start justify-between">
+                        {/* Left Side: Events */}
+                        <div className="flex-1 min-w-0">
+                            <div className="font-family-grotesk-mono text-[#838698] text-xs sm:text-sm uppercase tracking-widest mb-3">
+                                Events
+                            </div>
+                            <h2 className="font-family-grotesk text-3xl sm:text-4xl lg:text-5xl text-white font-bold leading-tight mb-10 max-w-xl">
+                                We believe in sharing our knowledge
+                            </h2>
+
+                            {/* Event Cards Grid */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                                <div
+                                    ref={card1Ref}
+                                    className="border-[#424453] border-[1.5px] bg-[#17192180] rounded-xl p-6 flex flex-col items-center cursor-pointer backdrop-blur-md transition-all duration-300 pointer-events-auto"
+                                    style={{
+                                        transformStyle: "preserve-3d",
+                                        perspective: "1000px",
+                                        ...hardwareAccel,
+                                    }}
+                                >
+                                    <Image
+                                        src="/kraig.png"
+                                        alt="KRAIG"
+                                        width={175}
+                                        height={175}
+                                        className="object-contain"
+                                    />
+                                    <h3 className="font-family-grotesk text-2xl text-[#e9ede5] mt-6 mb-3 font-semibold text-center">
+                                        K.R.A.I.G.
+                                    </h3>
+                                    <p className="text-sm text-[#b7b9c5] text-center leading-relaxed">
+                                        Kickstart your robotics journey with hands-on fundamentals
+                                    </p>
+                                </div>
+
+                                <div
+                                    ref={card2Ref}
+                                    className="border-[#424453] border-[1.5px] bg-[#17192180] rounded-xl p-6 flex flex-col items-center cursor-pointer backdrop-blur-md transition-all duration-300 pointer-events-auto"
+                                    style={{
+                                        transformStyle: "preserve-3d",
+                                        perspective: "1000px",
+                                        ...hardwareAccel,
+                                    }}
+                                >
+                                    <Image
+                                        src="/winterschool.png"
+                                        alt="Winter School"
+                                        width={175}
+                                        height={175}
+                                        className="object-contain"
+                                    />
+                                    <h3 className="font-family-grotesk text-2xl text-[#e9ede5] mt-6 mb-3 font-semibold text-center">
+                                        Winter School
+                                    </h3>
+                                    <p className="text-sm text-[#b7b9c5] text-center leading-relaxed">
+                                        Comprehensive workshop series for advanced robotics projects
+                                    </p>
+                                </div>
+
+                                <div
+                                    ref={card3Ref}
+                                    className="border-[#424453] border-[1.5px] bg-[#17192180] rounded-xl p-6 flex flex-col items-center cursor-pointer backdrop-blur-md transition-all duration-300 pointer-events-auto"
+                                    style={{
+                                        transformStyle: "preserve-3d",
+                                        perspective: "1000px",
+                                        ...hardwareAccel,
+                                    }}
+                                >
+                                    <Image
+                                        src="/makerspace.png"
+                                        alt="Makerspace"
+                                        width={175}
+                                        height={175}
+                                        className="object-contain"
+                                    />
+                                    <h3 className="font-family-grotesk text-2xl text-[#e9ede5] mt-6 mb-3 font-semibold text-center">
+                                        Makerspace
+                                    </h3>
+                                    <p className="text-sm text-[#b7b9c5] text-center leading-relaxed">
+                                        Collaborative workspace for prototyping and innovation
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div
-                            ref={card2Ref}
-                            className="mx-10 border-[#424453] border-[1.5px] bg-[#17192160] rounded-sm p-6 flex flex-col items-center w-[250px] cursor-pointer backdrop-blur-xs pointer-events-auto"
-                            style={{
-                                transformStyle: "preserve-3d",
-                                perspective: "1000px",
-                                ...hardwareAccel,
-                            }}
-                        >
-                            <Image
-                                src="/winterschool.png"
-                                alt="Winter School"
-                                width={175}
-                                height={175}
-                            />
-                            <h3 className="font-family-grotesk text-2xl text-[#e9ede5] mt-6 mb-3">
-                                Winter School
-                            </h3>
-                            <p className="text-sm text-[#b7b9c5] text-center leading-relaxed">
-                                Comprehensive workshop series for advanced
-                                robotics projects
-                            </p>
-                        </div>
-                        <div
-                            ref={card3Ref}
-                            className="border-[#424453] border-[1.5px] bg-[#17192160] rounded-sm p-6 flex flex-col items-center w-[250px] cursor-pointer backdrop-blur-xs pointer-events-auto"
-                            style={{
-                                transformStyle: "preserve-3d",
-                                perspective: "1000px",
-                                ...hardwareAccel,
-                            }}
-                        >
-                            <Image
-                                src="/makerspace.png"
-                                alt="Makerspace"
-                                width={175}
-                                height={175}
-                            />
-                            <h3 className="font-family-grotesk text-2xl text-[#e9ede5] mt-6 mb-3">
-                                Makerspace
-                            </h3>
-                            <p className="text-sm text-[#b7b9c5] text-center leading-relaxed">
-                                Collaborative workspace for prototyping and
-                                innovation
-                            </p>
+
+                        {/* Right Side: Latest Updates Side Panel */}
+                        <div className="w-full lg:w-[360px] xl:w-[400px] shrink-0 lg:sticky lg:top-24 z-20">
+                            <LatestUpdate />
                         </div>
                     </div>
-                    <WaveParticles />
                 </div>
                 <div className="min-h-screen bg-[#0b0b0e] relative px-24 py-16">
                     <div className="uppercase font-family-grotesk-mono text-[#838698] text-md text-center mb-4">

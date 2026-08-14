@@ -1,195 +1,205 @@
 // components/LatestUpdate.js
-// Client Component — fetches the single most-recent update from Sanity.
+// Client Component — renders a structured side panel for News & Announcements / Latest Updates
 "use client";
 
 import { useEffect, useState } from "react";
-import UpdateCard from "@/components/UpdateCard";
+import Image from "next/image";
 import Link from "next/link";
+import { Radio, ArrowRight, Calendar, Globe, Sparkles, Newspaper } from "lucide-react";
+import { formatDate, portableTextToPlainText, UpdateModal } from "@/components/UpdateCard";
 
-function PlaceholderUpdateCard({ title, message }) {
-    return (
-        <div className="border border-[#424453] bg-[#17192160] backdrop-blur-sm rounded-sm p-8 md:p-10">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-                <div className="max-w-2xl">
-                    <div className="font-family-grotesk-mono text-xs text-[#838698] uppercase tracking-widest mb-3">
-                        What&apos;s New
-                    </div>
-                    <h3 className="font-family-grotesk text-3xl text-[#e9ede5] mb-4">
-                        {title}
-                    </h3>
-                    <p className="font-family-apk text-[#b7b9c5] text-base leading-relaxed">
-                        {message}
-                    </p>
-                </div>
+const hardwareAccel = {
+    transform: "translateZ(0)",
+    willChange: "transform",
+    WebkitBackfaceVisibility: "hidden",
+    backfaceVisibility: "hidden",
+};
 
-                <Link
-                    href="/updates"
-                    className="group flex items-center gap-2 border border-[#424453] hover:border-[#39b7f2] text-[#838698] hover:text-[#39b7f2] font-family-grotesk-mono text-xs uppercase tracking-widest px-5 py-3 transition-all duration-300 rounded-sm shrink-0"
-                >
-                    <span>View All Updates</span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="transition-transform duration-300 group-hover:translate-x-1"
-                    >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                    </svg>
-                </Link>
-            </div>
-        </div>
-    );
-}
+const CATEGORIES = ["All", "Events", "Selections", "Workshops"];
 
 export default function LatestUpdate() {
-    const [update, setUpdate] = useState(null);
+    const [updates, setUpdates] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState("All");
     const [isLoading, setIsLoading] = useState(true);
+    const [activeModalUpdate, setActiveModalUpdate] = useState(null);
 
     useEffect(() => {
         let isActive = true;
 
-        async function loadLatestUpdate() {
+        async function loadUpdates() {
             try {
                 const response = await fetch("/api/latest-update");
-
-                if (!response.ok) {
-                    throw new Error("Failed to load latest update");
-                }
-
-                const raw = await response.json();
-
+                if (!response.ok) throw new Error("Failed to load updates");
+                const data = await response.json();
                 if (!isActive) return;
 
-                if (!raw) {
-                    setUpdate(null);
-                    return;
+                if (Array.isArray(data.updates) && data.updates.length > 0) {
+                    setUpdates(data.updates);
+                } else if (data._id || data.title) {
+                    setUpdates([data]);
+                } else {
+                    setUpdates([]);
                 }
-
-                setUpdate(raw);
             } catch {
-                if (isActive) {
-                    setUpdate(null);
-                }
+                if (isActive) setUpdates([]);
             } finally {
-                if (isActive) {
-                    setIsLoading(false);
-                }
+                if (isActive) setIsLoading(false);
             }
         }
 
-        loadLatestUpdate();
-
+        loadUpdates();
         return () => {
             isActive = false;
         };
     }, []);
 
-    if (isLoading) {
-        return (
-            <div className="bg-[#0b0b0e] relative px-24 py-20">
-                <div className="absolute left-9 top-0 h-full w-px bg-[rgb(66,68,83)]" />
-                <div className="absolute right-9 top-0 h-full w-px bg-[rgb(66,68,83)]" />
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-[rgb(66,68,83)]" />
+    // Simple filter simulation (all updates shown for "All", or filtered by keyword in title/body)
+    const filteredUpdates = updates.filter((u) => {
+        if (selectedCategory === "All") return true;
+        const text = `${u.title || ""} ${portableTextToPlainText(u.body)}`.toLowerCase();
+        return text.includes(selectedCategory.toLowerCase());
+    });
 
-                <div className="flex items-end justify-between mb-12">
-                    <div>
-                        <div className="font-family-grotesk-mono text-[#838698] text-xs uppercase tracking-widest mb-3">
-                            What&apos;s New
-                        </div>
-                        <div className="font-family-grotesk text-4xl text-[#e9ede5]">
-                            Latest Update
-                        </div>
-                    </div>
-                </div>
-
-                <div className="mx-auto w-full max-w-4xl">
-                    <PlaceholderUpdateCard
-                        title="Loading latest update"
-                        message="We are fetching the newest TRS update. Check back in a moment or visit the full updates page to browse everything we have published."
-                    />
-                </div>
-            </div>
-        );
-    }
-
-    if (!update) {
-        return (
-            <div className="bg-[#0b0b0e] relative px-24 py-20">
-                <div className="absolute left-9 top-0 h-full w-px bg-[rgb(66,68,83)]" />
-                <div className="absolute right-9 top-0 h-full w-px bg-[rgb(66,68,83)]" />
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-[rgb(66,68,83)]" />
-
-                <div className="flex items-end justify-between mb-12">
-                    <div>
-                        <div className="font-family-grotesk-mono text-[#838698] text-xs uppercase tracking-widest mb-3">
-                            What&apos;s New
-                        </div>
-                        <div className="font-family-grotesk text-4xl text-[#e9ede5]">
-                            Latest Update
-                        </div>
-                    </div>
-                </div>
-
-                <div className="mx-auto w-full max-w-4xl">
-                    <PlaceholderUpdateCard
-                        title="No update available"
-                        message="There is no published update to show right now. Visit the updates page to see recent posts when they become available."
-                    />
-                </div>
-            </div>
-        );
-    }
+    // Fallback: if filter returns 0 but we have updates, show all
+    const displayList = filteredUpdates.length > 0 ? filteredUpdates : updates;
 
     return (
-        <div className="bg-[#0b0b0e] relative px-24 py-20">
-            {/* Decorative lines */}
-            <div className="absolute left-9 top-0 h-full w-px bg-[rgb(66,68,83)]" />
-            <div className="absolute right-9 top-0 h-full w-px bg-[rgb(66,68,83)]" />
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-[rgb(66,68,83)]" />
-
-            {/* Header row */}
-            <div className="flex items-end justify-between mb-12">
-                <div>
-                    <div className="font-family-grotesk-mono text-[#838698] text-xs uppercase tracking-widest mb-3">
-                        What&apos;s New
+        <>
+            {/* ── Side Panel Container ── */}
+            <aside
+                aria-label="Latest Updates Side Panel"
+                className="w-full border border-[#282a3a] bg-[#12141e]/90 backdrop-blur-xl rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-[#39b7f2]/40"
+                style={hardwareAccel}
+            >
+                {/* ── Header Banner (Styled like News & Announcements) ── */}
+                <div className="bg-gradient-to-r from-[#39b7f2] via-[#2ba8e5] to-[#1992cb] px-5 py-3.5 flex items-center justify-between shadow-sm">
+                    <div className="flex items-center gap-2.5 text-[#0b0b0e]">
+                        <Newspaper className="w-5 h-5 shrink-0" />
+                        <h3 className="font-family-grotesk font-extrabold text-base tracking-wide uppercase">
+                            News &amp; Updates
+                        </h3>
                     </div>
-                    <div className="font-family-grotesk text-4xl text-[#e9ede5]">
-                        Latest Update
+
+                    <div className="flex items-center gap-1.5 bg-[#0b0b0e]/25 backdrop-blur-xs text-[#0b0b0e] px-2.5 py-0.5 rounded-full text-xs font-family-grotesk-mono font-bold">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0b0b0e] animate-ping" />
+                        <span>{isLoading ? "..." : updates.length || "0"}</span>
                     </div>
                 </div>
-                <Link
-                    href="/updates"
-                    className="group flex items-center gap-2 border border-[#424453] hover:border-[#39b7f2] text-[#838698] hover:text-[#39b7f2] font-family-grotesk-mono text-xs uppercase tracking-widest px-5 py-3 transition-all duration-300 rounded-sm"
-                >
-                    <span>View All Updates</span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="transition-transform duration-300 group-hover:translate-x-1"
-                    >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                    </svg>
-                </Link>
-            </div>
 
-            <div className="mx-auto w-full max-w-4xl">
-                <UpdateCard update={update} />
-            </div>
-        </div>
+                {/* ── Filter / Category Chips Bar ── */}
+                <div className="px-4 pt-3.5 pb-2.5 border-b border-[#232636] bg-[#0e1018]/60 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                    {CATEGORIES.map((cat) => {
+                        const isActive = selectedCategory === cat;
+                        return (
+                            <button
+                                key={cat}
+                                onClick={() => setSelectedCategory(cat)}
+                                className={`px-3 py-1 rounded-lg text-xs font-family-grotesk-mono tracking-wider transition-all duration-200 cursor-pointer shrink-0 border ${isActive
+                                        ? "bg-[#39b7f2] text-[#0b0b0e] border-[#39b7f2] font-bold shadow-[0_0_12px_rgba(57,183,242,0.4)]"
+                                        : "bg-[#181b28] border-[#2c3042] text-[#8e95a5] hover:text-[#e0e3e8] hover:border-[#39b7f2]/50"
+                                    }`}
+                            >
+                                {cat}
+                            </button>
+                        );
+                    })}
+                </div>
+
+                {/* ── Updates List ── */}
+                <div className="p-4 space-y-3.5 max-h-[560px] overflow-y-auto overscroll-contain">
+                    {isLoading ? (
+                        /* Loading Skeleton */
+                        <div className="space-y-4 animate-pulse">
+                            <div className="border border-[#282a3a] bg-[#171924]/60 rounded-xl p-3.5 space-y-3">
+                                <div className="w-full aspect-video bg-[#202334] rounded-lg" />
+                                <div className="h-4 w-3/4 bg-[#202334] rounded" />
+                                <div className="h-3 w-1/2 bg-[#202334] rounded" />
+                                <div className="h-3 w-full bg-[#202334] rounded" />
+                            </div>
+                        </div>
+                    ) : displayList.length === 0 ? (
+                        /* Empty State */
+                        <div className="py-10 px-4 text-center space-y-3">
+                            <Sparkles className="w-8 h-8 text-[#838698] mx-auto opacity-50" />
+                            <p className="font-family-grotesk text-sm text-[#e9ede5]">
+                                No updates published yet
+                            </p>
+                            <p className="font-family-apk text-xs text-[#838698]">
+                                Check back soon for announcements and news from TRS.
+                            </p>
+                        </div>
+                    ) : (
+                        /* Render Update Cards */
+                        displayList.map((item) => (
+                            <article
+                                key={item._id}
+                                onClick={() => setActiveModalUpdate(item)}
+                                className="group border border-[#282a3a] hover:border-[#39b7f2]/60 bg-[#161824]/90 hover:bg-[#1a1d2c] rounded-xl p-3.5 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-[0_4px_20px_rgba(57,183,242,0.15)] flex flex-col"
+                            >
+                                {/* Thumbnail with Category Badge Overlay */}
+                                {item.imageUrl && (
+                                    <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-[#282a3a] mb-3 shrink-0">
+                                        <Image
+                                            src={item.imageUrl}
+                                            alt={item.title}
+                                            fill
+                                            sizes="(min-width: 1024px) 380px, 100vw"
+                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <span className="absolute top-2 right-2 bg-[#39b7f2] text-[#0b0b0e] font-family-grotesk-mono font-bold text-[10px] uppercase px-2 py-0.5 rounded shadow-md tracking-wider">
+                                            Update
+                                        </span>
+                                    </div>
+                                )}
+
+                                {/* Title */}
+                                <h4 className="font-family-grotesk text-base font-bold text-[#e9ede5] group-hover:text-[#39b7f2] transition-colors leading-snug line-clamp-2 mb-1.5">
+                                    {item.title}
+                                </h4>
+
+                                {/* Meta Info (Source & Date) */}
+                                <div className="flex items-center gap-2 text-[11px] font-family-grotesk-mono text-[#838698] mb-2 flex-wrap">
+                                    <span className="flex items-center gap-1 text-[#39b7f2]/90">
+                                        <Globe size={11} />
+                                        <span>robotix.in</span>
+                                    </span>
+                                    <span>•</span>
+                                    <span className="flex items-center gap-1">
+                                        <Calendar size={11} />
+                                        <span>{formatDate(item.publishedAt)}</span>
+                                    </span>
+                                </div>
+
+                                {/* Excerpt */}
+                                {item.body && (
+                                    <p className="font-family-apk text-xs text-[#b7b9c5] line-clamp-2 leading-relaxed">
+                                        {portableTextToPlainText(item.body)}
+                                    </p>
+                                )}
+                            </article>
+                        ))
+                    )}
+                </div>
+
+                {/* ── Footer Link: View All Updates ── */}
+                <div className="border-t border-[#232636] bg-[#0e1018]/80 p-3">
+                    <Link
+                        href="/updates"
+                        className="group flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-[#181b28] hover:bg-[#39b7f2] text-[#39b7f2] hover:text-[#0b0b0e] border border-[#2e3347] hover:border-[#39b7f2] font-family-grotesk-mono text-xs uppercase tracking-wider font-bold transition-all duration-300 shadow-sm"
+                    >
+                        <span>View All Updates</span>
+                        <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                </div>
+            </aside>
+
+            {/* ── Detail Reader Modal ── */}
+            {activeModalUpdate && (
+                <UpdateModal
+                    update={activeModalUpdate}
+                    onClose={() => setActiveModalUpdate(null)}
+                />
+            )}
+        </>
     );
 }

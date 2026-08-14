@@ -8,8 +8,8 @@ function urlFor(source) {
     return builder.image(source);
 }
 
-const LATEST_UPDATE_QUERY = `*[_type == "update" && defined(publishedAt)]
-  | order(publishedAt desc)[0]{
+const LATEST_UPDATES_QUERY = `*[_type == "update" && defined(publishedAt)]
+  | order(publishedAt desc)[0...6]{
     _id,
     title,
     publishedAt,
@@ -20,14 +20,26 @@ const LATEST_UPDATE_QUERY = `*[_type == "update" && defined(publishedAt)]
 const options = { next: { revalidate: 60 } };
 
 export async function GET() {
-    const raw = await client.fetch(LATEST_UPDATE_QUERY, {}, options);
+    try {
+        const raw = await client.fetch(LATEST_UPDATES_QUERY, {}, options);
 
-    if (!raw) {
-        return NextResponse.json(null, { status: 200 });
+        if (!raw || raw.length === 0) {
+            return NextResponse.json({ update: null, updates: [] }, { status: 200 });
+        }
+
+        const updates = raw.map((u) => ({
+            ...u,
+            imageUrl: u.image ? urlFor(u.image).width(800).url() : null,
+        }));
+
+        const primary = updates[0] || null;
+
+        return NextResponse.json({
+            ...primary,
+            update: primary,
+            updates: updates,
+        });
+    } catch {
+        return NextResponse.json({ update: null, updates: [] }, { status: 500 });
     }
-
-    return NextResponse.json({
-        ...raw,
-        imageUrl: raw.image ? urlFor(raw.image).width(800).url() : null,
-    });
 }
