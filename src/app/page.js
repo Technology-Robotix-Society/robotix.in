@@ -20,7 +20,6 @@ export default function Home() {
     const mainRef = useRef(null);
     const logoRef = useRef(null);
     const videoRef = useRef(null);
-    const gridRef = useRef(null);
     const textRef = useRef(null);
     const card1Ref = useRef(null);
     const card2Ref = useRef(null);
@@ -28,8 +27,6 @@ export default function Home() {
     const galleryRef = useRef(null);
     const galleryItemsRef = useRef([]);
 
-    const [gridCells, setGridCells] = useState([]);
-    const [gridCellSize, setGridCellSize] = useState(0);
     const [displayText1, displayText2] = useScrambleText(heroTexts, { speed: 10 });
 
     const hardwareAccel = {
@@ -39,7 +36,7 @@ export default function Home() {
         backfaceVisibility: "hidden",
     };
 
-    // --- GSAP Intro Animations (Unchanged) ---
+    // --- GSAP Intro Animations ---
     useGSAP(
         () => {
             const ctx = gsap.context(() => {
@@ -67,46 +64,15 @@ export default function Home() {
                     repeat: -1,
                     ease: "sine.inOut",
                 });
-
-                if (gridRef.current) {
-                    const cells = Array.from(gridRef.current.children);
-                    const shuffledCells = [...cells].sort(
-                        () => Math.random() - 0.5,
-                    );
-                    if (shuffledCells.length > 0) {
-                        gsap.to(shuffledCells, {
-                            backgroundColor: "transparent",
-                            duration: 0.3,
-                            stagger: { each: 0.008, from: "random" },
-                            ease: "power2.out",
-                        });
-                    }
-                }
             }, mainRef);
             return () => ctx.revert();
         },
-        { scope: mainRef, dependencies: [gridCells] },
+        { scope: mainRef },
     );
 
     // --- Video Setup ---
     useEffect(() => {
         if (videoRef.current) videoRef.current.playbackRate = 0.5;
-
-        const calculateGrid = () => {
-            if (!gridRef.current) return;
-            const w = gridRef.current.offsetWidth;
-            const h = gridRef.current.offsetHeight;
-            const columns = 10;
-            const cellSize = w / columns;
-            const rows = Math.ceil(h / cellSize);
-            setGridCells(Array.from({ length: rows * columns }, (_, i) => i));
-            setGridCellSize(cellSize);
-            gridRef.current.classList.add("bg-transparent");
-        };
-
-        calculateGrid();
-        window.addEventListener("resize", calculateGrid);
-        return () => window.removeEventListener("resize", calculateGrid);
     }, []);
 
     // --- Card Hover Animations ---
@@ -268,10 +234,11 @@ export default function Home() {
                     MozOsxFontSmoothing: "grayscale",
                 }}
             >
-                <div className="h-screen relative">
+                <div className="h-screen w-full relative overflow-hidden flex items-end">
+                    {/* Full Width Hero Video */}
                     <video
                         ref={videoRef}
-                        className="video-bg object-cover w-full h-full absolute top-0 left-0 -z-10"
+                        className="w-full h-full object-cover absolute top-0 left-0 z-0"
                         src="/bg_video5.mp4"
                         autoPlay
                         loop
@@ -279,75 +246,44 @@ export default function Home() {
                         playsInline
                         preload="metadata"
                     />
-                    <div className="z-20 h-screen absolute top-0 left-0 w-full p-16 flex items-end justify-between bg-black/60">
-                        {/* Decorative Lines */}
-                        <div
-                            className="absolute left-9 w-[1px] top-0 h-full bg-[rgb(66,68,83)]"
-                            style={hardwareAccel}
-                        ></div>
-                        <div
-                            className="absolute right-9 w-[1px] top-0 h-full bg-[rgb(66,68,83)]"
-                            style={hardwareAccel}
-                        ></div>
-                        <div
-                            className="absolute bottom-9 left-0 right-0 h-[1px] bg-[rgb(66,68,83)]"
-                            style={hardwareAccel}
-                        ></div>
-                        <div
-                            className="absolute bottom-0 left-0 right-0 h-[1px] bg-[rgb(66,68,83)]"
-                            style={hardwareAccel}
-                        ></div>
-                        <div
-                            className="absolute bottom-9 left-9 h-[2px] w-3 bg-[#b7b9c5] -translate-x-1/2"
-                            style={hardwareAccel}
-                        ></div>
-                        <div
-                            className="absolute bottom-9 left-9 h-3 w-[2px] bg-[#b7b9c5] -translate-x-1/2 translate-y-1/2"
-                            style={hardwareAccel}
-                        ></div>
-                        <div
-                            className="absolute bottom-9 right-9 h-[2px] w-3 bg-[#b7b9c5] translate-x-1/2"
-                            style={hardwareAccel}
-                        ></div>
-                        <div
-                            className="absolute bottom-9 right-9 h-3 w-[2px] bg-[#b7b9c5] translate-x-1/2 translate-y-1/2"
-                            style={hardwareAccel}
-                        ></div>
 
-                        <div
-                            ref={textRef}
-                            className="mb-6 font-family-grotesk text-5xl text-[#e9ede5] leading-14"
-                            style={hardwareAccel}
-                        >
-                            {displayText1}
-                            <br />
-                            {displayText2}
+                    {/* Dark Gradient Overlay for Readability (like IIT KGP Hero) */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0e] via-[#0b0b0e]/50 to-black/40 z-10" />
+
+                    {/* Hero Text & Content Overlay */}
+                    <div className="z-20 w-full px-12 md:px-16 lg:px-24 pb-20 flex flex-col md:flex-row items-start md:items-end justify-between">
+                        <div className="max-w-3xl">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#39b7f2]/10 border border-[#39b7f2]/30 text-[#39b7f2] text-xs font-grotesk-mono uppercase tracking-widest mb-4">
+                                <span className="w-2 h-2 rounded-full bg-[#39b7f2] animate-pulse"></span>
+                                Technology Robotix Society • IIT Kharagpur
+                            </div>
+                            <div
+                                ref={textRef}
+                                className="font-family-grotesk text-5xl md:text-6xl lg:text-7xl text-white font-extrabold tracking-tight leading-none mb-4 drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]"
+                                style={hardwareAccel}
+                            >
+                                {displayText1}
+                                <br />
+                                <span className="text-[#39b7f2] drop-shadow-[0_0_20px_rgba(57,183,242,0.6)]">
+                                    {displayText2}
+                                </span>
+                            </div>
+                            <p className="text-[#e0e3e8] font-grotesk text-lg md:text-xl max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                                Official Robotics Club of IIT Kharagpur. Cultivating innovation, autonomous systems, and engineering excellence.
+                            </p>
                         </div>
+
                         <Image
                             ref={logoRef}
                             src="/logo.png"
                             alt="Robotix Logo"
-                            width={175}
-                            height={175}
+                            width={160}
+                            height={160}
                             priority
-                            sizes="175px"
-                            className="mb-6"
+                            sizes="160px"
+                            className="hidden md:block drop-shadow-[0_0_20px_rgba(57,183,242,0.5)]"
                             style={hardwareAccel}
                         />
-                    </div>
-                    <div
-                        ref={gridRef}
-                        className="z-10 h-screen absolute top-0 left-0 w-full overflow-hidden grid grid-cols-10 bg-[#0b0b0e]"
-                        style={{
-                            gridAutoRows: `${gridCellSize}px`,
-                        }}
-                    >
-                        {gridCells.map((cell) => (
-                            <div
-                                key={cell}
-                                className="bg-[#0b0b0e] aspect-square"
-                            />
-                        ))}
                     </div>
                 </div>
 
@@ -431,9 +367,6 @@ export default function Home() {
                             </p>
                         </div>
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 h-px bg-[rgb(66,68,83)]"></div>
-                    <div className="absolute left-9 top-0 h-full w-px bg-[rgb(66,68,83)]"></div>
-                    <div className="absolute right-9 top-0 h-full w-px bg-[rgb(66,68,83)]"></div>
                     <WaveParticles />
                 </div>
                 <div className="min-h-screen bg-[#0b0b0e] relative px-24 py-16">
@@ -459,10 +392,6 @@ export default function Home() {
                             />
                         ))}
                     </div>
-
-                    {/* Decorative lines */}
-                    <div className="absolute left-9 top-0 h-full w-px bg-[rgb(66,68,83)]"></div>
-                    <div className="absolute right-9 top-0 h-full w-px bg-[rgb(66,68,83)]"></div>
                 </div>
             </main>
         </>
