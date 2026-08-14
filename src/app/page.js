@@ -14,7 +14,54 @@ import useScrambleText from "@/hooks/useScrambleText";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const heroTexts = ["Technology Robotix Society", "Where machines dare !!"];
+const heroTexts = ["Technology Robotix Society", "Where Machines Dare !!"];
+
+function renderSmallCaps(
+    text,
+    largeSize = "text-5xl md:text-6xl lg:text-7xl",
+    smallSize = "text-xl md:text-2xl lg:text-[34px]"
+) {
+    if (!text) return null;
+    const words = text.split(" ");
+    return words.map((word, wordIdx) => {
+        if (!word) return null;
+
+        // If word is pure punctuation (like "!!"), render all characters in largeSize
+        if (/^[^a-zA-Z0-9]+$/.test(word)) {
+            return (
+                <span key={wordIdx} className="inline-block mr-[0.25em] last:mr-0">
+                    <span className={largeSize}>{word}</span>
+                </span>
+            );
+        }
+
+        // Match leading letters/numbers and trailing punctuation (e.g. "Dare!!")
+        const match = word.match(/^([a-zA-Z0-9]+)(.*)$/);
+        if (match) {
+            const letters = match[1];
+            const trailing = match[2];
+            const first = letters.charAt(0).toUpperCase();
+            const rest = letters.slice(1).toUpperCase();
+
+            return (
+                <span key={wordIdx} className="inline-block mr-[0.25em] last:mr-0">
+                    <span className={largeSize}>{first}</span>
+                    {rest && <span className={smallSize}>{rest}</span>}
+                    {trailing && <span className={largeSize}>{trailing}</span>}
+                </span>
+            );
+        }
+
+        const first = word.charAt(0).toUpperCase();
+        const rest = word.slice(1).toUpperCase();
+        return (
+            <span key={wordIdx} className="inline-block mr-[0.25em] last:mr-0">
+                <span className={largeSize}>{first}</span>
+                {rest && <span className={smallSize}>{rest}</span>}
+            </span>
+        );
+    });
+}
 
 export default function Home() {
     const mainRef = useRef(null);
@@ -49,6 +96,7 @@ export default function Home() {
                     ease: "none",
                 });
 
+                // Glow via drop-shadow filter
                 gsap.to(logoRef.current, {
                     filter: "drop-shadow(0 0 8px rgba(57, 183, 242, 0.3))",
                     duration: 2,
@@ -57,6 +105,7 @@ export default function Home() {
                     ease: "power1.inOut",
                 });
 
+                // Pulsing scale
                 gsap.to(logoRef.current, {
                     scale: 1.05,
                     duration: 3,
@@ -64,88 +113,78 @@ export default function Home() {
                     repeat: -1,
                     ease: "sine.inOut",
                 });
+
+                // Subtle floating movement for hero video container
+                gsap.to(videoRef.current, {
+                    y: -10,
+                    duration: 4,
+                    yoyo: true,
+                    repeat: -1,
+                    ease: "sine.inOut",
+                });
             }, mainRef);
+
             return () => ctx.revert();
         },
-        { scope: mainRef },
+        { scope: mainRef }
     );
 
-    // --- Video Setup ---
+    // --- GSAP 3D Interactive Card Animations ---
     useEffect(() => {
-        if (videoRef.current) videoRef.current.playbackRate = 0.5;
-    }, []);
+        const cards = [card1Ref.current, card2Ref.current, card3Ref.current].filter(Boolean);
 
-    // --- Card Hover Animations ---
-    useEffect(() => {
-        const cards = [card1Ref.current, card2Ref.current, card3Ref.current];
-
-        cards.forEach((card, index) => {
+        cards.forEach((card) => {
             if (!card) return;
 
-            const handleMouseEnter = (e) => {
-                const cardRect = card.getBoundingClientRect();
-                const cardCenterX = cardRect.left + cardRect.width / 2;
-                const cardCenterY = cardRect.top + cardRect.height / 2;
-
-                // Lift and tilt effect based on position
+            const handleMouseEnter = () => {
                 gsap.to(card, {
-                    scale: 1.03,
-                    rotationY: (e.clientX - cardCenterX) * 0.02,
-                    rotationX: (cardCenterY - e.clientY) * 0.02,
-                    z: 50,
-                    duration: 0.6,
+                    duration: 0.3,
                     ease: "power2.out",
                 });
-
-                // Glow effect
-                gsap.to(card, {
-                    boxShadow:
-                        "0 0 15px rgba(57, 183, 242, 0.2), 0 10px 25px rgba(0, 0, 0, 0.2)",
-                    borderColor: "#39b7f2",
-                    duration: 0.6,
-                    ease: "power2.out",
-                });
-
-                // Animate image with slight rotation
-                const img = card.querySelector("img");
-                if (img) {
-                    gsap.to(img, {
-                        scale: 1.05,
-                        rotation: index % 2 === 0 ? 5 : -5,
-                        duration: 0.6,
-                        ease: "power2.out",
-                    });
-                }
-
-                // Text glitch effect on title
-                const title = card.querySelector("h3");
-                if (title) {
-                    gsap.to(title, {
-                        textShadow: "0 0 5px rgba(57, 183, 242, 0.5)",
-                        duration: 0.3,
-                        ease: "power2.out",
-                    });
-                }
             };
 
             const handleMouseMove = (e) => {
-                const cardRect = card.getBoundingClientRect();
-                const cardCenterX = cardRect.left + cardRect.width / 2;
-                const cardCenterY = cardRect.top + cardRect.height / 2;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-                // Dynamic tilt based on mouse position
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -12;
+                const rotateY = ((x - centerX) / centerX) * 12;
+
                 gsap.to(card, {
-                    rotationY: (e.clientX - cardCenterX) * 0.02,
-                    rotationX: (cardCenterY - e.clientY) * 0.02,
-                    duration: 0.3,
+                    rotationY: rotateY,
+                    rotationX: rotateX,
+                    z: 30,
+                    duration: 0.4,
                     ease: "power1.out",
+                    boxShadow: "0 20px 40px rgba(57, 183, 242, 0.2)",
+                    borderColor: "#39b7f2",
                 });
+
+                const img = card.querySelector("img");
+                if (img) {
+                    gsap.to(img, {
+                        scale: 1.12,
+                        rotation: rotateY * 0.4,
+                        duration: 0.4,
+                        ease: "power1.out",
+                    });
+                }
+
+                const title = card.querySelector("h3");
+                if (title) {
+                    gsap.to(title, {
+                        textShadow: "0 0 10px rgba(57, 183, 242, 0.6)",
+                        duration: 0.3,
+                    });
+                }
             };
 
             const handleMouseLeave = () => {
-                // Reset all animations
                 gsap.to(card, {
-                    scale: 1,
                     rotationY: 0,
                     rotationX: 0,
                     z: 0,
@@ -259,14 +298,15 @@ export default function Home() {
                             </div>
                             <div
                                 ref={textRef}
-                                className="font-family-grotesk text-5xl md:text-6xl lg:text-7xl text-white font-extrabold tracking-tight leading-none mb-4 drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]"
+                                className="font-family-grotesk font-extrabold tracking-tight leading-none mb-4 drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)]"
                                 style={hardwareAccel}
                             >
-                                {displayText1}
-                                <br />
-                                <span className="text-[#39b7f2] drop-shadow-[0_0_20px_rgba(57,183,242,0.6)]">
-                                    {displayText2}
-                                </span>
+                                <div className="text-white">
+                                    {renderSmallCaps(displayText1, "text-5xl md:text-6xl lg:text-7xl", "text-4xl md:text-5xl lg:text-[50px]")}
+                                </div>
+                                <div className="text-[#39b7f2] drop-shadow-[0_0_20px_rgba(57,183,242,0.6)] mt-2">
+                                    {renderSmallCaps(displayText2, "text-5xl md:text-6xl lg:text-7xl", "text-4xl md:text-5xl lg:text-[50px]")}
+                                </div>
                             </div>
                             <p className="text-[#e0e3e8] font-grotesk text-lg md:text-xl max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] pl-4 border-l-2 border-[#39b7f2]">
                                 Official Robotics Club of IIT Kharagpur. Cultivating innovation, autonomous systems, and engineering excellence.
@@ -308,8 +348,9 @@ export default function Home() {
                                 </div>
 
                                 {/* Section Heading: EVENTS */}
-                                <h2 className="font-family-grotesk text-4xl sm:text-5xl text-white font-extrabold uppercase tracking-wider mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-                                    Events
+                                <h2 className="font-family-grotesk text-white font-extrabold tracking-wider mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+                                    <span className="text-4xl sm:text-5xl">E</span>
+                                    <span className="text-xl sm:text-2xl tracking-wider">VENTS</span>
                                 </h2>
 
                                 {/* Quote & Content Line Below Heading */}
@@ -431,23 +472,33 @@ export default function Home() {
 
                             {/* ── 2. Our Bots Section (Inside Left Column) ── */}
                             <section aria-label="Our Bots Section">
-                                <div className="uppercase font-family-grotesk-mono text-[#838698] text-xs sm:text-sm uppercase tracking-widest mb-2">
-                                    Our
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className="w-2 h-2 rounded-full bg-[#39b7f2] animate-pulse"></span>
+                                    <span className="font-family-grotesk-mono text-[#39b7f2] text-xs uppercase tracking-widest font-semibold">
+                                        Software, Embedded and Mechanical Demonstrations
+                                    </span>
                                 </div>
-                                <h2 className="font-family-grotesk text-5xl sm:text-6xl lg:text-7xl text-white uppercase font-extrabold tracking-tight mb-10">
-                                    B<span className="font-family-grotesk-screen">o</span>ts
+                                <h2 className="font-family-grotesk text-white font-extrabold tracking-wider mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+                                    <span className="inline-block mr-[0.25em]">
+                                        <span className="text-4xl sm:text-5xl lg:text-6xl">O</span>
+                                        <span className="text-xl sm:text-2xl lg:text-3xl tracking-wider">UR</span>
+                                    </span>
+                                    <span className="inline-block">
+                                        <span className="text-4xl sm:text-5xl lg:text-6xl">B</span>
+                                        <span className="text-xl sm:text-2xl lg:text-3xl tracking-wider">OTS</span>
+                                    </span>
                                 </h2>
 
-                                {/* Masonry Gallery */}
+                                {/* Uniform Bots Grid */}
                                 <div
                                     ref={galleryRef}
-                                    className="masonry-gallery w-full"
-                                    style={{ perspective: "1000px" }}
+                                    className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 w-full"
                                 >
                                     {botsData.map((bot, index) => (
                                         <GalleryCard
                                             key={bot.id}
                                             bot={bot}
+                                            index={index}
                                             galleryItemRef={(el) => (galleryItemsRef.current[index] = el)}
                                             hardwareAccel={hardwareAccel}
                                         />
