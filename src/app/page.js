@@ -268,7 +268,7 @@ export default function Home() {
                                     {displayText2}
                                 </span>
                             </div>
-                            <p className="text-[#e0e3e8] font-grotesk text-lg md:text-xl max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                            <p className="text-[#e0e3e8] font-grotesk text-lg md:text-xl max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] pl-4 border-l-2 border-[#39b7f2]">
                                 Official Robotics Club of IIT Kharagpur. Cultivating innovation, autonomous systems, and engineering excellence.
                             </p>
                         </div>
