@@ -2,7 +2,7 @@
 // Client Component — renders a structured side panel for News & Announcements / Latest Updates
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Radio, ArrowRight, Calendar, Globe, Sparkles, Newspaper } from "lucide-react";
@@ -22,6 +22,7 @@ export default function LatestUpdate() {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [isLoading, setIsLoading] = useState(true);
     const [activeModalUpdate, setActiveModalUpdate] = useState(null);
+    const scrollContainerRef = useRef(null);
 
     useEffect(() => {
         let isActive = true;
@@ -53,6 +54,34 @@ export default function LatestUpdate() {
         };
     }, []);
 
+    // Wheel event isolation: when hovering over the panel, only scroll the panel and prevent parent page scroll
+    useEffect(() => {
+        const el = scrollContainerRef.current;
+        if (!el) return;
+
+        const handleWheel = (e) => {
+            const { scrollTop, scrollHeight, clientHeight } = el;
+            const delta = e.deltaY;
+            const isScrollingDown = delta > 0;
+            const isScrollingUp = delta < 0;
+
+            // Stop propagation to prevent window / page scroll
+            e.stopPropagation();
+
+            // If at bottom and trying to scroll down, or at top and trying to scroll up, prevent window chaining
+            if (isScrollingDown && scrollTop + clientHeight >= scrollHeight - 1) {
+                e.preventDefault();
+            } else if (isScrollingUp && scrollTop <= 0) {
+                e.preventDefault();
+            }
+        };
+
+        el.addEventListener("wheel", handleWheel, { passive: false });
+        return () => {
+            el.removeEventListener("wheel", handleWheel);
+        };
+    }, [updates, selectedCategory]);
+
     // Simple filter simulation (all updates shown for "All", or filtered by keyword in title/body)
     const filteredUpdates = updates.filter((u) => {
         if (selectedCategory === "All") return true;
@@ -68,11 +97,11 @@ export default function LatestUpdate() {
             {/* ── Side Panel Container ── */}
             <aside
                 aria-label="Latest Updates Side Panel"
-                className="w-full border border-[#282a3a] bg-[#12141e]/90 backdrop-blur-xl rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-[#39b7f2]/40"
+                className="w-full border border-[#282a3a] bg-[#12141e]/95 backdrop-blur-xl rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-[#39b7f2]/40 flex flex-col max-h-[calc(100vh-130px)]"
                 style={hardwareAccel}
             >
                 {/* ── Header Banner (Styled like News & Announcements) ── */}
-                <div className="bg-gradient-to-r from-[#39b7f2] via-[#2ba8e5] to-[#1992cb] px-5 py-3.5 flex items-center justify-between shadow-sm">
+                <div className="bg-gradient-to-r from-[#39b7f2] via-[#2ba8e5] to-[#1992cb] px-5 py-3.5 flex items-center justify-between shadow-sm shrink-0">
                     <div className="flex items-center gap-2.5 text-[#0b0b0e]">
                         <Newspaper className="w-5 h-5 shrink-0" />
                         <h3 className="font-family-grotesk font-extrabold text-base tracking-wide uppercase">
@@ -87,7 +116,7 @@ export default function LatestUpdate() {
                 </div>
 
                 {/* ── Filter / Category Chips Bar ── */}
-                <div className="px-4 pt-3.5 pb-2.5 border-b border-[#232636] bg-[#0e1018]/60 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                <div className="px-4 pt-3.5 pb-2.5 border-b border-[#232636] bg-[#0e1018]/60 flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0">
                     {CATEGORIES.map((cat) => {
                         const isActive = selectedCategory === cat;
                         return (
@@ -106,7 +135,14 @@ export default function LatestUpdate() {
                 </div>
 
                 {/* ── Updates List ── */}
-                <div className="p-4 space-y-3.5 max-h-[560px] overflow-y-auto overscroll-contain">
+                <div
+                    ref={scrollContainerRef}
+                    className="p-4 space-y-3.5 flex-1 overflow-y-auto overscroll-contain"
+                    style={{
+                        scrollbarWidth: "thin",
+                        scrollbarColor: "#282a3a transparent",
+                    }}
+                >
                     {isLoading ? (
                         /* Loading Skeleton */
                         <div className="space-y-4 animate-pulse">
@@ -182,7 +218,7 @@ export default function LatestUpdate() {
                 </div>
 
                 {/* ── Footer Link: View All Updates ── */}
-                <div className="border-t border-[#232636] bg-[#0e1018]/80 p-3">
+                <div className="border-t border-[#232636] bg-[#0e1018]/80 p-3 shrink-0">
                     <Link
                         href="/updates"
                         className="group flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-[#181b28] hover:bg-[#39b7f2] text-[#39b7f2] hover:text-[#0b0b0e] border border-[#2e3347] hover:border-[#39b7f2] font-family-grotesk-mono text-xs uppercase tracking-wider font-bold transition-all duration-300 shadow-sm"

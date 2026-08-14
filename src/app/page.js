@@ -287,7 +287,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* ── Events Section + Latest Updates Side Panel ── */}
+                {/* ── Main Content Area: Left (Events + Our Bots) + Right (Latest Updates Side Panel) ── */}
                 <div className="min-h-screen bg-[#0b0b0e] relative px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 py-16">
                     {/* Background Wave Particles */}
                     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -295,166 +295,171 @@ export default function Home() {
                     </div>
 
                     <div className="relative z-20 flex flex-col lg:flex-row gap-10 xl:gap-14 items-start justify-between">
-                        {/* Left Side: Events Content */}
-                        <div className="flex-1 min-w-0">
-                            {/* Category Indicator Tag */}
-                            <div className="flex items-center gap-2 mb-2">
-                                <span className="w-2 h-2 rounded-full bg-[#39b7f2] animate-pulse"></span>
-                                <span className="font-family-grotesk-mono text-[#39b7f2] text-xs uppercase tracking-widest font-semibold">
-                                    Initiatives &amp; Workshops
-                                </span>
-                            </div>
+                        {/* Left Side: Events + Our Bots */}
+                        <div className="flex-1 min-w-0 space-y-28">
+                            {/* ── 1. Events Section ── */}
+                            <section aria-label="Events Section">
+                                {/* Category Indicator Tag */}
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className="w-2 h-2 rounded-full bg-[#39b7f2] animate-pulse"></span>
+                                    <span className="font-family-grotesk-mono text-[#39b7f2] text-xs uppercase tracking-widest font-semibold">
+                                        Initiatives &amp; Workshops
+                                    </span>
+                                </div>
 
-                            {/* Section Heading: EVENTS */}
-                            <h2 className="font-family-grotesk text-4xl sm:text-5xl text-white font-extrabold uppercase tracking-wider mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-                                Events
-                            </h2>
+                                {/* Section Heading: EVENTS */}
+                                <h2 className="font-family-grotesk text-4xl sm:text-5xl text-white font-extrabold uppercase tracking-wider mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+                                    Events
+                                </h2>
 
-                            {/* Quote & Content Line Below Heading */}
-                            <div className="relative pl-5 border-l-[3px] border-[#39b7f2] my-5 max-w-3xl">
-                                <p className="font-family-grotesk text-2xl sm:text-3xl lg:text-[32px] text-[#e9ede5] font-semibold leading-snug">
-                                    “We believe in <span className="text-[#39b7f2]">sharing our knowledge</span>.”
-                                </p>
-                                <p className="font-family-apk text-sm sm:text-base text-[#a3a6b6] mt-2 leading-relaxed">
-                                    From hands-on beginner bootcamps to advanced ROS workshop series and round-the-clock prototyping in our makerspace — empowering the next wave of roboticists.
-                                </p>
-                            </div>
-
-                            {/* Feature Chips with Interactive Hover */}
-                            <div className="flex items-center gap-3 flex-wrap mb-8">
-                                <span className="px-4 py-2 rounded-full bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs sm:text-[13px] font-family-grotesk-mono tracking-wider transition-all duration-300 hover:border-[#39b7f2] hover:text-[#39b7f2] hover:bg-[#39b7f2]/10 hover:shadow-[0_0_15px_rgba(57,183,242,0.25)] hover:scale-105 cursor-pointer">
-                                    ⚡ Hands-on Bootcamps
-                                </span>
-                                <span className="px-4 py-2 rounded-full bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs sm:text-[13px] font-family-grotesk-mono tracking-wider transition-all duration-300 hover:border-[#39b7f2] hover:text-[#39b7f2] hover:bg-[#39b7f2]/10 hover:shadow-[0_0_15px_rgba(57,183,242,0.25)] hover:scale-105 cursor-pointer">
-                                    🛠️ Open Prototyping Lab
-                                </span>
-                                <span className="px-4 py-2 rounded-full bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs sm:text-[13px] font-family-grotesk-mono tracking-wider transition-all duration-300 hover:border-[#39b7f2] hover:text-[#39b7f2] hover:bg-[#39b7f2]/10 hover:shadow-[0_0_15px_rgba(57,183,242,0.25)] hover:scale-105 cursor-pointer">
-                                    🤖 Advanced Workshops
-                                </span>
-                            </div>
-
-                            {/* Event Cards Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                                {/* K.R.A.I.G. */}
-                                <div
-                                    ref={card1Ref}
-                                    className="group relative border border-[#2d3145] hover:border-[#39b7f2] bg-gradient-to-b from-[#161926]/90 to-[#0e1017]/95 rounded-2xl p-6 flex flex-col items-center cursor-pointer backdrop-blur-xl transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_45px_rgba(57,183,242,0.2)] overflow-hidden pointer-events-auto"
-                                    style={{
-                                        transformStyle: "preserve-3d",
-                                        perspective: "1000px",
-                                        ...hardwareAccel,
-                                    }}
-                                >
-                                    <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#39b7f2]/40 group-hover:via-[#39b7f2] to-transparent transition-all duration-500" />
-                                    
-                                    <div className="relative w-full aspect-square max-w-[175px] flex items-center justify-center">
-                                        <Image
-                                            src="/kraig.png"
-                                            alt="KRAIG"
-                                            width={175}
-                                            height={175}
-                                            className="object-contain drop-shadow-[0_0_20px_rgba(57,183,242,0.2)] group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                    </div>
-
-                                    <h3 className="font-family-grotesk text-2xl text-[#e9ede5] group-hover:text-[#39b7f2] mt-6 mb-3 font-semibold text-center transition-colors">
-                                        K.R.A.I.G.
-                                    </h3>
-                                    <p className="text-sm text-[#b7b9c5] text-center leading-relaxed font-family-apk">
-                                        Kickstart your robotics journey with practical mechanical assemblies, microcontroller programming, and circuit fundamentals.
+                                {/* Quote & Content Line Below Heading */}
+                                <div className="relative pl-5 border-l-[3px] border-[#39b7f2] my-5 max-w-3xl">
+                                    <p className="font-family-grotesk text-2xl sm:text-3xl lg:text-[32px] text-[#e9ede5] font-semibold leading-snug">
+                                        “We believe in <span className="text-[#39b7f2]">sharing our knowledge</span>.”
+                                    </p>
+                                    <p className="font-family-apk text-sm sm:text-base text-[#a3a6b6] mt-2 leading-relaxed">
+                                        From hands-on beginner bootcamps to advanced ROS workshop series and round-the-clock prototyping in our makerspace — empowering the next wave of roboticists.
                                     </p>
                                 </div>
 
-                                {/* Winter School */}
-                                <div
-                                    ref={card2Ref}
-                                    className="group relative border border-[#2d3145] hover:border-[#39b7f2] bg-gradient-to-b from-[#161926]/90 to-[#0e1017]/95 rounded-2xl p-6 flex flex-col items-center cursor-pointer backdrop-blur-xl transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_45px_rgba(57,183,242,0.2)] overflow-hidden pointer-events-auto"
-                                    style={{
-                                        transformStyle: "preserve-3d",
-                                        perspective: "1000px",
-                                        ...hardwareAccel,
-                                    }}
-                                >
-                                    <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#39b7f2]/40 group-hover:via-[#39b7f2] to-transparent transition-all duration-500" />
-                                    
-                                    <div className="relative w-full aspect-square max-w-[175px] flex items-center justify-center">
-                                        <Image
-                                            src="/winterschool.png"
-                                            alt="Winter School"
-                                            width={175}
-                                            height={175}
-                                            className="object-contain drop-shadow-[0_0_20px_rgba(57,183,242,0.2)] group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                    </div>
-
-                                    <h3 className="font-family-grotesk text-2xl text-[#e9ede5] group-hover:text-[#39b7f2] mt-6 mb-3 font-semibold text-center transition-colors">
-                                        Winter School
-                                    </h3>
-                                    <p className="text-sm text-[#b7b9c5] text-center leading-relaxed font-family-apk">
-                                        Comprehensive deep-dive workshop series covering autonomous navigation, computer vision, and ROS-powered robotics.
-                                    </p>
+                                {/* Feature Chips with Interactive Hover */}
+                                <div className="flex items-center gap-3 flex-wrap mb-8">
+                                    <span className="px-4 py-2 rounded-full bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs sm:text-[13px] font-family-grotesk-mono tracking-wider transition-all duration-300 hover:border-[#39b7f2] hover:text-[#39b7f2] hover:bg-[#39b7f2]/10 hover:shadow-[0_0_15px_rgba(57,183,242,0.25)] hover:scale-105 cursor-pointer">
+                                        ⚡ Hands-on Bootcamps
+                                    </span>
+                                    <span className="px-4 py-2 rounded-full bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs sm:text-[13px] font-family-grotesk-mono tracking-wider transition-all duration-300 hover:border-[#39b7f2] hover:text-[#39b7f2] hover:bg-[#39b7f2]/10 hover:shadow-[0_0_15px_rgba(57,183,242,0.25)] hover:scale-105 cursor-pointer">
+                                        🛠️ Open Prototyping Lab
+                                    </span>
+                                    <span className="px-4 py-2 rounded-full bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs sm:text-[13px] font-family-grotesk-mono tracking-wider transition-all duration-300 hover:border-[#39b7f2] hover:text-[#39b7f2] hover:bg-[#39b7f2]/10 hover:shadow-[0_0_15px_rgba(57,183,242,0.25)] hover:scale-105 cursor-pointer">
+                                        🤖 Advanced Workshops
+                                    </span>
                                 </div>
 
-                                {/* Makerspace */}
-                                <div
-                                    ref={card3Ref}
-                                    className="group relative border border-[#2d3145] hover:border-[#39b7f2] bg-gradient-to-b from-[#161926]/90 to-[#0e1017]/95 rounded-2xl p-6 flex flex-col items-center cursor-pointer backdrop-blur-xl transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_45px_rgba(57,183,242,0.2)] overflow-hidden pointer-events-auto"
-                                    style={{
-                                        transformStyle: "preserve-3d",
-                                        perspective: "1000px",
-                                        ...hardwareAccel,
-                                    }}
-                                >
-                                    <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#39b7f2]/40 group-hover:via-[#39b7f2] to-transparent transition-all duration-500" />
-                                    
-                                    <div className="relative w-full aspect-square max-w-[175px] flex items-center justify-center">
-                                        <Image
-                                            src="/makerspace.png"
-                                            alt="Makerspace"
-                                            width={175}
-                                            height={175}
-                                            className="object-contain drop-shadow-[0_0_20px_rgba(57,183,242,0.2)] group-hover:scale-105 transition-transform duration-500"
-                                        />
+                                {/* Event Cards Grid */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                                    {/* K.R.A.I.G. */}
+                                    <div
+                                        ref={card1Ref}
+                                        className="group relative border border-[#2d3145] hover:border-[#39b7f2] bg-gradient-to-b from-[#161926]/90 to-[#0e1017]/95 rounded-2xl p-6 flex flex-col items-center cursor-pointer backdrop-blur-xl transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_45px_rgba(57,183,242,0.2)] overflow-hidden pointer-events-auto"
+                                        style={{
+                                            transformStyle: "preserve-3d",
+                                            perspective: "1000px",
+                                            ...hardwareAccel,
+                                        }}
+                                    >
+                                        <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#39b7f2]/40 group-hover:via-[#39b7f2] to-transparent transition-all duration-500" />
+                                        
+                                        <div className="relative w-full aspect-square max-w-[175px] flex items-center justify-center">
+                                            <Image
+                                                src="/kraig.png"
+                                                alt="KRAIG"
+                                                width={175}
+                                                height={175}
+                                                className="object-contain drop-shadow-[0_0_20px_rgba(57,183,242,0.2)] group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        </div>
+
+                                        <h3 className="font-family-grotesk text-2xl text-[#e9ede5] group-hover:text-[#39b7f2] mt-6 mb-3 font-semibold text-center transition-colors">
+                                            K.R.A.I.G.
+                                        </h3>
+                                        <p className="text-sm text-[#b7b9c5] text-center leading-relaxed font-family-apk">
+                                            Kickstart your robotics journey with practical mechanical assemblies, microcontroller programming, and circuit fundamentals.
+                                        </p>
                                     </div>
 
-                                    <h3 className="font-family-grotesk text-2xl text-[#e9ede5] group-hover:text-[#39b7f2] mt-6 mb-3 font-semibold text-center transition-colors">
-                                        Makerspace
-                                    </h3>
-                                    <p className="text-sm text-[#b7b9c5] text-center leading-relaxed font-family-apk">
-                                        Collaborative workspace equipped with testing arenas, 3D printing tools, and hardware resources for rapid prototyping.
-                                    </p>
+                                    {/* Winter School */}
+                                    <div
+                                        ref={card2Ref}
+                                        className="group relative border border-[#2d3145] hover:border-[#39b7f2] bg-gradient-to-b from-[#161926]/90 to-[#0e1017]/95 rounded-2xl p-6 flex flex-col items-center cursor-pointer backdrop-blur-xl transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_45px_rgba(57,183,242,0.2)] overflow-hidden pointer-events-auto"
+                                        style={{
+                                            transformStyle: "preserve-3d",
+                                            perspective: "1000px",
+                                            ...hardwareAccel,
+                                        }}
+                                    >
+                                        <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#39b7f2]/40 group-hover:via-[#39b7f2] to-transparent transition-all duration-500" />
+                                        
+                                        <div className="relative w-full aspect-square max-w-[175px] flex items-center justify-center">
+                                            <Image
+                                                src="/winterschool.png"
+                                                alt="Winter School"
+                                                width={175}
+                                                height={175}
+                                                className="object-contain drop-shadow-[0_0_20px_rgba(57,183,242,0.2)] group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        </div>
+
+                                        <h3 className="font-family-grotesk text-2xl text-[#e9ede5] group-hover:text-[#39b7f2] mt-6 mb-3 font-semibold text-center transition-colors">
+                                            Winter School
+                                        </h3>
+                                        <p className="text-sm text-[#b7b9c5] text-center leading-relaxed font-family-apk">
+                                            Comprehensive deep-dive workshop series covering autonomous navigation, computer vision, and ROS-powered robotics.
+                                        </p>
+                                    </div>
+
+                                    {/* Makerspace */}
+                                    <div
+                                        ref={card3Ref}
+                                        className="group relative border border-[#2d3145] hover:border-[#39b7f2] bg-gradient-to-b from-[#161926]/90 to-[#0e1017]/95 rounded-2xl p-6 flex flex-col items-center cursor-pointer backdrop-blur-xl transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_45px_rgba(57,183,242,0.2)] overflow-hidden pointer-events-auto"
+                                        style={{
+                                            transformStyle: "preserve-3d",
+                                            perspective: "1000px",
+                                            ...hardwareAccel,
+                                        }}
+                                    >
+                                        <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#39b7f2]/40 group-hover:via-[#39b7f2] to-transparent transition-all duration-500" />
+                                        
+                                        <div className="relative w-full aspect-square max-w-[175px] flex items-center justify-center">
+                                            <Image
+                                                src="/makerspace.png"
+                                                alt="Makerspace"
+                                                width={175}
+                                                height={175}
+                                                className="object-contain drop-shadow-[0_0_20px_rgba(57,183,242,0.2)] group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        </div>
+
+                                        <h3 className="font-family-grotesk text-2xl text-[#e9ede5] group-hover:text-[#39b7f2] mt-6 mb-3 font-semibold text-center transition-colors">
+                                            Makerspace
+                                        </h3>
+                                        <p className="text-sm text-[#b7b9c5] text-center leading-relaxed font-family-apk">
+                                            Collaborative workspace equipped with testing arenas, 3D printing tools, and hardware resources for rapid prototyping.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            </section>
+
+                            {/* ── 2. Our Bots Section (Inside Left Column) ── */}
+                            <section aria-label="Our Bots Section">
+                                <div className="uppercase font-family-grotesk-mono text-[#838698] text-xs sm:text-sm uppercase tracking-widest mb-2">
+                                    Our
+                                </div>
+                                <h2 className="font-family-grotesk text-5xl sm:text-6xl lg:text-7xl text-white uppercase font-extrabold tracking-tight mb-10">
+                                    B<span className="font-family-grotesk-screen">o</span>ts
+                                </h2>
+
+                                {/* Masonry Gallery */}
+                                <div
+                                    ref={galleryRef}
+                                    className="masonry-gallery w-full"
+                                    style={{ perspective: "1000px" }}
+                                >
+                                    {botsData.map((bot, index) => (
+                                        <GalleryCard
+                                            key={bot.id}
+                                            bot={bot}
+                                            galleryItemRef={(el) => (galleryItemsRef.current[index] = el)}
+                                            hardwareAccel={hardwareAccel}
+                                        />
+                                    ))}
+                                </div>
+                            </section>
                         </div>
 
-                        {/* Right Side: Latest Updates Side Panel */}
-                        <div className="w-full lg:w-[360px] xl:w-[400px] shrink-0 lg:sticky lg:top-24 z-20">
+                        {/* Right Side: Latest Updates Side Panel (Sticky throughout the entire scroll) */}
+                        <div className="w-full lg:w-[360px] xl:w-[400px] shrink-0 lg:sticky lg:top-24 z-20 self-start">
                             <LatestUpdate />
                         </div>
-                    </div>
-                </div>
-                <div className="min-h-screen bg-[#0b0b0e] relative px-24 py-16">
-                    <div className="uppercase font-family-grotesk-mono text-[#838698] text-md text-center mb-4">
-                        Our
-                    </div>
-                    <div className="font-family-grotesk text-8xl text-center text-white uppercase mb-20">
-                        B<span className="font-family-grotesk-screen">o</span>ts
-                    </div>
-
-                    {/* Masonry Gallery */}
-                    <div
-                        ref={galleryRef}
-                        className="masonry-gallery max-w-6xl mx-auto"
-                        style={{ perspective: "1000px" }}
-                    >
-                        {botsData.map((bot, index) => (
-                            <GalleryCard
-                                key={bot.id}
-                                bot={bot}
-                                galleryItemRef={(el) => (galleryItemsRef.current[index] = el)}
-                                hardwareAccel={hardwareAccel}
-                            />
-                        ))}
                     </div>
                 </div>
             </main>
