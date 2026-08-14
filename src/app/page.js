@@ -349,8 +349,7 @@ export default function Home() {
 
                                 {/* Section Heading: EVENTS */}
                                 <h2 className="font-family-grotesk text-white font-extrabold tracking-wider mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-                                    <span className="text-4xl sm:text-5xl">E</span>
-                                    <span className="text-xl sm:text-2xl tracking-wider">VENTS</span>
+                                    {renderSmallCaps("Events", "text-5xl md:text-6xl lg:text-7xl", "text-4xl md:text-5xl lg:text-[50px]")}
                                 </h2>
 
                                 {/* Quote & Content Line Below Heading */}
@@ -478,16 +477,32 @@ export default function Home() {
                                         Software, Embedded and Mechanical Demonstrations
                                     </span>
                                 </div>
-                                <h2 className="font-family-grotesk text-white font-extrabold tracking-wider mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-                                    <span className="inline-block mr-[0.25em]">
-                                        <span className="text-4xl sm:text-5xl lg:text-6xl">O</span>
-                                        <span className="text-xl sm:text-2xl lg:text-3xl tracking-wider">UR</span>
-                                    </span>
-                                    <span className="inline-block">
-                                        <span className="text-4xl sm:text-5xl lg:text-6xl">B</span>
-                                        <span className="text-xl sm:text-2xl lg:text-3xl tracking-wider">OTS</span>
-                                    </span>
+                                <h2 className="font-family-grotesk text-white font-extrabold tracking-wider mb-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+                                    {renderSmallCaps("Our Bots", "text-5xl md:text-6xl lg:text-7xl", "text-4xl md:text-5xl lg:text-[50px]")}
                                 </h2>
+
+                                {/* Quote & Content Line Below Heading */}
+                                <div className="relative pl-5 border-l-[3px] border-[#39b7f2] my-5 max-w-3xl">
+                                    <p className="font-family-grotesk text-2xl sm:text-3xl lg:text-[32px] text-[#e9ede5] font-semibold leading-snug">
+                                        “Where machines dare to <span className="text-[#39b7f2]">innovate and perform</span>.”
+                                    </p>
+                                    <p className="font-family-apk text-sm sm:text-base text-[#a3a6b6] mt-2 leading-relaxed">
+                                        From biomimetic quadrupeds and agile hexapods to omnidirectional platforms and telepresence systems — conceptualized, fabricated, and programmed in-house.
+                                    </p>
+                                </div>
+
+                                {/* Feature Chips with Interactive Hover */}
+                                <div className="flex items-center gap-3 flex-wrap mb-8">
+                                    <span className="px-4 py-2 rounded-full bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs sm:text-[13px] font-family-grotesk-mono tracking-wider transition-all duration-300 hover:border-[#39b7f2] hover:text-[#39b7f2] hover:bg-[#39b7f2]/10 hover:shadow-[0_0_15px_rgba(57,183,242,0.25)] hover:scale-105 cursor-pointer">
+                                        🦾 Biomimetic Robotics
+                                    </span>
+                                    <span className="px-4 py-2 rounded-full bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs sm:text-[13px] font-family-grotesk-mono tracking-wider transition-all duration-300 hover:border-[#39b7f2] hover:text-[#39b7f2] hover:bg-[#39b7f2]/10 hover:shadow-[0_0_15px_rgba(57,183,242,0.25)] hover:scale-105 cursor-pointer">
+                                        🧭 Omnidirectional Drive
+                                    </span>
+                                    <span className="px-4 py-2 rounded-full bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs sm:text-[13px] font-family-grotesk-mono tracking-wider transition-all duration-300 hover:border-[#39b7f2] hover:text-[#39b7f2] hover:bg-[#39b7f2]/10 hover:shadow-[0_0_15px_rgba(57,183,242,0.25)] hover:scale-105 cursor-pointer">
+                                        📡 Autonomous &amp; Telepresence
+                                    </span>
+                                </div>
 
                                 {/* Uniform Bots Grid */}
                                 <div

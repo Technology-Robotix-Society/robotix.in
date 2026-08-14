@@ -1,202 +1,246 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { Linkedin, Facebook, Instagram } from "lucide-react";
+import {
+    Linkedin,
+    Instagram,
+    Facebook,
+    Github,
+    Mail,
+    MapPin,
+    ArrowUp,
+    Send,
+} from "lucide-react";
 
 export default function Footer() {
-    const parentRef = useRef(null);
-    const imageRef = useRef(null);
+    const scrollToTop = () => {
+        if (typeof window !== "undefined") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
 
-    useGSAP(
-        () => {
-            const parent = parentRef.current;
-            const image = imageRef.current;
+    const initiatives = [
+        { label: "Workshops", href: "/workshops" },
+        { label: "Makerspace", href: "/makerspace" },
+        { label: "Competitions", href: "/competitions" },
+        { label: "Tutorials", href: "/tutorials" },
+        { label: "Latest Updates", href: "/updates" },
+    ];
 
-            if (!parent || !image) return;
+    const society = [
+        { label: "About TRS", href: "/about" },
+        { label: "Team & Leadership", href: "/about#team" },
+        { label: "Frequently Asked Questions", href: "/faqs" },
+        { label: "Contact Us", href: "/contact" },
+    ];
 
-            const handleMouseMove = (e) => {
-                const rect = parent.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-
-                const deltaX = e.clientX - centerX;
-                const deltaY = e.clientY - centerY;
-
-                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                const maxDistance = Math.sqrt(
-                    (rect.width / 2) ** 2 + (rect.height / 2) ** 2
-                );
-
-                const displacement = Math.min(distance / maxDistance, 1) * 10;
-
-                const angle = Math.atan2(deltaY, deltaX);
-                const moveX = Math.cos(angle) * displacement;
-                const moveY = Math.sin(angle) * displacement;
-
-                gsap.to(image, {
-                    x: moveX,
-                    y: moveY,
-                    duration: 0.8,
-                    ease: "power3.out",
-                });
-            };
-
-            const handleMouseLeave = () => {
-                gsap.to(image, {
-                    x: 0,
-                    y: 0,
-                    duration: 2,
-                    ease: "elastic.out(1, 0.3)",
-                });
-            };
-
-            parent.addEventListener("mousemove", handleMouseMove);
-            parent.addEventListener("mouseleave", handleMouseLeave);
-
-            return () => {
-                parent.removeEventListener("mousemove", handleMouseMove);
-                parent.removeEventListener("mouseleave", handleMouseLeave);
-            };
+    const socials = [
+        {
+            label: "LinkedIn",
+            href: "https://www.linkedin.com/company/technology-robotix-society",
+            icon: Linkedin,
         },
-        { scope: parentRef }
-    );
+        {
+            label: "Instagram",
+            href: "https://www.instagram.com/robotix_iitkgp",
+            icon: Instagram,
+        },
+        {
+            label: "Facebook",
+            href: "https://www.facebook.com/robotixiitkgp",
+            icon: Facebook,
+        },
+        {
+            label: "GitHub",
+            href: "https://github.com/Technology-Robotix-Society",
+            icon: Github,
+        },
+        {
+            label: "Email",
+            href: "mailto:contact@robotix.in",
+            icon: Mail,
+        },
+    ];
 
     return (
-        <footer className="w-full bg-[#0b0b0e] relative">
-            <div className="absolute left-9 top-0 h-full w-px bg-[rgb(66,68,83)]"></div>
-            <div className="absolute -top-[1.5px] left-0 right-0 h-[1.5px] bg-[rgb(66,68,83)]"></div>
-            <div className="absolute -top-[1.5px] left-9 h-[1.5px] w-3 bg-[#b7b9c5] -translate-x-1/2"></div>
-            <div className="absolute -top-[1.5px] left-9 h-1.5 w-[1.5px] bg-[#b7b9c5] -translate-x-1/2"></div>
-            <div className="absolute -top-[1.5px] right-9 h-[1.5px] w-3 bg-[#b7b9c5] translate-x-1/2"></div>
-            <div className="absolute -top-[1.5px] right-9 h-1.5 w-[1.5px] bg-[#b7b9c5] translate-x-1/2"></div>
-            <div className="absolute right-9 top-0 h-full w-px bg-[rgb(66,68,83)]"></div>
+        <footer className="w-full bg-[#08090c] border-t border-[#1a1d29] text-[#b7b9c5] relative overflow-hidden">
+            {/* Soft Ambient Top Glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-24 bg-[radial-gradient(ellipse_at_top,rgba(57,183,242,0.12),transparent_70%)] pointer-events-none" />
 
-            <div className="absolute -top-[1.5px] left-[calc(36px+0.4*(100%-72px))] h-[1.5px] w-3 bg-[#b7b9c5] -translate-x-1/2"></div>
-            <div className="absolute -top-[1.5px] left-[calc(36px+0.4*(100%-72px))] h-1.5 w-[1.5px] bg-[#b7b9c5] -translate-x-1/2"></div>
-            <div className="absolute -top-[1.5px] right-[calc(36px+0.4*(100%-72px))] h-[1.5px] w-3 bg-[#b7b9c5] translate-x-1/2"></div>
-            <div className="absolute -top-[1.5px] right-[calc(36px+0.4*(100%-72px))] h-1.5 w-[1.5px] bg-[#b7b9c5] translate-x-1/2"></div>
-            
-            <div className="absolute bottom-[88px] left-[calc(36px+0.4*(100%-72px))] h-[1.5px] w-3 bg-[#b7b9c5] -translate-x-1/2"></div>
-            <div className="absolute bottom-[88px] left-[calc(36px+0.4*(100%-72px))] h-1.5 w-[1.5px] bg-[#b7b9c5] -translate-x-1/2"></div>
-            <div className="absolute bottom-[88px] right-[calc(36px+0.4*(100%-72px))] h-[1.5px] w-3 bg-[#b7b9c5] translate-x-1/2"></div>
-            <div className="absolute bottom-[88px] right-[calc(36px+0.4*(100%-72px))] h-1.5 w-[1.5px] bg-[#b7b9c5] translate-x-1/2"></div>
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-16 pb-12">
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14">
+                    {/* Brand & Mission Column (5 cols) */}
+                    <div className="lg:col-span-5 flex flex-col justify-between pr-0 lg:pr-8">
+                        <div>
+                            <Link href="/" className="inline-flex items-center gap-3 group">
+                                <Image
+                                    src="/logo.png"
+                                    alt="Technology Robotix Society Logo"
+                                    width={44}
+                                    height={44}
+                                    className="object-contain drop-shadow-[0_0_12px_rgba(57,183,242,0.35)] transition-transform duration-300 group-hover:scale-105"
+                                />
+                                <div>
+                                    <h3 className="font-family-grotesk text-[#f5f6f6] text-xl font-bold tracking-tight group-hover:text-[#39b7f2] transition-colors">
+                                        Technology Robotix Society
+                                    </h3>
+                                    <p className="font-family-apk text-xs text-[#71768b] tracking-wider uppercase">
+                                        IIT Kharagpur
+                                    </p>
+                                </div>
+                            </Link>
 
-            <div className="absolute bottom-[88px] left-9 h-[1.5px] w-1.5 bg-[#b7b9c5]"></div>
-            <div className="absolute bottom-[88px] left-9 h-3 w-[1.5px] bg-[#b7b9c5] -translate-x-1/2 translate-y-1/2"></div>
-            <div className="absolute bottom-[88px] right-9 h-[1.5px] w-1.5 bg-[#b7b9c5]"></div>
-            <div className="absolute bottom-[88px] right-9 h-3 w-[1.5px] bg-[#b7b9c5] translate-x-1/2 translate-y-1/2"></div>
+                            <p className="mt-5 font-family-apk text-sm text-[#8e95a5] leading-relaxed max-w-md">
+                                The official robotics society of IIT Kharagpur, under the Technology Students&apos; Gymkhana. Dedicated to fostering innovation, cutting-edge hardware development, and robotics education since 2001.
+                            </p>
+                        </div>
 
-            <div className="flex border-b border-[rgb(66,68,83)] mx-9">
-                <div className="shrink-0 w-2/5 px-9 py-16 border-r border-[rgb(66,68,83)] flex flex-col justify-center">
-                    <div className="flex gap-4 mb-8">
-                        <Link href="https://www.linkedin.com/company/technology-robotix-society" target="_blank" className="text-[#f5f6f6] hover:text-[#49b7e1] transition-colors duration-500 ease-in-out">
-                            <Linkedin size={32} />
-                        </Link>
-                        <Link href="https://www.facebook.com/robotixiitkgp" target="_blank" className="text-[#f5f6f6] hover:text-[#49b7e1] transition-colors duration-500 ease-in-out">
-                            <Facebook size={32} />
-                        </Link>
-                        <Link href="https://www.instagram.com/robotix_iitkgp" target="_blank" className="text-[#f5f6f6] hover:text-[#49b7e1] transition-colors duration-500 ease-in-out">
-                            <Instagram size={32} />
-                        </Link>
+                        {/* Social Links */}
+                        <div className="mt-8">
+                            <p className="font-family-grotesk-mono text-xs text-[#71768b] uppercase tracking-widest mb-3">
+                                Connect With Us
+                            </p>
+                            <div className="flex items-center gap-2.5 flex-wrap">
+                                {socials.map((social) => {
+                                    const Icon = social.icon;
+                                    return (
+                                        <Link
+                                            key={social.label}
+                                            href={social.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={social.label}
+                                            className="w-10 h-10 rounded-lg bg-[#12141d] border border-[#232738] flex items-center justify-center text-[#a0a6b8] hover:text-[#39b7f2] hover:border-[#39b7f2]/60 hover:bg-[#39b7f2]/10 hover:shadow-[0_0_14px_rgba(57,183,242,0.25)] transition-all duration-300 group"
+                                        >
+                                            <Icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+                        </div>
                     </div>
-                    <p className="text-4xl font-family-grotesk text-[#f5f6f6]">Are you geared up?</p>
-                    <p className="text-3xl font-family-grotesk-mono text-[#49b7e1]">#robotixiitkgp</p>
+
+                    {/* Column: Initiatives (2.5 cols) */}
+                    <div className="lg:col-span-2 sm:col-span-1">
+                        <h4 className="font-family-grotesk-mono text-xs font-semibold uppercase tracking-widest text-[#f5f6f6] mb-5 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#39b7f2]" />
+                            Initiatives
+                        </h4>
+                        <ul className="space-y-3 font-family-apk text-sm">
+                            {initiatives.map((item) => (
+                                <li key={item.label}>
+                                    <Link
+                                        href={item.href}
+                                        className="text-[#8e95a5] hover:text-[#39b7f2] transition-colors duration-200 inline-flex items-center group"
+                                    >
+                                        <span className="group-hover:translate-x-1 transition-transform duration-200">
+                                            {item.label}
+                                        </span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Column: Society (2.5 cols) */}
+                    <div className="lg:col-span-2 sm:col-span-1">
+                        <h4 className="font-family-grotesk-mono text-xs font-semibold uppercase tracking-widest text-[#f5f6f6] mb-5 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#39b7f2]" />
+                            Society
+                        </h4>
+                        <ul className="space-y-3 font-family-apk text-sm">
+                            {society.map((item) => (
+                                <li key={item.label}>
+                                    <Link
+                                        href={item.href}
+                                        className="text-[#8e95a5] hover:text-[#39b7f2] transition-colors duration-200 inline-flex items-center group"
+                                    >
+                                        <span className="group-hover:translate-x-1 transition-transform duration-200">
+                                            {item.label}
+                                        </span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Column: Campus & Contact (3 cols) */}
+                    <div className="lg:col-span-3 flex flex-col justify-between">
+                        <div>
+                            <h4 className="font-family-grotesk-mono text-xs font-semibold uppercase tracking-widest text-[#f5f6f6] mb-5 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#39b7f2]" />
+                                Campus &amp; Lab
+                            </h4>
+                            
+                            <div className="space-y-3.5 font-family-apk text-sm">
+                                <div className="flex items-start gap-2.5 text-[#8e95a5]">
+                                    <MapPin className="w-4 h-4 text-[#39b7f2] shrink-0 mt-0.5" />
+                                    <span>
+                                        Technology Students&apos; Gymkhana,<br />
+                                        IIT Kharagpur, West Bengal 721302
+                                    </span>
+                                </div>
+
+                                <div className="flex items-center gap-2.5 text-[#8e95a5]">
+                                    <Mail className="w-4 h-4 text-[#39b7f2] shrink-0" />
+                                    <a
+                                        href="mailto:contact@robotix.in"
+                                        className="hover:text-[#39b7f2] transition-colors"
+                                    >
+                                        contact@robotix.in
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Live Society Badge */}
+                        <div className="mt-8 p-3.5 rounded-xl bg-[#12141d]/80 border border-[#232738] backdrop-blur-sm">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#39b7f2] opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#39b7f2]"></span>
+                                    </span>
+                                    <span className="font-family-grotesk-mono text-xs font-medium text-[#e2e5eb]">
+                                        #robotixiitkgp
+                                    </span>
+                                </div>
+                                <span className="font-family-apk text-[11px] text-[#71768b]">
+                                    Where Machines Dare
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div
-                    ref={parentRef}
-                    className="shrink-0 w-1/5 flex items-center justify-center"
-                >
-                    <Image
-                        ref={imageRef}
-                        src="/logo.png"
-                        alt="Robotix Logo"
-                        width={110}
-                        height={110}
-                        sizes="110px"
-                        className="object-contain"
-                    />
-                </div>
-                <ul className="shrink-0 w-2/5 px-9 py-16 border-l border-[rgb(66,68,83)] grid grid-cols-2 gap-x-12 gap-y-4">
-                    <li>
-                        <Link
-                            href="/winterschool"
-                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
-                        >
-                            Winterschool
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/makerspace"
-                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
-                        >
-                            Makerspace
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/faqs"
-                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
-                        >
-                            FAQs
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/workshops"
-                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
-                        >
-                            Workshops
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/updates"
-                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
-                        >
-                            Updates
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/blog"
-                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
-                        >
-                            Blog
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/tutorials"
-                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
-                        >
-                            Tutorials
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/about"
-                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
-                        >
-                            About Us
-                        </Link>
-                    </li>
-                    <li>
+
+                {/* Sub-Footer / Bottom Bar */}
+                <div className="border-t border-[#1a1d29] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-family-apk text-xs text-[#71768b]">
+                    <p className="text-center sm:text-left">
+                        © {new Date().getFullYear()} Technology Robotix Society, IIT Kharagpur. All rights reserved.
+                    </p>
+
+                    <div className="flex items-center gap-6">
                         <Link
                             href="/contact"
-                            className="text-3xl font-family-grotesk text-[#f5f6f6] hover:text-[#39b7f2] transition-colors duration-500 ease-in-out"
+                            className="hover:text-[#39b7f2] transition-colors inline-flex items-center gap-1.5"
                         >
-                            Contact Us
+                            <Send className="w-3.5 h-3.5" />
+                            <span>Get in touch</span>
                         </Link>
-                    </li>
-                </ul>
-            </div>
-            <div className="p-8 text-[#838698] font-family-grotesk-mono uppercase mx-9 flex items-center">
-                <span className="text-2xl leading-none mr-1">©</span>
-                <span>2026 Technology Robotix Society, IIT Kharagpur</span>
+
+                        <button
+                            onClick={scrollToTop}
+                            type="button"
+                            aria-label="Back to top"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#12141d] border border-[#232738] text-[#8e95a5] hover:text-[#39b7f2] hover:border-[#39b7f2]/50 hover:bg-[#39b7f2]/10 transition-all duration-300 cursor-pointer"
+                        >
+                            <span>Back to top</span>
+                            <ArrowUp className="w-3.5 h-3.5" />
+                        </button>
+                    </div>
+                </div>
             </div>
         </footer>
     );
