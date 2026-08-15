@@ -1,24 +1,65 @@
 "use client";
-import { useRef, useEffect, useState, use } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { teamData } from "@/data/team";
 import { alumniData } from "@/data/alumni";
-import { ArrowRight } from "lucide-react";
+import { Users, Bot, Cpu, Sparkles, Rocket, Compass, BookOpen } from "lucide-react";
 import TeamMemberCard from "@/components/TeamMemberCard";
 import useScrambleText from "@/hooks/useScrambleText";
 
 gsap.registerPlugin(ScrollTrigger);
 
+function renderSmallCaps(
+    text,
+    largeSize = "text-5xl md:text-6xl lg:text-7xl",
+    smallSize = "text-xl md:text-2xl lg:text-[34px]"
+) {
+    if (!text) return null;
+    const words = text.split(" ");
+    return words.map((word, wordIdx) => {
+        if (!word) return null;
+
+        if (/^[^a-zA-Z0-9]+$/.test(word)) {
+            return (
+                <span key={wordIdx} className="inline-block mr-[0.25em] last:mr-0">
+                    <span className={largeSize}>{word}</span>
+                </span>
+            );
+        }
+
+        const match = word.match(/^([a-zA-Z0-9]+)(.*)$/);
+        if (match) {
+            const letters = match[1];
+            const trailing = match[2];
+            const first = letters.charAt(0).toUpperCase();
+            const rest = letters.slice(1).toUpperCase();
+
+            return (
+                <span key={wordIdx} className="inline-block mr-[0.25em] last:mr-0">
+                    <span className={largeSize}>{first}</span>
+                    {rest && <span className={smallSize}>{rest}</span>}
+                    {trailing && <span className={largeSize}>{trailing}</span>}
+                </span>
+            );
+        }
+
+        const first = word.charAt(0).toUpperCase();
+        const rest = word.slice(1).toUpperCase();
+        return (
+            <span key={wordIdx} className="inline-block mr-[0.25em] last:mr-0">
+                <span className={largeSize}>{first}</span>
+                {rest && <span className={smallSize}>{rest}</span>}
+            </span>
+        );
+    });
+}
+
 export default function About() {
     const mainRef = useRef(null);
-    const logoRef = useRef(null);
-    const videoRef = useRef(null);
-    const gridRef = useRef(null);
-    const textRef = useRef(null);
-    const [gridCells, setGridCells] = useState([]);
+    const heroImageRef = useRef(null);
     const displayText1 = useScrambleText("We believe in sharing knowledge", { speed: 10 });
     const [activeTab, setActiveTab] = useState(parseInt(alumniData[0].title));
 
@@ -32,89 +73,28 @@ export default function About() {
     useGSAP(
         () => {
             const ctx = gsap.context(() => {
-                // Subtle rotation timeline for logo
-                const timeline = gsap.timeline({ repeat: -1 });
-                timeline.to(logoRef.current, {
-                    rotation: 360,
-                    duration: 20,
-                    ease: "none",
-                });
-
-                // Glow via drop-shadow filter
-                gsap.to(logoRef.current, {
-                    filter: "drop-shadow(0 0 8px rgba(57, 183, 242, 0.3))",
-                    duration: 2,
-                    yoyo: true,
-                    repeat: -1,
-                    ease: "power1.inOut",
-                });
-
-                // Pulsing scale
-                gsap.to(logoRef.current, {
-                    scale: 1.05,
-                    duration: 3,
-                    yoyo: true,
-                    repeat: -1,
-                    ease: "sine.inOut",
-                });
-
-                // Reveal grid cells
-                if (gridRef.current) {
-                    const cells = Array.from(gridRef.current.children);
-                    const shuffled = [...cells].sort(() => Math.random() - 0.5);
-                    gsap.to(shuffled, {
-                        backgroundColor: "transparent",
-                        duration: 0.3,
-                        stagger: { each: 0.008, from: "random" },
-                        ease: "power2.out",
+                if (heroImageRef.current) {
+                    gsap.from(heroImageRef.current, {
+                        opacity: 0,
+                        y: 30,
+                        scale: 0.98,
+                        duration: 1.2,
+                        ease: "power3.out",
                     });
                 }
             }, mainRef);
 
             return () => ctx.revert();
         },
-        { scope: mainRef, dependencies: [gridCells] }
+        { scope: mainRef }
     );
-
-    useEffect(() => {
-
-        const calculateGrid = () => {
-            if (!gridRef.current) return;
-            const w = gridRef.current.offsetWidth;
-            const h = gridRef.current.offsetHeight;
-            const columns = 10;
-            const cellSize = w / columns;
-            const rows = Math.ceil(h / cellSize);
-            const cells = Array.from({ length: rows * columns }, (_, i) => i);
-            setGridCells(cells);
-        };
-
-        calculateGrid();
-        window.addEventListener("resize", calculateGrid);
-
-        let isScrolling = false;
-        const handleWheel = (e) => {
-            if (!isScrolling) {
-                isScrolling = true;
-                requestAnimationFrame(() => {
-                    window.scrollBy({ top: e.deltaY * 0.5, behavior: "auto" });
-                    isScrolling = false;
-                });
-            }
-        };
-
-        window.addEventListener("wheel", handleWheel, { passive: true });
-
-        return () => {
-            window.removeEventListener("wheel", handleWheel);
-            window.removeEventListener("resize", calculateGrid);
-        };
-    }, []);
 
     const handleCardMouseMove = (e) => {
         const card = e.currentTarget;
         const imageContainer = card.querySelector(".tilt-container");
         const overlay = card.querySelector(".shine-overlay");
+
+        if (!imageContainer) return;
 
         const rect = imageContainer.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -137,8 +117,8 @@ export default function About() {
         gsap.to(imageContainer, {
             rotationX: rotateX,
             rotationY: rotateY,
-            scale: 1.01, // Subtle scale up for feel
-            transformPerspective: 1000, // Essential for 3D effect
+            scale: 1.01,
+            transformPerspective: 1000,
             transformStyle: "preserve-3d",
             duration: 0.4,
             ease: "power2.out",
@@ -149,134 +129,254 @@ export default function About() {
         const card = e.currentTarget;
         const imageContainer = card.querySelector(".tilt-container");
 
-        // Reset Tilt
+        if (!imageContainer) return;
+
         gsap.to(imageContainer, {
             rotationX: 0,
             rotationY: 0,
             scale: 1,
             duration: 0.6,
-            ease: "elastic.out(1, 0.5)", // Nice spring back effect
-            clearProps: "transform", // Clean up to avoid stacking contexts if not needed
+            ease: "elastic.out(1, 0.5)",
+            clearProps: "transform",
         });
     };
 
     return (
         <>
-            <main ref={mainRef} className="relative">
-                <div className="h-screen relative">
-                    <video
-                        ref={videoRef}
-                        className="video-bg object-cover w-full h-full absolute top-0 left-0 -z-10"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                    >
-                        <source src="/bg_video2.mp4" type="video/mp4" />
-                    </video>
+            <main ref={mainRef} className="relative bg-[#0b0b0e] text-[#e9ede5] min-h-screen">
+                {/* ── 1. Hero & Team Group Photo Showcase ── */}
+                <div className="relative pt-28 pb-16 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 overflow-hidden">
+                    {/* Dark gradient ambient backdrop */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-b from-[#39b7f2]/10 via-[#39b7f2]/5 to-transparent blur-3xl pointer-events-none -z-10" />
 
-                    <div className="z-20 h-screen absolute top-0 left-0 w-full p-16 flex items-center justify-center bg-black/10 flex-col">
-                        <div className="absolute left-9 w-px top-0 h-full bg-[rgb(66,68,83)]"></div>
-                        <div className="absolute right-9 w-px top-0 h-full bg-[rgb(66,68,83)]"></div>
-                        <div className="absolute bottom-9 left-0 right-0 h-px bg-[rgb(66,68,83)]"></div>
-                        <div className="absolute bottom-0 left-0 right-0 h-px bg-[rgb(66,68,83)]"></div>
-                        <div className="absolute bottom-9 left-9 h-[1.5px] w-3 bg-[#b7b9c5] -translate-x-1/2"></div>
-                        <div className="absolute bottom-9 left-9 h-3 w-[1.5px] bg-[#b7b9c5] -translate-x-1/2 translate-y-1/2"></div>
-                        <div className="absolute bottom-9 right-9 h-[1.5px] w-3 bg-[#b7b9c5] translate-x-1/2"></div>
-                        <div className="absolute bottom-9 right-9 h-3 w-[1.5px] bg-[#b7b9c5] translate-x-1/2 translate-y-1/2"></div>
-
-                        <div className="uppercase text-[#838698] mb-6 text-sm font-family-grotesk-mono">
-                            Our mission
+                    <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
+                        {/* Tag / Micro Badge */}
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#161926] border border-[#39b7f2]/30 text-[#39b7f2] text-xs font-family-grotesk-mono uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(57,183,242,0.15)]">
+                            <span className="w-2 h-2 rounded-full bg-[#39b7f2] animate-pulse"></span>
+                            Technology Robotix Society • IIT Kharagpur
                         </div>
+
+                        {/* Hero Heading */}
+                        <h1 className="font-family-grotesk font-extrabold tracking-tight leading-none text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] mb-4">
+                            {renderSmallCaps("About Us", "text-5xl sm:text-6xl md:text-7xl lg:text-8xl", "text-3xl sm:text-4xl md:text-5xl lg:text-6xl")}
+                        </h1>
+
+                        {/* Mission Quote with Scramble Text */}
+                        <div className="max-w-3xl mx-auto mb-10">
+                            <div className="uppercase text-[#39b7f2] text-xs sm:text-sm font-family-grotesk-mono tracking-widest font-semibold mb-2">
+                                Our Mission
+                            </div>
+                            <div className="font-family-grotesk text-2xl sm:text-3xl md:text-4xl text-[#e9ede5] font-semibold leading-snug">
+                                “{displayText1}”
+                            </div>
+                        </div>
+
+                        {/* ── Featured Group Photo Showcase (us.jpeg) ── */}
                         <div
-                            ref={textRef}
-                            className="mb-6 font-family-grotesk text-4xl text-[#e9ede5] leading-14"
+                            ref={heroImageRef}
+                            className="group relative w-full aspect-[16/9] sm:aspect-[16/9] md:aspect-[16/9] lg:aspect-[1.8/1] rounded-2xl md:rounded-3xl overflow-hidden border border-[#2d3145] hover:border-[#39b7f2]/60 transition-all duration-500 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(57,183,242,0.15)] bg-[#161926]"
+                            style={hardwareAccel}
                         >
-                            {displayText1}
-                        </div>
-                    </div>
-
-                    <div
-                        ref={gridRef}
-                        className="z-10 h-screen absolute top-0 left-0 w-full overflow-hidden grid grid-cols-10 bg-transparent"
-                        style={{
-                            gridAutoRows: `${
-                                gridRef.current
-                                    ? gridRef.current.offsetWidth / 10
-                                    : 0
-                            }px`,
-                        }}
-                    >
-                        {gridCells.map((cell) => (
-                            <div
-                                key={cell}
-                                className="bg-transparent aspect-square"
+                            <Image
+                                src="/team/us.jpeg"
+                                alt="Technology Robotix Society Team"
+                                fill
+                                priority
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 95vw, 1300px"
+                                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                             />
-                        ))}
-                    </div>
-                </div>
 
-                <div className="min-h-screen w-full bg-[#0b0b0e] relative p-16 pt-28 border-b border-[rgb(66,68,83)]">
-                    <div className="absolute left-9 w-px top-0 h-full bg-[rgb(66,68,83)]"></div>
-                    <div className="absolute right-9 w-px top-0 h-full bg-[rgb(66,68,83)]"></div>
+                            {/* Top subtle glow line */}
+                            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#39b7f2]/60 to-transparent" />
 
-                    <div className="flex justify-between items-start text-[#e9ede5]">
-                        <div className="w-[30vw] font-family-grotesk text-4xl sticky top-32">
-                            Who are we?
-                        </div>
-                        <div
-                            className="w-[50vw] font-family-apk text-3xl leading-11"
-                            style={hardwareAccel}
-                        >
-                            Technology Robotix Society (TRS) is an official
-                            society under the Technology Students' Gymkhana, IIT
-                            Kharagpur, dedicated to the advancement of robotics
-                            and Artificial Intelligence in the campus and
-                            beyond. We are a society that boasts of a dedicated
-                            team which works extensively in these disciplines,
-                            channeling scores of young talented minds into this
-                            exciting field. With its reach expanding steadily
-                            each year, TRS has cemented its position as one of
-                            the nerve centres of amateur robotics in India,
-                            paving the way for world-class Robotics R&D.
-                        </div>
-                    </div>
+                            {/* Subtle dark gradient overlay at bottom for readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0e]/85 via-transparent to-black/20 pointer-events-none" />
 
-                    <div className="flex justify-between items-start text-[#e9ede5] mt-16">
-                        <div className="w-[30vw] font-family-grotesk text-4xl sticky top-32">
-                            What do we do?
-                        </div>
-                        <div
-                            className="w-[50vw] font-family-apk text-3xl leading-11"
-                            style={hardwareAccel}
-                        >
-                            We are involved in various initiatives throughout
-                            the year, spanning the fields of software, manually
-                            controlled machines, and autonomous robots. Our
-                            primary agenda is to spread the culture of robotics
-                            through intra and inter-collegiate workshops,
-                            hackathons, and events like KRAIG. We facilitate
-                            year-long theory and practical sessions where first
-                            years learn to build "one-hour-robots," leading up
-                            to our flagship Winterschool—hands-on sessions
-                            christened as "The most productive weeks in a
-                            fresher's life." Our senior members continue to take
-                            robotics to avenues hitherto thought unreachable,
-                            inspiring the community to better the best every
-                            year.
+                            {/* Floating Team Badge at Bottom Left */}
+                            <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8 z-10 flex flex-wrap items-center gap-3">
+                                <div className="px-4 py-2 rounded-full bg-[#0b0b0e]/85 border border-[#39b7f2]/40 backdrop-blur-md text-white text-xs sm:text-sm font-family-grotesk flex items-center gap-2.5 shadow-xl">
+                                    <Users className="w-4 h-4 text-[#39b7f2]" />
+                                    <span className="font-semibold tracking-wide">The TRS Family</span>
+                                </div>
+                                <div className="hidden sm:inline-flex px-3.5 py-2 rounded-full bg-[#161926]/80 border border-[#2c3044] backdrop-blur-md text-[#b7b9c5] text-xs font-family-grotesk-mono">
+                                    IIT Kharagpur
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="w-full bg-[#0b0b0e] relative p-16 pt-24">
-                    <div className="absolute left-9 w-px top-0 h-full bg-[rgb(66,68,83)]"></div>
-                    <div className="absolute right-9 w-px top-0 h-full bg-[rgb(66,68,83)]"></div>
-                    <div className="">
-                        <h3 className="font-family-grotesk-mono uppercase font-bold text-base text-[#838698] mb-6">
+                {/* ── 2. "Who are we?" & "What do we do?" Boxed Section ── */}
+                <div className="w-full relative px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 py-16">
+                    <div className="max-w-7xl mx-auto space-y-12">
+                        {/* Section Header */}
+                        <div className="text-center max-w-2xl mx-auto">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#39b7f2]/10 border border-[#39b7f2]/30 text-[#39b7f2] text-xs font-family-grotesk-mono uppercase tracking-widest mb-3">
+                                Discover TRS
+                            </div>
+                            <h2 className="font-family-grotesk text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+                                {renderSmallCaps("Our Story & Mission", "text-3xl sm:text-4xl md:text-5xl", "text-2xl sm:text-3xl md:text-4xl")}
+                            </h2>
+                        </div>
+
+                        {/* Two Main Cards: Who are we? and What do we do? */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            {/* Card 1: Who are we? */}
+                            <div className="group relative border border-[#2d3145] hover:border-[#39b7f2]/60 bg-gradient-to-b from-[#161926]/90 to-[#0e1017]/95 rounded-2xl p-8 sm:p-10 flex flex-col justify-between backdrop-blur-xl transition-all duration-500 shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_rgba(57,183,242,0.15)] overflow-hidden">
+                                <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#39b7f2]/40 group-hover:via-[#39b7f2] to-transparent transition-all duration-500" />
+
+                                <div>
+                                    <div className="flex items-center justify-between mb-6">
+                                        <div className="w-12 h-12 rounded-xl bg-[#39b7f2]/10 border border-[#39b7f2]/30 flex items-center justify-center text-[#39b7f2] group-hover:scale-110 transition-transform duration-300">
+                                            <Compass className="w-6 h-6" />
+                                        </div>
+                                        <span className="px-3 py-1 rounded-full bg-[#161926] border border-[#2c3044] text-[#39b7f2] text-xs font-family-grotesk-mono uppercase tracking-wider">
+                                            Foundation &amp; Identity
+                                        </span>
+                                    </div>
+
+                                    <h3 className="font-family-grotesk text-3xl sm:text-4xl text-white font-bold mb-4 tracking-tight group-hover:text-[#39b7f2] transition-colors">
+                                        Who are we?
+                                    </h3>
+
+                                    <div className="pl-4 border-l-2 border-[#39b7f2] my-4">
+                                        <p className="font-family-grotesk text-lg sm:text-xl text-[#e9ede5] font-semibold leading-snug">
+                                            Official society under the Technology Students&apos; Gymkhana, dedicated to the advancement of robotics and AI.
+                                        </p>
+                                    </div>
+
+                                    <p className="font-family-apk text-base sm:text-lg text-[#b7b9c5] leading-relaxed mt-4">
+                                        Technology Robotix Society (TRS) is an official
+                                        society under the Technology Students&apos; Gymkhana, IIT
+                                        Kharagpur, dedicated to the advancement of robotics
+                                        and Artificial Intelligence in the campus and
+                                        beyond. We are a society that boasts of a dedicated
+                                        team which works extensively in these disciplines,
+                                        channeling scores of young talented minds into this
+                                        exciting field. With its reach expanding steadily
+                                        each year, TRS has cemented its position as one of
+                                        the nerve centres of amateur robotics in India,
+                                        paving the way for world-class Robotics R&amp;D.
+                                    </p>
+                                </div>
+
+                                <div className="flex flex-wrap gap-2.5 mt-8 pt-6 border-t border-[#242733]">
+                                    <span className="px-3 py-1.5 rounded-md bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs font-family-grotesk-mono">
+                                        🏛️ TSG, IIT Kharagpur
+                                    </span>
+                                    <span className="px-3 py-1.5 rounded-md bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs font-family-grotesk-mono">
+                                        🤖 Robotics &amp; AI Hub
+                                    </span>
+                                    <span className="px-3 py-1.5 rounded-md bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs font-family-grotesk-mono">
+                                        🔬 World-Class R&amp;D
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Card 2: What do we do? */}
+                            <div className="group relative border border-[#2d3145] hover:border-[#39b7f2]/60 bg-gradient-to-b from-[#161926]/90 to-[#0e1017]/95 rounded-2xl p-8 sm:p-10 flex flex-col justify-between backdrop-blur-xl transition-all duration-500 shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_rgba(57,183,242,0.15)] overflow-hidden">
+                                <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#39b7f2]/40 group-hover:via-[#39b7f2] to-transparent transition-all duration-500" />
+
+                                <div>
+                                    <div className="flex items-center justify-between mb-6">
+                                        <div className="w-12 h-12 rounded-xl bg-[#39b7f2]/10 border border-[#39b7f2]/30 flex items-center justify-center text-[#39b7f2] group-hover:scale-110 transition-transform duration-300">
+                                            <Rocket className="w-6 h-6" />
+                                        </div>
+                                        <span className="px-3 py-1 rounded-full bg-[#161926] border border-[#2c3044] text-[#39b7f2] text-xs font-family-grotesk-mono uppercase tracking-wider">
+                                            Initiatives &amp; Impact
+                                        </span>
+                                    </div>
+
+                                    <h3 className="font-family-grotesk text-3xl sm:text-4xl text-white font-bold mb-4 tracking-tight group-hover:text-[#39b7f2] transition-colors">
+                                        What do we do?
+                                    </h3>
+
+                                    <div className="pl-4 border-l-2 border-[#39b7f2] my-4">
+                                        <p className="font-family-grotesk text-lg sm:text-xl text-[#e9ede5] font-semibold leading-snug">
+                                            Spreading the culture of robotics through hands-on workshops, hackathons, and flagship sessions.
+                                        </p>
+                                    </div>
+
+                                    <p className="font-family-apk text-base sm:text-lg text-[#b7b9c5] leading-relaxed mt-4">
+                                        We are involved in various initiatives throughout
+                                        the year, spanning the fields of software, manually
+                                        controlled machines, and autonomous robots. Our
+                                        primary agenda is to spread the culture of robotics
+                                        through intra and inter-collegiate workshops,
+                                        hackathons, and events like KRAIG. We facilitate
+                                        year-long theory and practical sessions where first
+                                        years learn to build &ldquo;one-hour-robots,&rdquo; leading
+                                        up to our flagship Winterschool—hands-on sessions
+                                        christened as &ldquo;The most productive weeks in a
+                                        fresher&apos;s life.&rdquo; Our senior members continue
+                                        to take robotics to avenues hitherto thought
+                                        unreachable, inspiring the community to better the
+                                        best every year.
+                                    </p>
+                                </div>
+
+                                <div className="flex flex-wrap gap-2.5 mt-8 pt-6 border-t border-[#242733]">
+                                    <span className="px-3 py-1.5 rounded-md bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs font-family-grotesk-mono">
+                                        🛠️ One-Hour Robots
+                                    </span>
+                                    <span className="px-3 py-1.5 rounded-md bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs font-family-grotesk-mono">
+                                        ❄️ Flagship Winterschool
+                                    </span>
+                                    <span className="px-3 py-1.5 rounded-md bg-[#161926] border border-[#2c3044] text-[#a0a6b8] text-xs font-family-grotesk-mono">
+                                        🏆 KRAIG &amp; Hackathons
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 3 Pillars Summary Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                            <div className="relative border border-[#242733] hover:border-[#39b7f2]/50 bg-[#12141e]/80 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <span className="p-2.5 rounded-lg bg-[#39b7f2]/10 text-[#39b7f2] border border-[#39b7f2]/20">
+                                        <BookOpen className="w-5 h-5" />
+                                    </span>
+                                    <h4 className="font-family-grotesk text-lg text-white font-semibold">Hands-on Learning</h4>
+                                </div>
+                                <p className="font-family-apk text-sm text-[#a0a6b8] leading-relaxed">
+                                    Comprehensive theory and practical workshops teaching first-years to build functional robots from scratch.
+                                </p>
+                            </div>
+
+                            <div className="relative border border-[#242733] hover:border-[#39b7f2]/50 bg-[#12141e]/80 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <span className="p-2.5 rounded-lg bg-[#39b7f2]/10 text-[#39b7f2] border border-[#39b7f2]/20">
+                                        <Sparkles className="w-5 h-5" />
+                                    </span>
+                                    <h4 className="font-family-grotesk text-lg text-white font-semibold">Flagship Winterschool</h4>
+                                </div>
+                                <p className="font-family-apk text-sm text-[#a0a6b8] leading-relaxed">
+                                    Intensive winter sessions empowering freshers with autonomy, vision, and advanced embedded systems.
+                                </p>
+                            </div>
+
+                            <div className="relative border border-[#242733] hover:border-[#39b7f2]/50 bg-[#12141e]/80 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <span className="p-2.5 rounded-lg bg-[#39b7f2]/10 text-[#39b7f2] border border-[#39b7f2]/20">
+                                        <Bot className="w-5 h-5" />
+                                    </span>
+                                    <h4 className="font-family-grotesk text-lg text-white font-semibold">Pioneering R&amp;D</h4>
+                                </div>
+                                <p className="font-family-apk text-sm text-[#a0a6b8] leading-relaxed">
+                                    Innovating across autonomous machines, multi-agent systems, and cutting-edge robotics competitions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ── 3. Meet the Team Section (Preserved) ── */}
+                <div className="w-full relative px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 py-20 border-t border-[#1e2230]">
+                    <div className="max-w-7xl mx-auto">
+                        <h3 className="font-family-grotesk-mono uppercase font-bold text-base text-[#39b7f2] mb-3 tracking-wider">
                             Meet the team
                         </h3>
-                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl">
+                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl sm:text-5xl font-bold">
                             Coordinators
                         </h2>
                         <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 justify-items-center">
@@ -290,7 +390,7 @@ export default function About() {
                                 />
                             ))}
                         </div>
-                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl mt-9">
+                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl sm:text-5xl font-bold mt-16">
                             Heads
                         </h2>
                         <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 justify-items-center">
@@ -305,7 +405,7 @@ export default function About() {
                                 />
                             ))}
                         </div>
-                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl mt-9">
+                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl sm:text-5xl font-bold mt-16">
                             Sub Heads
                         </h2>
                         <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 justify-items-center">
@@ -319,19 +419,19 @@ export default function About() {
                                 />
                             ))}
                         </div>
-                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl mt-9">
+                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl sm:text-5xl font-bold mt-16">
                             Alumni
                         </h2>
-                        <ul className="flex mx-auto w-fit my-5">
+                        <ul className="flex mx-auto w-fit my-8 flex-wrap justify-center gap-1">
                             {alumniData.map((alumnus, index) => (
-                                    <li
-                                        key={index}
-                                        className={`cursor-pointer border-y-2 border-r-2 ${index == 0 ? "border-l-2 rounded-l-lg" : ""} ${index == alumniData.length - 1 ? "rounded-r-lg" : ""} border-[#838698] p-2 text-[#838698] hover:text-[#f5f6f6] transition-colors duration-300 ease-in-out text-lg`}
-                                        style={alumnus.title == activeTab ? {color: "#f5f6f6", borderColor: "#f5f6f6"} : alumnus.title == activeTab+1 ? {borderRightColor: "#f5f6f6"} : {}}
-                                        onClick={()=>{setActiveTab(parseInt(alumnus.title))}}
-                                    >
-                                        {alumnus.title}
-                                    </li>
+                                <li
+                                    key={index}
+                                    className={`cursor-pointer border-2 ${index == 0 ? "rounded-l-lg" : ""} ${index == alumniData.length - 1 ? "rounded-r-lg" : ""} border-[#2d3145] px-4 py-2 text-[#838698] hover:text-[#f5f6f6] hover:border-[#39b7f2]/50 transition-colors duration-300 ease-in-out text-base sm:text-lg font-family-grotesk-mono`}
+                                    style={alumnus.title == activeTab ? { color: "#39b7f2", borderColor: "#39b7f2", backgroundColor: "rgba(57, 183, 242, 0.1)" } : {}}
+                                    onClick={() => { setActiveTab(parseInt(alumnus.title)); }}
+                                >
+                                    {alumnus.title}
+                                </li>
                             ))}
                         </ul>
                         <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 justify-items-center">
@@ -351,3 +451,4 @@ export default function About() {
         </>
     );
 }
+
