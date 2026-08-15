@@ -137,13 +137,6 @@ export default function Footer() {
 
                     {/* 2. Column: Initiatives (3 cols) */}
                     <div className="lg:col-span-3">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#39b7f2]/10 border border-[#39b7f2]/30 mb-5">
-                            <span className="w-2 h-2 rounded-full bg-[#39b7f2] animate-pulse" />
-                            <span className="font-family-grotesk-mono text-[#39b7f2] text-xs uppercase tracking-widest font-semibold">
-                                Initiatives
-                            </span>
-                        </div>
-
                         <div className="flex flex-col gap-2.5">
                             {initiatives.map((item) => {
                                 const Icon = item.icon;
@@ -170,13 +163,6 @@ export default function Footer() {
 
                     {/* 3. Column: Society (2 cols) */}
                     <div className="lg:col-span-2">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#39b7f2]/10 border border-[#39b7f2]/30 mb-5">
-                            <span className="w-2 h-2 rounded-full bg-[#39b7f2] animate-pulse" />
-                            <span className="font-family-grotesk-mono text-[#39b7f2] text-xs uppercase tracking-widest font-semibold">
-                                Society
-                            </span>
-                        </div>
-
                         <div className="flex flex-col gap-2.5">
                             {society.map((item) => {
                                 const Icon = item.icon;
@@ -204,13 +190,6 @@ export default function Footer() {
                     {/* 4. Column: Campus & Lab (3 cols) */}
                     <div className="lg:col-span-3 flex flex-col justify-between">
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#39b7f2]/10 border border-[#39b7f2]/30 mb-5">
-                                <span className="w-2 h-2 rounded-full bg-[#39b7f2] animate-pulse" />
-                                <span className="font-family-grotesk-mono text-[#39b7f2] text-xs uppercase tracking-widest font-semibold">
-                                    Campus &amp; Lab
-                                </span>
-                            </div>
-                            
                             <div className="space-y-3">
                                 {/* Location Card */}
                                 <div className="p-3.5 rounded-xl bg-[#121420]/80 border border-[#23273a] flex items-start gap-3">
