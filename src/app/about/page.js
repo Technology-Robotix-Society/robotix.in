@@ -370,80 +370,134 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* ── 3. Meet the Team Section (Preserved) ── */}
+                {/* ── 3. Meet the Team Section ── */}
                 <div className="w-full relative px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 py-20 border-t border-[#1e2230]">
                     <div className="max-w-7xl mx-auto">
-                        <h3 className="font-family-grotesk-mono uppercase font-bold text-base text-[#39b7f2] mb-3 tracking-wider">
-                            Meet the team
-                        </h3>
-                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl sm:text-5xl font-bold">
-                            Coordinators
-                        </h2>
-                        <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 justify-items-center">
-                            {teamData[0].team.map((member, index) => (
-                                <TeamMemberCard
-                                    key={index}
-                                    member={member}
-                                    imagePath={`/team/coordinators/${member.thumbnailUrl}`}
-                                    onMouseMove={handleCardMouseMove}
-                                    onMouseLeave={handleCardMouseLeave}
-                                />
-                            ))}
+                        {/* Section Header */}
+                        <div className="text-center max-w-2xl mx-auto mb-16">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#39b7f2]/10 border border-[#39b7f2]/30 text-[#39b7f2] text-xs font-family-grotesk-mono uppercase tracking-widest mb-3">
+                                People Behind TRS
+                            </div>
+                            <h2 className="font-family-grotesk text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+                                {renderSmallCaps("Meet The Team", "text-3xl sm:text-4xl md:text-5xl", "text-2xl sm:text-3xl md:text-4xl")}
+                            </h2>
+                            <p className="font-family-apk text-sm sm:text-base text-[#9ba1b4] mt-3">
+                                The passionate roboticists, engineers, and innovators steering the society forward.
+                            </p>
                         </div>
-                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl sm:text-5xl font-bold mt-16">
-                            Heads
-                        </h2>
-                        <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 justify-items-center">
-                            {teamData[1].team.map((member, index) => (
-                                <TeamMemberCard
-                                    key={index}
-                                    member={member}
-                                    imagePath={`/team/heads/${member.thumbnailUrl}`}
-                                    onMouseMove={handleCardMouseMove}
-                                    onMouseLeave={handleCardMouseLeave}
-                                    showTag={true}
-                                />
-                            ))}
+
+                        {/* Coordinators */}
+                        <div className="mb-16">
+                            <div className="flex items-center gap-3 mb-8 border-b border-[#1e2336] pb-4">
+                                <h3 className="font-family-grotesk text-[#f0f3f8] text-2xl sm:text-3xl font-bold tracking-tight">
+                                    Coordinators
+                                </h3>
+                                <span className="px-2.5 py-0.5 rounded-full bg-[#161926] border border-[#272c40] text-xs font-family-grotesk-mono text-[#39b7f2] font-semibold">
+                                    {teamData[0]?.team?.length || 0}
+                                </span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-7 justify-items-center">
+                                {teamData[0].team.map((member, index) => (
+                                    <TeamMemberCard
+                                        key={index}
+                                        member={member}
+                                        imagePath={`/team/coordinators/${member.thumbnailUrl}`}
+                                        onMouseMove={handleCardMouseMove}
+                                        onMouseLeave={handleCardMouseLeave}
+                                    />
+                                ))}
+                            </div>
                         </div>
-                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl sm:text-5xl font-bold mt-16">
-                            Sub Heads
-                        </h2>
-                        <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 justify-items-center">
-                            {teamData[2].team.map((member, index) => (
-                                <TeamMemberCard
-                                    key={index}
-                                    member={member}
-                                    imagePath={`/team/subheads/${member.thumbnailUrl}`}
-                                    onMouseMove={handleCardMouseMove}
-                                    onMouseLeave={handleCardMouseLeave}
-                                />
-                            ))}
+
+                        {/* Heads */}
+                        <div className="mb-16">
+                            <div className="flex items-center gap-3 mb-8 border-b border-[#1e2336] pb-4">
+                                <h3 className="font-family-grotesk text-[#f0f3f8] text-2xl sm:text-3xl font-bold tracking-tight">
+                                    Heads
+                                </h3>
+                                <span className="px-2.5 py-0.5 rounded-full bg-[#161926] border border-[#272c40] text-xs font-family-grotesk-mono text-[#39b7f2] font-semibold">
+                                    {teamData[1]?.team?.length || 0}
+                                </span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-7 justify-items-center">
+                                {teamData[1].team.map((member, index) => (
+                                    <TeamMemberCard
+                                        key={index}
+                                        member={member}
+                                        imagePath={`/team/heads/${member.thumbnailUrl}`}
+                                        onMouseMove={handleCardMouseMove}
+                                        onMouseLeave={handleCardMouseLeave}
+                                        showTag={true}
+                                    />
+                                ))}
+                            </div>
                         </div>
-                        <h2 className="font-family-grotesk text-[#e9ede5] text-4xl sm:text-5xl font-bold mt-16">
-                            Alumni
-                        </h2>
-                        <ul className="flex mx-auto w-fit my-8 flex-wrap justify-center gap-1">
-                            {alumniData.map((alumnus, index) => (
-                                <li
-                                    key={index}
-                                    className={`cursor-pointer border-2 ${index == 0 ? "rounded-l-lg" : ""} ${index == alumniData.length - 1 ? "rounded-r-lg" : ""} border-[#2d3145] px-4 py-2 text-[#838698] hover:text-[#f5f6f6] hover:border-[#39b7f2]/50 transition-colors duration-300 ease-in-out text-base sm:text-lg font-family-grotesk-mono`}
-                                    style={alumnus.title == activeTab ? { color: "#39b7f2", borderColor: "#39b7f2", backgroundColor: "rgba(57, 183, 242, 0.1)" } : {}}
-                                    onClick={() => { setActiveTab(parseInt(alumnus.title)); }}
-                                >
-                                    {alumnus.title}
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="mt-12 grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 justify-items-center">
-                            {(alumniData.find(alumnus => alumnus.title == activeTab)?.team || []).map((member, index) => (
-                                <TeamMemberCard
-                                    key={index}
-                                    member={member}
-                                    imagePath={`/alumni/${activeTab}/${member.thumbnailUrl}`}
-                                    onMouseMove={handleCardMouseMove}
-                                    onMouseLeave={handleCardMouseLeave}
-                                />
-                            ))}
+
+                        {/* Sub Heads */}
+                        <div className="mb-16">
+                            <div className="flex items-center gap-3 mb-8 border-b border-[#1e2336] pb-4">
+                                <h3 className="font-family-grotesk text-[#f0f3f8] text-2xl sm:text-3xl font-bold tracking-tight">
+                                    Sub Heads
+                                </h3>
+                                <span className="px-2.5 py-0.5 rounded-full bg-[#161926] border border-[#272c40] text-xs font-family-grotesk-mono text-[#39b7f2] font-semibold">
+                                    {teamData[2]?.team?.length || 0}
+                                </span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-7 justify-items-center">
+                                {teamData[2].team.map((member, index) => (
+                                    <TeamMemberCard
+                                        key={index}
+                                        member={member}
+                                        imagePath={`/team/subheads/${member.thumbnailUrl}`}
+                                        onMouseMove={handleCardMouseMove}
+                                        onMouseLeave={handleCardMouseLeave}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Alumni */}
+                        <div>
+                            <div className="flex items-center gap-3 mb-8 border-b border-[#1e2336] pb-4">
+                                <h3 className="font-family-grotesk text-[#f0f3f8] text-2xl sm:text-3xl font-bold tracking-tight">
+                                    Alumni
+                                </h3>
+                            </div>
+
+                            {/* Segmented Year Tabs */}
+                            <div className="flex justify-center mb-10 overflow-x-auto py-2">
+                                <div className="inline-flex items-center gap-1.5 p-1.5 rounded-xl bg-[#121420]/90 border border-[#22273a] backdrop-blur-md max-w-full overflow-x-auto scrollbar-none">
+                                    {alumniData.map((alumnus, index) => {
+                                        const isActive = alumnus.title == activeTab;
+                                        return (
+                                            <button
+                                                key={index}
+                                                type="button"
+                                                onClick={() => setActiveTab(parseInt(alumnus.title))}
+                                                className={`px-4 py-2 rounded-lg font-family-grotesk-mono text-sm sm:text-base font-semibold transition-all duration-200 cursor-pointer shrink-0 ${
+                                                    isActive
+                                                        ? "bg-[#39b7f2] text-[#0b0c13] shadow-[0_0_15px_rgba(57,183,242,0.4)]"
+                                                        : "text-[#838698] hover:text-[#f5f6f6] hover:bg-[#1b1f30]"
+                                                }`}
+                                            >
+                                                {alumnus.title}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-7 justify-items-center">
+                                {(alumniData.find(alumnus => alumnus.title == activeTab)?.team || []).map((member, index) => (
+                                    <TeamMemberCard
+                                        key={index}
+                                        member={member}
+                                        imagePath={`/alumni/${activeTab}/${member.thumbnailUrl}`}
+                                        onMouseMove={handleCardMouseMove}
+                                        onMouseLeave={handleCardMouseLeave}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
