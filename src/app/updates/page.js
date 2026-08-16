@@ -1,10 +1,7 @@
-// app/updates/page.js
-// Outer: async Server Component — fetches data from Sanity
-// Inner: Client Component — handles GSAP animations
-
 import UpdatesClient from "./UpdatesClient";
 import { client } from "@/sanity/client";
 import { createImageUrlBuilder } from "@sanity/image-url";
+import { curatedUpdates } from "@/data/updates";
 
 const builder = createImageUrlBuilder(client);
 function urlFor(source) {
@@ -23,17 +20,34 @@ const UPDATES_QUERY = `*[_type == "update" && defined(publishedAt)]
 const options = { next: { revalidate: 60 } };
 
 export const metadata = {
-    title: "Updates | Technology Robotix Society",
-    description: "Stay up to date with research breakthroughs, event announcements, and milestones from TRS at IIT Kharagpur.",
+    title: "Updates & Comms | Technology Robotix Society",
+    description: "Live dispatches, research breakthroughs, upcoming competitions, event timelines, and milestones from Technology Robotix Society at IIT Kharagpur.",
 };
 
 export default async function UpdatesPage() {
-    const raw = await client.fetch(UPDATES_QUERY, {}, options);
+    let sanityUpdates = [];
+    try {
+        const raw = await client.fetch(UPDATES_QUERY, {}, options);
+        sanityUpdates = (raw || []).map((u) => ({
+            ...u,
+            imageUrl: u.image ? urlFor(u.image).width(900).url() : null,
+            category: "Selections",
+            readTime: "2 min read",
+            author: "Technology Robotix Society",
+            tags: ["TRSSelections", "Induction", "IITKGP", "Robotics"],
+            isLiveSanity: true,
+        }));
+    } catch {
+        sanityUpdates = [];
+    }
 
-    const updates = (raw || []).map((u) => ({
-        ...u,
-        imageUrl: u.image ? urlFor(u.image).width(900).url() : null,
-    }));
+    // Merge live updates with curated dataset (Sanity updates first)
+    const existingIds = new Set(sanityUpdates.map((u) => u._id));
+    const mergedUpdates = [
+        ...sanityUpdates,
+        ...curatedUpdates.filter((u) => !existingIds.has(u._id)),
+    ];
 
-    return <UpdatesClient updates={updates} />;
+    return <UpdatesClient initialUpdates={mergedUpdates} />;
 }
+
