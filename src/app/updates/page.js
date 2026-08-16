@@ -20,7 +20,7 @@ const UPDATES_QUERY = `*[_type == "update" && defined(publishedAt)]
 const options = { next: { revalidate: 60 } };
 
 export const metadata = {
-    title: "Updates & Comms | Technology Robotix Society",
+    title: "Technology Robotix Society",
     description: "Live dispatches, research breakthroughs, upcoming competitions, event timelines, and milestones from Technology Robotix Society at IIT Kharagpur.",
 };
 
@@ -41,11 +41,11 @@ export default async function UpdatesPage() {
         sanityUpdates = [];
     }
 
-    // Merge live updates with curated dataset (Sanity updates first)
-    const existingIds = new Set(sanityUpdates.map((u) => u._id));
+    // Merge live updates with curated dataset (Sanity updates first, avoiding duplicate titles)
+    const existingTitles = new Set(sanityUpdates.map((u) => (u.title || "").toLowerCase().trim()));
     const mergedUpdates = [
         ...sanityUpdates,
-        ...curatedUpdates.filter((u) => !existingIds.has(u._id)),
+        ...curatedUpdates.filter((u) => !existingTitles.has((u.title || "").toLowerCase().trim())),
     ];
 
     return <UpdatesClient initialUpdates={mergedUpdates} />;

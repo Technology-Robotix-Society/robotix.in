@@ -43,24 +43,10 @@ export function portableTextToPlainText(blocks = []) {
 }
 
 export function getCategoryBadgeStyles(category = "Announcements") {
-    switch (category) {
-        case "Competitions":
-            return {
-                bg: "bg-rose-500/10",
-                border: "border-rose-500/30",
-                text: "text-rose-400",
-                dot: "bg-rose-400",
-                shadow: "shadow-[0_0_12px_rgba(244,63,94,0.2)]"
-            };
-        case "Workshops & Talks":
-            return {
-                bg: "bg-sky-500/10",
-                border: "border-sky-500/30",
-                text: "text-[#39b7f2]",
-                dot: "bg-[#39b7f2]",
-                shadow: "shadow-[0_0_12px_rgba(57,183,242,0.2)]"
-            };
-        case "Research & Labs":
+    const cat = (category || "").toLowerCase();
+    switch (cat) {
+        case "bots":
+        case "research & labs":
             return {
                 bg: "bg-purple-500/10",
                 border: "border-purple-500/30",
@@ -68,7 +54,16 @@ export function getCategoryBadgeStyles(category = "Announcements") {
                 dot: "bg-purple-400",
                 shadow: "shadow-[0_0_12px_rgba(168,85,247,0.2)]"
             };
-        case "Selections":
+        case "workshops":
+        case "workshops & talks":
+            return {
+                bg: "bg-sky-500/10",
+                border: "border-sky-500/30",
+                text: "text-[#39b7f2]",
+                dot: "bg-[#39b7f2]",
+                shadow: "shadow-[0_0_12px_rgba(57,183,242,0.2)]"
+            };
+        case "selections":
             return {
                 bg: "bg-emerald-500/10",
                 border: "border-emerald-500/30",
@@ -76,6 +71,23 @@ export function getCategoryBadgeStyles(category = "Announcements") {
                 dot: "bg-emerald-400",
                 shadow: "shadow-[0_0_12px_rgba(52,211,153,0.2)]"
             };
+        case "blogs":
+            return {
+                bg: "bg-amber-500/10",
+                border: "border-amber-500/30",
+                text: "text-amber-400",
+                dot: "bg-amber-400",
+                shadow: "shadow-[0_0_12px_rgba(245,158,11,0.2)]"
+            };
+        case "competitions":
+            return {
+                bg: "bg-rose-500/10",
+                border: "border-rose-500/30",
+                text: "text-rose-400",
+                dot: "bg-rose-400",
+                shadow: "shadow-[0_0_12px_rgba(244,63,94,0.2)]"
+            };
+        case "announcements":
         default:
             return {
                 bg: "bg-cyan-500/10",
@@ -242,15 +254,16 @@ export function UpdateModal({ update, onClose }) {
 
                 {/* ── Left: Image Column ── */}
                 {update.imageUrl && (
-                    <div className="relative w-full aspect-4/3 md:aspect-auto md:w-1/2 md:h-full shrink-0 overflow-hidden bg-[#0e1017]">
-                        <Image
-                            src={update.imageUrl}
-                            alt={update.title}
-                            fill
-                            sizes="(min-width: 768px) 50vw, 100vw"
-                            className="object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#12141c] via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-[#12141c]/60" />
+                    <div className="relative w-full aspect-4/3 md:aspect-auto md:w-1/2 md:h-full shrink-0 overflow-hidden bg-[#07080e] p-3 md:p-6 flex items-center justify-center">
+                        <div className="relative w-full h-full min-h-[220px] flex items-center justify-center">
+                            <Image
+                                src={update.imageUrl}
+                                alt={update.title}
+                                fill
+                                sizes="(min-width: 768px) 50vw, 100vw"
+                                className="object-contain"
+                            />
+                        </div>
                     </div>
                 )}
 
