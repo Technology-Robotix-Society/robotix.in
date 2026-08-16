@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
-import { ArrowRight, X, Calendar, Clock, Tag, ExternalLink, Sparkles, User, Share2 } from "lucide-react";
+import { ArrowRight, X, Calendar, Clock } from "lucide-react";
 import { PortableText } from "next-sanity";
 
 const hardwareAccel = {
@@ -16,11 +16,11 @@ const hardwareAccel = {
 };
 
 export function formatDate(dateString) {
-    if (!dateString) return "Recent Transmission";
+    if (!dateString) return "";
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
         year: "numeric",
-        month: "short",
+        month: "long",
         day: "numeric",
     });
 }
@@ -165,11 +165,30 @@ export const portableTextComponents = {
 };
 
 /* ─── Modal ─────────────────────────────────────────────────────── */
+/*
+ * Layout: Instagram-style on desktop — image fills the left column,
+ * scrollable text fills the right column. On mobile it stacks vertically.
+ */
 export function UpdateModal({ update, onClose }) {
     const backdropRef = useRef(null);
     const panelRef = useRef(null);
-    const [copied, setCopied] = useState(false);
 
+    const handleClose = useCallback(() => {
+        const bd = backdropRef.current;
+        const panel = panelRef.current;
+        if (!bd || !panel) { onClose(); return; }
+
+        gsap.to(panel, { opacity: 0, y: 24, scale: 0.97, duration: 0.25, ease: "power2.in" });
+        gsap.to(bd, {
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in",
+            delay: 0.05,
+            onComplete: onClose,
+        });
+    }, [onClose]);
+
+    // Entrance
     useEffect(() => {
         const bd = backdropRef.current;
         const panel = panelRef.current;
@@ -190,177 +209,82 @@ export function UpdateModal({ update, onClose }) {
         };
     }, []);
 
+    // Escape key
     useEffect(() => {
         const onKey = (e) => { if (e.key === "Escape") handleClose(); };
         window.addEventListener("keydown", onKey);
         return () => window.removeEventListener("keydown", onKey);
-    }, []);
-
-    const handleClose = useCallback(() => {
-        const bd = backdropRef.current;
-        const panel = panelRef.current;
-        if (!bd || !panel) { onClose(); return; }
-
-        gsap.to(panel, { opacity: 0, y: 24, scale: 0.97, duration: 0.25, ease: "power2.in" });
-        gsap.to(bd, {
-            opacity: 0,
-            duration: 0.3,
-            ease: "power2.in",
-            delay: 0.05,
-            onComplete: onClose,
-        });
-    }, [onClose]);
-
-    const handleShare = () => {
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(window.location.href);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-        }
-    };
-
-    const categoryStyles = getCategoryBadgeStyles(update.category);
+    }, [handleClose]);
 
     const content = (
         <div
             ref={backdropRef}
             className="fixed inset-0 z-100 flex items-center justify-center overflow-y-auto p-4 sm:p-6"
-            style={{ backgroundColor: "rgba(11,11,14,0.92)", backdropFilter: "blur(12px)" }}
+            style={{ backgroundColor: "rgba(11,11,14,0.88)", backdropFilter: "blur(8px)" }}
             onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
         >
+            {/*
+             * Panel — on md+ screens: side-by-side (image left, text right).
+             * Max width is wider (5xl) to give both columns breathing room.
+             */}
             <div
                 ref={panelRef}
-                className="relative w-full max-w-5xl flex flex-col md:flex-row border border-[#373a4d] bg-[#12141c] rounded-xl overflow-hidden md:max-h-[85vh] shadow-[0_25px_60px_rgba(0,0,0,0.8)]"
+                className="relative w-full max-w-5xl flex flex-col md:flex-row border border-[#424453] bg-[#13151a] rounded-sm overflow-hidden md:h-[80vh]"
                 style={hardwareAccel}
             >
-                {/* ── Top Controls Bar ── */}
-                <div className="absolute top-4 right-4 z-30 flex items-center gap-2">
-                    <button
-                        onClick={handleShare}
-                        className="px-3 py-1.5 flex items-center gap-1.5 bg-[#171924]/90 border border-[#424453] rounded-lg text-xs font-family-grotesk-mono text-[#838698] hover:text-[#39b7f2] hover:border-[#39b7f2] transition-all"
-                        title="Copy Page Link"
-                    >
-                        <Share2 size={13} />
-                        <span>{copied ? "Link Copied!" : "Share"}</span>
-                    </button>
-                    <button
-                        onClick={handleClose}
-                        className="w-8 h-8 flex items-center justify-center bg-[#171924]/90 border border-[#424453] rounded-lg text-[#838698] hover:text-[#e9ede5] hover:border-[#39b7f2] transition-all duration-200"
-                        aria-label="Close modal"
-                    >
-                        <X size={16} />
-                    </button>
-                </div>
+                {/* ── Close button ── */}
+                <button
+                    onClick={handleClose}
+                    className="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center bg-[#13151a]/80 border border-[#424453] rounded-sm text-[#838698] hover:text-[#e9ede5] hover:border-[#39b7f2] transition-all duration-200"
+                    aria-label="Close"
+                >
+                    <X size={16} />
+                </button>
 
-                {/* ── Left: Image Column ── */}
+                {/* ── Left: Image column ── */}
                 {update.imageUrl && (
-                    <div className="relative w-full aspect-4/3 md:aspect-auto md:w-1/2 md:h-full shrink-0 overflow-hidden bg-[#07080e] p-3 md:p-6 flex items-center justify-center">
-                        <div className="relative w-full h-full min-h-[220px] flex items-center justify-center">
-                            <Image
-                                src={update.imageUrl}
-                                alt={update.title}
-                                fill
-                                sizes="(min-width: 768px) 50vw, 100vw"
-                                className="object-contain"
-                            />
-                        </div>
+                    <div className="relative w-full aspect-4/3 md:aspect-auto md:w-1/2 md:h-full shrink-0 overflow-hidden">
+                        <Image
+                            src={update.imageUrl}
+                            alt={update.title}
+                            fill
+                            sizes="(min-width: 768px) 50vw, 100vw"
+                            className="object-cover"
+                        />
                     </div>
                 )}
 
-                {/* ── Right: Scrollable Content Column ── */}
+                {/* ── Right: Scrollable text column ── */}
                 <div
-                    className="flex-1 min-w-0 px-6 py-6 md:px-9 md:py-8 md:h-full md:overflow-y-auto md:min-h-0 overscroll-contain flex flex-col justify-between"
+                    className="flex-1 min-w-0 px-7 py-7 md:px-9 md:py-8 md:h-full md:overflow-y-auto md:min-h-0 md:overscroll-contain"
                     onWheelCapture={(e) => e.stopPropagation()}
                 >
-                    <div>
-                        {/* Header Badges */}
-                        <div className="flex items-center gap-2.5 flex-wrap mb-4">
-                            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-family-grotesk-mono font-bold tracking-wider border ${categoryStyles.bg} ${categoryStyles.border} ${categoryStyles.text} ${categoryStyles.shadow}`}>
-                                <span className={`w-1.5 h-1.5 rounded-full ${categoryStyles.dot}`} />
-                                {update.category || "General Update"}
-                            </span>
-
-                            {update.readTime && (
-                                <span className="inline-flex items-center gap-1 text-xs font-family-grotesk-mono text-[#838698]">
-                                    <Clock size={12} />
-                                    {update.readTime}
-                                </span>
-                            )}
-
-                            <span className="inline-flex items-center gap-1 text-xs font-family-grotesk-mono text-[#838698]">
-                                <Calendar size={12} />
-                                {formatDate(update.publishedAt)}
-                            </span>
-                        </div>
-
-                        {/* Title */}
-                        <h2 className="font-family-grotesk text-2xl md:text-3xl text-[#e9ede5] leading-snug mb-4">
-                            {update.title}
-                        </h2>
-
-                        {/* Author / Subsystem metadata */}
-                        {update.author && (
-                            <div className="flex items-center gap-2 text-xs font-family-grotesk-mono text-[#39b7f2]/90 mb-5">
-                                <User size={13} />
-                                <span>{update.author}</span>
-                            </div>
-                        )}
-
-                        {/* Accent Divider */}
-                        <div className="w-12 h-0.5 bg-gradient-to-r from-[#39b7f2] to-transparent mb-6" />
-
-                        {/* Body content */}
-                        <div className="space-y-4 mb-6">
-                            {update.body && Array.isArray(update.body) ? (
-                                update.body.some(b => b?._type === "block") ? (
-                                    <PortableText value={update.body} components={portableTextComponents} />
-                                ) : (
-                                    update.body.map((para, i) => (
-                                        <p key={i} className="font-family-apk text-[#b7b9c5] text-base leading-relaxed">
-                                            {typeof para === "string" ? para : para.children?.[0]?.text || ""}
-                                        </p>
-                                    ))
-                                )
-                            ) : update.summary ? (
-                                <p className="font-family-apk text-[#b7b9c5] text-base leading-relaxed">
-                                    {update.summary}
-                                </p>
-                            ) : (
-                                <p className="font-family-apk text-[#838698] text-base">No content available.</p>
-                            )}
-                        </div>
-
-                        {/* Tags */}
-                        {update.tags && update.tags.length > 0 && (
-                            <div className="pt-4 border-t border-[#232636] mb-6">
-                                <div className="flex items-center gap-2 flex-wrap">
-                                    <Tag size={13} className="text-[#838698]" />
-                                    {update.tags.map((t) => (
-                                        <span
-                                            key={t}
-                                            className="px-2.5 py-0.5 rounded-md bg-[#181b28] border border-[#2c3042] text-[11px] font-family-grotesk-mono text-[#8e95a5]"
-                                        >
-                                            #{t}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
+                    {/* Date */}
+                    <div className="font-family-grotesk-mono text-xs text-[#838698] uppercase tracking-widest mb-4">
+                        {formatDate(update.publishedAt)}
                     </div>
 
-                    {/* Action CTA link if exists */}
-                    {update.actionLink && (
-                        <div className="pt-4 border-t border-[#232636]">
-                            <a
-                                href={update.actionLink.url}
-                                target={update.actionLink.url.startsWith("http") ? "_blank" : "_self"}
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 w-full py-3 px-5 rounded-lg bg-[#39b7f2] hover:bg-[#5fd4ff] text-[#0b0b0e] font-family-grotesk-mono font-bold text-sm uppercase tracking-wider transition-all duration-200 shadow-[0_0_20px_rgba(57,183,242,0.3)]"
-                            >
-                                <span>{update.actionLink.text || "Learn More"}</span>
-                                <ExternalLink size={15} />
-                            </a>
-                        </div>
+                    {/* Title */}
+                    <h2 className="font-family-grotesk text-2xl md:text-3xl text-[#e9ede5] leading-snug mb-5">
+                        {update.title}
+                    </h2>
+
+                    {/* Accent divider */}
+                    <div className="w-10 h-px bg-[#39b7f2] mb-6" />
+
+                    {/* Body */}
+                    {update.body ? (
+                        Array.isArray(update.body) && update.body.some(b => b?._type === "block") ? (
+                            <PortableText value={update.body} components={portableTextComponents} />
+                        ) : typeof update.body === "string" ? (
+                            <p className="font-family-apk text-[#b7b9c5] text-base leading-relaxed whitespace-pre-line">{update.body}</p>
+                        ) : (
+                            <PortableText value={update.body} components={portableTextComponents} />
+                        )
+                    ) : update.summary ? (
+                        <p className="font-family-apk text-[#b7b9c5] text-base leading-relaxed whitespace-pre-line">{update.summary}</p>
+                    ) : (
+                        <p className="font-family-apk text-[#838698] text-base">No content available.</p>
                     )}
                 </div>
             </div>

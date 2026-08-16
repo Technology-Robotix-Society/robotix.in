@@ -36,9 +36,12 @@ export async function GET() {
         }
 
         const existingIds = new Set(sanityUpdates.map((u) => u._id));
+        const existingTitles = new Set(sanityUpdates.map((u) => (u.title || "").toLowerCase().trim()));
         const combined = [
             ...sanityUpdates,
-            ...curatedUpdates.filter((u) => !existingIds.has(u._id)),
+            ...curatedUpdates.filter(
+                (u) => !existingIds.has(u._id) && !existingTitles.has((u.title || "").toLowerCase().trim())
+            ),
         ];
 
         const primary = combined[0] || null;

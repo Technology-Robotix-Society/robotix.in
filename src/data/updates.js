@@ -1,36 +1,7 @@
 // src/data/updates.js
 // Comprehensive dataset for TRS Transmissions, Lab Research, Events Timeline, and Resources
 
-export const curatedUpdates = [
-    {
-        _id: "curated-freshers-selections",
-        title: "Fresher Selections",
-        category: "Selections",
-        publishedAt: "2026-08-01T12:00:00.000Z",
-        imageUrl: "/team/selections.jpg",
-        readTime: "2 min read",
-        author: "Technology Robotix Society",
-        tags: ["TRSSelections", "Induction", "IITKGP", "Robotics"],
-        featured: true,
-        summary: "Ready to build the future? ⚡️ Whether you’ve built robots before or have never touched a circuit, this is where your journey begins. Technology Robotix Society welcomes everyone to be a part of the selections.",
-        body: [
-            {
-                _type: "block",
-                style: "normal",
-                children: [
-                    {
-                        _type: "span",
-                        text: "Ready to build the future? ⚡️ Whether you’ve built robots before or have never touched a circuit, this is where your journey begins. Technology Robotix Society welcomes everyone to be a part of the selections. Build robots, learn by doing. Work on exciting projects and bring your ideas to life. Become part of a passionate community of robotics enthusiasts. No prior experience required, just curiosity and the willingness to learn. 📅 Registration deadline: August 7 | 11:59 PM. Your next big project could start with one application."
-                    }
-                ]
-            }
-        ],
-        actionLink: {
-            text: "Register Now",
-            url: "#"
-        }
-    }
-];
+export const curatedUpdates = [];
 
 // Upcoming Event Milestones for the "Event Horizon" Timeline
 export const upcomingEvents = [];
