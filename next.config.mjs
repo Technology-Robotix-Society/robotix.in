@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: ".next_dev",
   images: {
+    qualities: [75, 85],
     remotePatterns: [
       {
         protocol: "https",
@@ -11,3 +13,5 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+

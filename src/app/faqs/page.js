@@ -96,8 +96,8 @@ export default function Faqs() {
             <div className="absolute top-[600px] right-10 w-[400px] h-[400px] bg-[#22446a]/15 blur-[150px] pointer-events-none -z-10 rounded-full" />
 
             {/* Subtle Desktop Vertical Guides */}
-            <div className="hidden lg:block absolute left-9 w-px top-0 h-full bg-[rgb(66,68,83)]/30 pointer-events-none" />
-            <div className="hidden lg:block absolute right-9 w-px top-0 h-full bg-[rgb(139,143,174)]/30 pointer-events-none" />
+            <div className="hidden lg:block absolute left-9 w-px top-0 h-full bg-[#424453]/30 pointer-events-none" />
+            <div className="hidden lg:block absolute right-9 w-px top-0 h-full bg-[#8b8fae]/30 pointer-events-none" />
 
             <div className="max-w-5xl mx-auto">
                 {/* ──────────────────────────────────────────────────────────
