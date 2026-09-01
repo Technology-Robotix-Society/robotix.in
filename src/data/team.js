@@ -460,25 +460,6 @@ export const teamData = [
         title: "Sub Head",
         team: [
             {
-                name: "Aarya",
-                surname: "Gupta",
-                thumbnailUrl: "2026_aarya.jpg",
-                social: [
-                    {
-                        name: "facebook",
-                        link: "https://www.facebook.com/profile.php?id=61579923687339",
-                    },
-                    {
-                        name: "linkedin",
-                        link: "https://in.linkedin.com/in/aarya-gupta-47a1b8377",
-                    },
-                    {
-                        name: "email",
-                        link: "aaryagupta020@gmail.com",
-                    },
-                ],
-            },
-            {
                 name: "Adhvaith",
                 surname: "N",
                 thumbnailUrl: "2026_adhvaith.JPG",
